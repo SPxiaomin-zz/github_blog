@@ -1,0 +1,10 @@
+---
+layout: default
+title: test
+---
+
+# test
+
+<h2>{{ page.title }}</h2>
+
+<p>{{ page.date | date_to_string }}</p>
