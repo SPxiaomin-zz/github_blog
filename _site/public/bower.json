@@ -1,0 +1,20 @@
+{
+  "name": "github_blog",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SPxiaomin/github_blog",
+  "authors": [
+    "gujunmin <3013366498@qq.com>"
+  ],
+  "description": "my blog deployed at github",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.5"
+  }
+}
