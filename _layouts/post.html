@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>{{ page.title }}</title>
+
+        <link rel="stylesheet" href="{{ "/public/bower_components/bootstrap/dist/css/bootstrap.min.css" | prepend: site.baseurl }}">
+        <link rel="stylesheet" href="{{ "/public/stylesheets/dest/pygments.css" | prepend: site.baseurl }}">
+        <link rel="stylesheet" href="{{ "/public/stylesheets/dest/style.min.css" | prepend: site.baseurl }}">
+    </head>
+
+    <body>
+        <div class="container">
+            <h2 style="text-align: center">{{ page.title }}</h2>
+            {{ content }}
+        </div>
+    </body>
+</html>
