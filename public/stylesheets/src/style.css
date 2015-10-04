@@ -1,9 +1,12 @@
 .index h2 {
   /* layout */
+  font-size: 3em;
   text-align: center;
 }
 .index ul {
   /* layout */
   padding-left: 200px;
   margin-top: 50px;
+  /* typography */
+  font-size: 1em;
 }
