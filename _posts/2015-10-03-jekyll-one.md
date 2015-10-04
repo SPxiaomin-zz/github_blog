@@ -1,10 +1,20 @@
 ---
 layout: post
 title: 在 github 上搭建博客 by Jekyll
-category: Jekyll 
+category: jekyll 
 ---
 
 ## 知识点简介
+
+### Jekyll 
+
+
+
+### Bootstrap#3.3.5
+
+
+
+### CSS3
 
 以下内容摘录于 [w3school]()
 
@@ -20,7 +30,7 @@ category: Jekyll
     
     值    描述
 
-    normal	只在允许的断字点换行（浏览器保持默认处理）。
+    normal    只在允许的断字点换行（浏览器保持默认处理）。
 
     break-word	在长单词或 URL 地址内部进行换行。
     
@@ -41,3 +51,5 @@ category: Jekyll
     break-all	允许在单词内换行。
 
     keep-all	只能在半角空格或连字符处换行。
+
+你好
