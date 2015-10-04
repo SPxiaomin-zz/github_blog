@@ -5,9 +5,12 @@ title: 生活与代码博文
 <div class="container index">
     <h2>{{ page.title }} <small>by Jimmy</small></h2>
 
+    {% for category in site.categories %}
+    <h3>{{ category | first }} <small>&lt;{{ category | last | size }}&gt;</small></h3>
     <ul>
-        {% for post in site.posts %}
-        <li>{{ post.date | date_to_string }} >> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+        {% for post in category.last %}
+        <li>{{ post.date | date:"%d/%m/%Y"}} >> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
     </ul>
+    {% endfor %}
 </div>
