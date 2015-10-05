@@ -8,7 +8,7 @@
         <meta name="description" content="Jimmy的博客文章">
         <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
 
-        <title>markdown 学习笔记</title>
+        <title>html 中的列表</title>
 
         <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
@@ -23,27 +23,60 @@
 
     <body>
         <div class="container post">
-            <h2>markdown 学习笔记</h2>
-            <p>用了也有两个月时间的 <code>markdown</code> 了，但是还是经常有些重要的细节东西会忘记，特意写了这篇文章来记下需要用到的比较重要的东西，那些个人认为不重要的东西暂时了解吧，等到需要用到的话再去查。</p>
+            <h2>html 中的列表</h2>
+            <p>在写前端代码的过程中，列表这个东西真的经常会用到(e.g.，目录)，是一个比较重要的内容。</p>
 
-<p>以下的内容摘录于 <a href="http://wowubuntu.com/markdown/#header">Wow!Ubuntu</a>。</p>
+<p>以下的内容摘录于 <a href="http://www.w3school.com.cn/html/html_lists.asp">w3cschool</a> 并结合自己的理解。</p>
 
-<p>导航图</p>
+<p>列表总共有三种：</p>
 
-<ul>
-  <li><a href="#title">标题</a></li>
-</ul>
+<ol>
+  <li>
+    <p>无序列表</p>
 
-<h3 id="title">标题</h3>
+    <p>定义的话，我也不知道怎么解释，觉得 w3cschool 上的解释也是比较的晦涩难懂。还是看看例子比较好。</p>
 
-<p>在行首插入1到6个 <code>#</code>，对应标题1到6阶：</p>
+    <p>示例代码：</p>
 
-<pre><code># 这是h1
-
-## 这是h2
-
-### 这是h3
+    <pre><code> &lt;ul&gt;
+     &lt;li&gt;Coffee&lt;/li&gt;
+     &lt;li&gt;Milk&lt;/li&gt;
+ &lt;/ul&gt;
 </code></pre>
+
+    <p>实际效果如下：</p>
+
+    <ul>
+     <li>Coffee</li>
+     <li>Milk</li>
+ </ul>
+
+    <p>简单的说，就是一系列的事物前带有的标记是一样的，没有顺序的区别。事物可以是段落、换行符、图片、链接或者是列表。</p>
+  </li>
+  <li>
+    <p>有序列表</p>
+
+    <p>这个的话和上面的无序列表是一样的，只不过是标记符号不同，有序列表的标记序号是有序的，看看例子吧。</p>
+
+    <p>示例代码：</p>
+
+    <pre><code> &lt;ol&gt;
+     &lt;li&gt;Coffee&lt;/li&gt;
+     &lt;li&gt;Milk&lt;/li&gt;
+ &lt;/ol&gt;
+</code></pre>
+
+    <p>实际效果如下：</p>
+
+    <ol>
+     <li>Coffee</li>
+     <li>Milk</li>
+ </ol>
+  </li>
+  <li>
+    <p>定义列表</p>
+  </li>
+</ol>
 
 
             <div id="disqus_thread"></div>
