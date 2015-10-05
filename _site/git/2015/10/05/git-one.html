@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>在 git 中配置别名，简化操作</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/pygments.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <h2>在 git 中配置别名，简化操作</h2>
+            <p>在大一下学期的时候学习了一下 <code>git</code>，但是当时真的很少用到，于是没有管它。但是从大一下学期寒假开始，我就开始使用得多起来了，原因是我在一次升级 <code>Ubuntu</code> 系统的时候，忘记了代码备份，努力的成果全部没有…</p>
+
+<p>个人认为 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375234012342f90be1fc4d81446c967bbdc19e7c03d3000">廖雪峰老师写的git教程</a> ，写的非常的好，每看一次都会有不同的体会。以下的内容摘录于廖雪峰老师的教程。</p>
+
+<p>命令：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global alias.co checkout</code></pre></div>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global alias.unstage <span class="s1">&#39;reset HEAD&#39;</span></code></pre></div>
+
+<p>命令解释：</p>
+
+<p>在 <code>alias.</code> 后面加上你想要的别名，之后再打上一个空格，再加上你想要简化命令的原始名称。</p>
+
+<p>配置 <code>git</code> 的时候加上 <code>global</code> 这个参数，代表的是这个命令对当前用户有效。如果不加的话，仅仅代表对这个仓库有效。</p>
+
+<p>其实对于不喜欢敲命令的朋友来说，还有一种更简单的方法，那就是修改配置文件。</p>
+
+<p>我使用的是 <code>Ubuntu15.04</code>，当前用户的配置文件放在 <code>~/.gitconfig</code>，当前仓库的配置文件放在当前仓库的 <code>.git/config</code> 文件中。</p>
+
+<p>看看我的 <code>~/.gitconfig</code> 文件吧！</p>
+
+<pre><code>[user]
+    name = gujunmin
+	email = 3013366498@qq.com
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	unstage = reset HEAD
+	last = log -1
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset ' --abbrev-commit
+	ps = push
+	pl = pull
+</code></pre>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

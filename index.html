@@ -4,13 +4,20 @@ title: 生活与代码博文
 ---
 <div class="container index">
     <h2>{{ page.title }} <small>by Jimmy</small></h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>大二学生党一枚</p>
+        </div>
+        <div class="col-sm-6">
 
-    {% for category in site.categories %}
-    <h3>{{ category | first }} <small>&lt;{{ category | last | size }}&gt;</small></h3>
-    <ul>
-        {% for post in category.last %}
-        <li>{{ post.date | date:"%d/%m/%Y"}} >> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
-    {% endfor %}
+            {% for category in site.categories %}
+            <h3>{{ category | first }} <small>[{{ category | last | size }}]</small></h3>
+            <ul>
+                {% for post in category.last %}
+                <li>{{ post.date | date:"%a， %b %d， %y"}} -&gt; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
 </div>
