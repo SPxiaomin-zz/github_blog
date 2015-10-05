@@ -8,7 +8,7 @@
         <meta name="description" content="Jimmy的博客文章">
         <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
 
-        <title>css3 中的 :th-child() 陷阱</title>
+        <title>css3 中 :th-child() 的陷阱</title>
 
         <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
@@ -23,8 +23,144 @@
 
     <body>
         <div class="container post">
-            <h2>css3 中的 :th-child() 陷阱</h2>
-            
+            <h2>css3 中 :th-child() 的陷阱</h2>
+            <p>这个选择器强大但是又不是一般的坑，看到了 <a href="http://csscoke.com/2013/09/21/%E4%BD%BF%E7%94%A8css3-nth-childn-%E9%81%B8%E5%8F%96%E5%99%A8%E8%A9%B3%E8%A7%A3/">一篇文章</a>，写的不错，但是是繁体，我也是通过边翻译边猜测才看懂的，摘录了其中一部分内容并结合自己的理解写了一份总结。</p>
+
+<p>这个选择器简单的用一句话总结的话就是：<code>按顺序选择同类型的</code>。</p>
+
+<p>那句话我估计都只有自己可以看懂，还是给你们看看例子吧。</p>
+
+<p>正确示例代码：</p>
+
+<pre><code>&lt;style&gt;
+    .test p:nth-child(2) {
+        background-color: red;
+    }
+&lt;/style&gt;
+
+&lt;div class="test"&gt;
+    &lt;h1&gt;这是标题&lt;/h1&gt;
+    &lt;p&gt;第一个段落。&lt;/p&gt;
+    &lt;p&gt;第二个段落。&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>正确显示效果：</p>
+
+<style>
+    .test p:nth-child(2) {
+        background-color: red;
+    }
+</style>
+
+<div class="test">
+    <h1>这是标题</h1>
+    <p>第一个段落。</p>
+    <p>第二个段落。</p>
+</div>
+
+<hr />
+
+<p>错误示例代码：</p>
+
+<pre><code>&lt;style&gt;
+    .test p:nth-child(1) {
+        background-color: red;
+    }
+&lt;/style&gt;
+
+&lt;div class="test"&gt;
+    &lt;h1&gt;这是标题&lt;/h1&gt;
+    &lt;p&gt;第一个段落。&lt;/p&gt;
+    &lt;p&gt;第二个段落。&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>错误显示效果：</p>
+
+<style>
+    .test-one p:nth-child(1) {
+        background-color: red;
+    }
+</style>
+
+<div class="test-one">
+    <h1>这是标题</h1>
+    <p>第一个段落。</p>
+    <p>第二个段落。</p>
+</div>
+
+<hr />
+
+<p>如果仔细的观察上面的两个例子的话应该就可以理解我的那句话是什么意思了：</p>
+
+<ul>
+  <li>
+    <p>顺序：</p>
+
+    <p>就是从第一个子元素开是算起。</p>
+  </li>
+  <li>
+    <p>同类型:</p>
+
+    <p>就是说必须和 <code>:th-child()</code> 前面指定的元素是同一个类型的。</p>
+  </li>
+</ul>
+
+<p>还有一个非常坑的地方，就是使用 <code>class</code> 的时候，看看例子吧。</p>
+
+<pre><code>&lt;div class="box"&gt;
+    &lt;div class="one"&gt;A&lt;/div&gt;
+    &lt;div class="one"&gt;B&lt;/div&gt;
+    &lt;div class="two"&gt;C&lt;/div&gt;
+    &lt;div class="one"&gt;D&lt;/div&gt;
+    &lt;div class="two"&gt;E&lt;/div&gt;
+    &lt;div class="one"&gt;F&lt;/div&gt;
+&lt;/div&gt;
+
+.box .two:nth-child(2){
+    background-color:#FC3;
+}
+</code></pre>
+
+<p>上面的代码想选择 <code>class=two</code> 的第二个元素，逻辑上貌似没什么错误，但是仔细的想想我上面提到的顺序，就可以发现不对了。</p>
+
+<p>改正后的代码如下：</p>
+
+<pre><code>&lt;div class="box"&gt;
+    &lt;div class="one two"&gt;A&lt;/div&gt;
+    &lt;div class="one two"&gt;B&lt;/div&gt;
+    &lt;div class="two"&gt;C&lt;/div&gt;
+    &lt;div class="one two"&gt;D&lt;/div&gt;
+    &lt;div class="two"&gt;E&lt;/div&gt;
+    &lt;div class="one two"&gt;F&lt;/div&gt;
+&lt;/div&gt;
+
+.box .two:nth-child(2){
+    background-color:#FC3;
+}
+</code></pre>
+
+<p>代码效果如下</p>
+
+<style>
+    .box .two:nth-child(2) {
+        background-color: #FC3;
+    }
+</style>
+
+<div class="box">
+    <div class="one two">A</div>
+    <div class="one two">B</div>
+	<div class="two">C</div>
+	<div class="one two">D</div>
+	<div class="two">E</div>
+	<div class="one two">F</div>
+</div>
+
+<p>虽然现在可以产生效果了，但效果并不是我们想要的，其实本质上就是我上面的那句话-&gt;<code>按顺序选择同类型的</code>。这个选择器确实很强大，但是又十分的坑，使用的时候一定要十分的小心。</p>
+
+<p>上面就是我要说的陷阱了，其它的知识的话网上一搜一大把，上面我推荐的那个网站写的就已经比较的详细了。欢迎指正=^_^=</p>
 
 
             <div id="disqus_thread"></div>

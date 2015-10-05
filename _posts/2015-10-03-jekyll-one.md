@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 在 github 上搭建博客 by Jekyll
 category: jekyll 
 ---

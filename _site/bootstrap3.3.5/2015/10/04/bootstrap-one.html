@@ -8,7 +8,7 @@
         <meta name="description" content="Jimmy的博客文章">
         <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
 
-        <title>markdown 学习笔记</title>
+        <title>Bootstrap3.3.5 使用模板简介</title>
 
         <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
@@ -23,34 +23,35 @@
 
     <body>
         <div class="container post">
-            <h2>markdown 学习笔记</h2>
-            <p>用了也有两个月时间的 <code>markdown</code> 了，但是还是经常有些重要的细节东西会忘记，特意写了这篇文章来记下需要用到的比较重要的东西，那些个人认为不重要的东西暂时了解吧，等到需要用到的话再去查。</p>
+            <h2>Bootstrap3.3.5 使用模板简介</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
 
-<p>以下的内容摘录于 <a href="http://wowubuntu.com/markdown/#header">Wow!Ubuntu</a>。</p>
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
 
-<p>导航图</p>
+    &lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;
+    &lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;
+    &lt;!--[if lt IE 9]&gt;
+      &lt;script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
 
-<ul>
-  <li><a href="#title">标题</a></li>
-  <li><a href="#underline">下划线</a></li>
-</ul>
-
-<h3 id="title">标题</h3>
-
-<p>在行首插入1到6个 <code>#</code>，对应标题1到6阶：</p>
-
-<pre><code># 这是h1
-
-## 这是h2
-
-### 这是h3
-</code></pre>
-
-<h3 id="underline">下划线</h3>
-
-<p>使用 <code>3个及3个以上</code> 的底线都可以建立一个下划线，行内不能有其它的任何东西。</p>
-
-<pre><code>___
+    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+    &lt;script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+    &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
 

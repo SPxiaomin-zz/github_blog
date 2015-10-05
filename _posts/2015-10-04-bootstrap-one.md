@@ -1,10 +1,8 @@
 ---
-layout: post
-title: Bootstrap#3.3.5 使用模板简介
-category: Bootstrap#3.3.5
+title: Bootstrap3.3.5 使用模板简介
+category: Bootstrap3.3.5
 ---
 
-{% highlight html %}
     <!DOCTYPE html>
     <html lang="zh-CN">
       <head>
@@ -33,4 +31,3 @@ category: Bootstrap#3.3.5
         <script src="js/bootstrap.min.js"></script>
       </body>
     </html>
-{% endhighlight %}

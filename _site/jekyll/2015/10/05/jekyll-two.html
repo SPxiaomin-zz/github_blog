@@ -8,7 +8,7 @@
         <meta name="description" content="Jimmy的博客文章">
         <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
 
-        <title>markdown 学习笔记</title>
+        <title>Front Matter defaults 设置不生效</title>
 
         <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
@@ -23,35 +23,12 @@
 
     <body>
         <div class="container post">
-            <h2>markdown 学习笔记</h2>
-            <p>用了也有两个月时间的 <code>markdown</code> 了，但是还是经常有些重要的细节东西会忘记，特意写了这篇文章来记下需要用到的比较重要的东西，那些个人认为不重要的东西暂时了解吧，等到需要用到的话再去查。</p>
+            <h2>Front Matter defaults 设置不生效</h2>
+            <p>我使用的是 <code>Ubuntu15.04</code>，在看 <a href="http://jekyllrb.com/docs/configuration/">Jekyll的官方文档</a> 的时候，看到了当在 <code>post</code> 或 <code>page</code> 中设置同样的 <code>YAML Front Matter</code> 的时候，就可以使用到 <code>_config.yml</code> 文件来避免设置重复的内容-<code>layout</code>、<code>category</code>…</p>
 
-<p>以下的内容摘录于 <a href="http://wowubuntu.com/markdown/#header">Wow!Ubuntu</a>。</p>
+<p>但是设置之后，奇怪的问题是为什么没有效果，果断的 Google 了一下，<a href="">stackoverflow</a> 中有人已经解答了这个问题。</p>
 
-<p>导航图</p>
-
-<ul>
-  <li><a href="#title">标题</a></li>
-  <li><a href="#underline">下划线</a></li>
-</ul>
-
-<h3 id="title">标题</h3>
-
-<p>在行首插入1到6个 <code>#</code>，对应标题1到6阶：</p>
-
-<pre><code># 这是h1
-
-## 这是h2
-
-### 这是h3
-</code></pre>
-
-<h3 id="underline">下划线</h3>
-
-<p>使用 <code>3个及3个以上</code> 的底线都可以建立一个下划线，行内不能有其它的任何东西。</p>
-
-<pre><code>___
-</code></pre>
+<p>简单的说就是当你在本地运行的时候，当已经通过 <code>jekyll serve</code> 启动服务器之后，这个配置文件并不会生效，因为它不属于网站的一部分，只有当重启服务器的时候才会</p>
 
 
             <div id="disqus_thread"></div>

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: markdown 学习笔记
 category: markdown
 ---
@@ -11,6 +10,7 @@ category: markdown
 导航图
 
 - [标题](#title)
+- [下划线](#underline) 
 
 <h3 id="title">标题</h3>
 
@@ -21,3 +21,9 @@ category: markdown
     ## 这是h2
     
     ### 这是h3
+
+<h3 id="underline">下划线</h3>
+
+使用 `3个及3个以上` 的底线都可以建立一个下划线，行内不能有其它的任何东西。
+
+    ___
