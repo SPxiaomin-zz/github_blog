@@ -9,6 +9,13 @@
   margin-bottom: 50px;
   text-align: center;
 }
+.index .row .col-sm-6:nth-child(2) {
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+.index .row .self-intro {
+  /* layout */
+  margin-bottom: 50px;
+}
 .index .row .self-intro h3 {
   /* layout */
   padding-bottom: 10px;

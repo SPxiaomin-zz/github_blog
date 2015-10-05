@@ -75,8 +75,70 @@
   </li>
   <li>
     <p>定义列表</p>
+
+    <p>这个和上面的两种的唯一区别就是对事物进行了解释，多加了一项解释项。还是一样的看看例子吧。</p>
+
+    <p>示例代码：</p>
+
+    <pre><code> &lt;dl&gt;
+     &lt;dt&gt;Coffee&lt;/dt&gt;
+     &lt;dd&gt;Black hot drink&lt;/dd&gt;
+     &lt;dt&gt;Milk&lt;/dt&gt;
+     &lt;dd&gt;White cold drink&lt;/dd&gt;
+ &lt;/dl&gt;
+</code></pre>
+
+    <p>实际效果如下：</p>
+
+    <dl>
+     <dt>Coffee</dt>
+     <dd>Black hot drink</dd>
+     <dt>Milk</dt>
+     <dd>White cold drink</dd>
+ </dl>
   </li>
 </ol>
+
+<p>还有一个会经常用到的，就是嵌套的列表：</p>
+
+<p>示例代码：</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;咖啡&lt;/li&gt;
+  &lt;li&gt;茶     //这里要注意，嵌套列表加的位置
+    &lt;ul&gt;
+    &lt;li&gt;红茶&lt;/li&gt;
+    &lt;li&gt;绿茶
+      &lt;ul&gt;
+      &lt;li&gt;中国茶&lt;/li&gt;
+      &lt;li&gt;非洲茶&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;牛奶&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>实际的效果：</p>
+
+<ul>
+  <li>咖啡</li>
+  <li>茶
+    <ul>
+    <li>红茶</li>
+    <li>绿茶
+      <ul>
+      <li>中国茶</li>
+      <li>非洲茶</li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  <li>牛奶</li>
+</ul>
+
+<p>是不是懂了呢？欢迎指点=^_^=</p>
 
 
             <div id="disqus_thread"></div>
