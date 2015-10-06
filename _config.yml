@@ -1,6 +1,6 @@
 baseurl: /github_blog
 defaults:
-  -
+  - 
     scope:
         path: ""
         type: "pages"
@@ -13,3 +13,4 @@ defaults:
         type: "posts"
     values:
         layout: "post"
+
