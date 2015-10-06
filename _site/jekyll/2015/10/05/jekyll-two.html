@@ -23,8 +23,9 @@
 
     <body>
         <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>Front Matter defaults 设置以及本地运行生效问题</h2>
-            <p>先介绍下 <code>default</code> 的设置问题吧，<a href="http://jekyllrb.com/docs/configuration/">官方文档</a> 真的写的很详细了，这种轮子我就不重复造了。下面的内容摘录于官方文档并结合了自己的理解。</p>
+            <p>先介绍下 <code>default</code> 的设置问题吧，<a href="http://jekyllrb.com/docs/configuration/">官方文档</a> 真的写的很详细了。下面的内容摘录于官方文档并结合了自己的理解。</p>
 
 <p>Front Matter defaults</p>
 
@@ -82,6 +83,10 @@
 <p>但是设置之后，奇怪的问题是为什么没有效果，果断的 Google 了一下，<a href="http://stackoverflow.com/questions/30610668/jekyll-front-matter-defaults-not-working">stackoverflow</a> 中有人已经解答了这个问题。</p>
 
 <p>简单的说就是当你在本地运行的时候，当已经通过 <code>jekyll serve</code> 启动服务器之后，如果再修改这个配置文件的话，配置并不会生效，因为它不属于网站的一部分，只有当 <code>重启服务器</code> 的时候才会生效 。</p>
+
+<p><a href="http://jekyllrb.com/docs/variables/">Jekyll 官网</a> 对此进行了解释：</p>
+
+<p>Jekyll does not parse changes to _config.yml in watch mode, you must restart Jekyll to see changes to variables.</p>
 
 <p>欢迎指教=^_^=</p>
 

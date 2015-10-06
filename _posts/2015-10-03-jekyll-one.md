@@ -1,21 +1,21 @@
 ---
-title: 在 github 上搭建博客 by Jekyll
+title: Github & Jekyll 搭建博客
 category: jekyll 
 ---
 
-## 知识点简介
+### 知识点简介
 
 ### Jekyll 
 
 
 
-### Bootstrap#3.3.5
+### Bootstrap3.3.5
 
 
 
 ### CSS3
 
-以下内容摘录于 [w3school]()
+以下内容摘录于 [w3school](http://www.w3school.com.cn/css3/css3_text_effect.asp) 。
 
 - css3 word-wrap 
     
@@ -31,7 +31,7 @@ category: jekyll
 
     normal    只在允许的断字点换行（浏览器保持默认处理）。
 
-    break-word	在长单词或 URL 地址内部进行换行。
+    break-word    在长单词或 URL 地址内部进行换行。
     
 - css3 word-break
 

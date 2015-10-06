@@ -4,7 +4,7 @@ title: Front Matter defaults 设置以及本地运行生效问题
 category: jekyll
 ---
 
-先介绍下 `default` 的设置问题吧，[官方文档](http://jekyllrb.com/docs/configuration/) 真的写的很详细了，这种轮子我就不重复造了。下面的内容摘录于官方文档并结合了自己的理解。
+先介绍下 `default` 的设置问题吧，[官方文档](http://jekyllrb.com/docs/configuration/) 真的写的很详细了。下面的内容摘录于官方文档并结合了自己的理解。
 
 Front Matter defaults
 
@@ -59,5 +59,9 @@ With these defaults, all posts would use the my-site layout. Any html files that
 但是设置之后，奇怪的问题是为什么没有效果，果断的 Google 了一下，[stackoverflow](http://stackoverflow.com/questions/30610668/jekyll-front-matter-defaults-not-working) 中有人已经解答了这个问题。
 
 简单的说就是当你在本地运行的时候，当已经通过 `jekyll serve` 启动服务器之后，如果再修改这个配置文件的话，配置并不会生效，因为它不属于网站的一部分，只有当 `重启服务器` 的时候才会生效 。
+
+[Jekyll 官网](http://jekyllrb.com/docs/variables/) 对此进行了解释：
+
+Jekyll does not parse changes to _config.yml in watch mode, you must restart Jekyll to see changes to variables.
 
 欢迎指教=^_^=

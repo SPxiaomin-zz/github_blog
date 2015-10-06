@@ -23,8 +23,9 @@
 
     <body>
         <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>YAML 入门学习</h2>
-            <p>由于目前正在使用 <code>Jekyll</code> 搭建博客，如果不学 <code>YAML</code> 的话，那连个配置文件都可能出错，果断学习了。看到了两个写的还不错的文章 -&gt; <a href="http://blog.csdn.net/ruby_cn/article/details/177567">http://blog.csdn.net/ruby_cn/article/details/177567</a> <a href="http://einverne.github.io/2015/08/08/yaml.html">http://einverne.github.io/2015/08/08/yaml.html</a>。以下的内容摘录于上述的两个博客并结合了自己的理解。</p>
+            <p>由于目前正在使用 <code>Jekyll</code> 搭建博客，如果不学 <code>YAML</code> 的话，那连个配置文件都可能出错，果断学习了。看到了两个写的还不错的文章 -&gt; <a href="http://blog.csdn.net/ruby_cn/article/details/177567">http://blog.csdn.net/ruby_cn/article/details/177567</a> <a href="http://einverne.github.io/2015/08/08/yaml.html">http://einverne.github.io/2015/08/08/yaml.html</a>，其实 <a href="https://en.wikipedia.org/wiki/YAML">Wikipedia</a> 上写的内容也非常的不错。以下的内容摘录于上述的来源并结合了自己的理解。</p>
 
 <ul>
   <li>
@@ -47,7 +48,7 @@
   - 2003-07-24  # Dates
 </code></pre>
 
-    <p>上面的列表以三个 <code>-</code> 开头，这个东西有个专有名词-&gt; <code>文档分隔符(document separator)</code>，它表示了一段 yaml 文档的开始。这个东东也可以用来划分多个文档，看看例子吧：</p>
+    <p>上面的列表以三个 <code>-</code> 开头，这个东西有个专有名称 -&gt; <code>文档分隔符(document separator)</code>，它表示了一段 yaml 文档的开始。这个东东也可以用来划分多个文档，看看例子吧：</p>
 
     <pre><code>  ---
   - Harry Potter and the Prisoner of Azkaban
@@ -72,6 +73,19 @@
   - [Mark McGwire, 65, 0.278]
   - [Sammy Sosa  , 63, 0.288]
 </code></pre>
+
+    <p>摘录两句来自 Wiki 的原文：</p>
+
+    <ul>
+      <li>Conventional block format uses a <code>hyphen+space</code> to begin a new item in list.</li>
+      <li>Optional inline format is delimited by comma+space and enclosed in brackets (similar to JSON).</li>
+    </ul>
+
+    <p>你一定会十分的疑惑为什么要有个 <code>space</code> 呢？ Wiki 也对此做出了回答：</p>
+
+    <ul>
+      <li>YAML requires that colons and commas used as list separators be followed by a space so that scalar values containing embedded punctuation (such as 5,280 or http://www.wikipedia.org) can generally be represented without needing to be enclosed in quotes.</li>
+    </ul>
   </li>
   <li>
     <p>yaml 中的字典(map)</p>
@@ -87,7 +101,15 @@
 
     <p>字典也有对应的行内形式：</p>
 
-    <p>{Stanislaw Lem: Memoirs Found in a Bathtub,Neal Stephenson: Snowcrash,Daniel Clowes: Ghost World}</p>
+    <p>{Stanislaw Lem: Memoirs Found in a Bathtub, Neal Stephenson: Snowcrash, Daniel Clowes: Ghost World}</p>
+
+    <p>摘录了一句来自 wiki 的原文：</p>
+
+    <p>Associative arrays</p>
+
+    <p>Keys are separated from values by a colon+space. Inline Blocks, common in YAML data streams, use comma+space to separate the key: value pairs between braces.</p>
+
+    <p>这里加 <code>space</code> 的原因和上面序列是一样的。</p>
   </li>
 </ul>
 
@@ -202,6 +224,27 @@ national:
     <p>竖线(也称为管道pipe)取代了上面例子中的 <code>&gt;</code>，表示了一个 literal block 的开始。literal block 表示每个句子自成一节，简单点说就是原来是什么样子就是什么样子，每一行会在行尾加上一个换行符，而上面的 folded block 的话会对句子进行合并。</p>
   </li>
 </ul>
+
+<p>我觉得上面我讲得实在是没有解释清楚，还是看看 wiki 的解释吧：</p>
+
+<p>Block literals</p>
+
+<p>Strings do not require quotation. There are two ways to write multi-line strings, one preserving newlines (using the <code>|</code> character) and one that folds the newlines (using the <code>&gt;</code> character), both followed by a newline character.</p>
+
+<p>摘录了一个几个来自 wiki 的注意事项：</p>
+
+<ol>
+  <li>
+    <p>Strings (scalars) are ordinarily unquoted, but may be enclosed in double-quotes ( “ ), or single-quotes ( ‘ ).
+Within double-quotes, special characters may be represented with C-style escape sequences starting with a backslash ( \ ). According to the documentation the only octal escape supported is \0.</p>
+  </li>
+  <li>
+    <p>Whitespace indentation is used to denote structure; however tab characters are never allowed as indentation.</p>
+  </li>
+  <li>
+    <p>The specific number of spaces in the indentation is unimportant as long as parallel elements have the same left justification and the hierarchically nested elements are indented further.</p>
+  </li>
+</ol>
 
 <p>最后附上一个 yaml 在线解析器的地址 <a href="http://yaml-online-parser.appspot.com/">http://yaml-online-parser.appspot.com/</a> 。</p>
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>Vim 使用的一些小技巧</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Vim 使用的一些小技巧</h2>
+            <p>用 vim 也有半年左右的时间了，感觉它的各方面都特别的方便，不用去移动鼠标，很多的功能都可以直接通过键盘来搞定，特别的爽，再加上几个插件的话，那简直就是太强大了。看到了几篇写 vim 小技巧的 文章 <a href="http://imkeke.net/pages/vim.html">http://imkeke.net/pages/vim.html</a> <a href="http://tanqisen.github.io/blog/2013/01/13/vim-search-replace-regex/">http://tanqisen.github.io/blog/2013/01/13/vim-search-replace-regex/</a> ，从中摘录了一些自己日常生活当中能用到的并且结合了自己的理解。</p>
+
+<ul>
+  <li>
+    <p>复制文字时候的位置跳动</p>
+
+    <p><code>`[</code> 跳到复制过后的文字的开始位置</p>
+
+    <p><code>`]`</code> 跳到复制过后的文字的结束位置</p>
+
+    <p>我觉得上面的这两句话有点难以理解，还是举个例子吧。当你使用 <code>v</code> 进入了 <code>visual mode</code> 的时候，这时候就可以开始选择文本了，选择了文本之后，是不是被选中的文本就产生了阴影，然后再使用命令复制到你想要的黏贴板上面(我一般的话是使用 <code>"+y</code> 这个命令把内容复制到 <code>+</code> 这个黏贴板，因为这个黏贴板是系统的黏贴板)，使用完命令之后那些阴影就会消失。使用第一个命令，你就可以到达之前产生的阴影块的开始位置，使用第二个命令，你就可以到达之前产生的阴影块的结束位置。</p>
+  </li>
+  <li>
+    <p>使用标记进行在两个位置间进行快速移动</p>
+
+    <p><code>mx</code> x可以代表你要做标记的标记字符，在某个位置做个标记</p>
+
+    <p><code>`x</code> 跳到你做标记的那一行中的准确位置</p>
+
+    <p><code>'x</code> 跳到你做标记的那一行中的行首</p>
+
+    <p><code>``</code> 当你使用上面的两个命令跳到了指定的位置之后，可以使用这个命令跳回原来的位置</p>
+  </li>
+  <li>
+    <p>替换</p>
+
+    <p>看看替换的语法表达式吧：</p>
+
+    <pre><code>  :[range] s/from/to/[flags]
+</code></pre>
+
+    <p>range 表示的是替换的范围，如果没有指定范围的话，则作用于当前行。</p>
+
+    <ol>
+      <li><code>:1,10 s/from/to/</code> 表示在第1行到第10行之间(包括第1,10行)进行搜索替换</li>
+      <li><code>:10 s/from/to/</code> 表示只在第10行进行搜索替换</li>
+      <li><code>:% s/from/to/</code> 表示在所有行中搜索替换</li>
+      <li><code>:1,$ s/from/to/</code> 表示在所有行中进行搜索替换</li>
+    </ol>
+
+    <p>flag 表示的是选项参数。</p>
+
+    <ol>
+      <li><code>c</code> confirm，每次替换之前询问你是否进行替换</li>
+      <li><code>g</code> global，整行替换。如果不加 <code>g</code> 选项的话，则只替换每行的第一个匹配到的字符串。</li>
+      <li><code>i</code> ignore`，忽略大小写进行搜索替换。</li>
+    </ol>
+
+    <p>替换的话，还有一个小小的技巧哦，当你使用搜索高亮了关键字之后，就可以省略 <code>from</code> 不写哦，直接写剩下来的命令就够了：<code>[range] s//to/[flags]</code>。</p>
+  </li>
+  <li>
+    <p>打开文本中的网址</p>
+
+    <p>在文本中有网址是一件很正常的事情，但是总是要copy &amp; paste 的话，是不是觉得很麻烦，但是在 vim 中就没有那么的麻烦了， <code>gx</code> 可以调用系统默认的浏览器打开当前光标所在的网址。</p>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

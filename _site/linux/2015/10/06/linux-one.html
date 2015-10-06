@@ -8,7 +8,7 @@
         <meta name="description" content="Jimmy的博客文章">
         <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
 
-        <title>markdown 学习笔记</title>
+        <title>Ubuntu 中的 ls 命令</title>
 
         <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
@@ -24,53 +24,31 @@
     <body>
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
-            <h2>markdown 学习笔记</h2>
-            <p>用了也有两个月时间的 <code>markdown</code> 了，但是还是经常有些重要的细节东西会忘记，特意写了这篇文章来记下需要用到的比较重要的东西，那些个人认为不重要的东西暂时了解吧，等到需要用到的话再去查。</p>
+            <h2>Ubuntu 中的 ls 命令</h2>
+            <p>我使用的是 <code>Ubuntu15.04</code>，在日常生活当中，<code>ls</code> 这个命令经常会用到。总结一下经常会用到的参数，并且会在能力水平不断的提升的同时不断的更新内容。</p>
 
-<p>以下的内容摘录于 <a href="http://wowubuntu.com/markdown/#header">Wow!Ubuntu</a>。</p>
+<p>以下的内容摘录与 <a href="http://www.runoob.com/linux/linux-comm-ls.html">http://www.runoob.com/linux/linux-comm-ls.html</a>，并结合自己的理解。</p>
 
-<p>导航图</p>
+<p>作用：</p>
+
+<p>ls 命令用于显示指定工作目录下的内容，也就是指定工作目录所包含的文件及子目录。</p>
+
+<p>语法：</p>
+
+<pre><code>ls [-aAtlFR] [name]
+</code></pre>
+
+<p>参数讲解：</p>
 
 <ul>
-  <li><a href="#title">标题</a></li>
-  <li><a href="#underline">下划线</a></li>
-  <li><a href="#code">代码</a></li>
+  <li>a: 用于显示所有的文件及目录，如果不加这个参数的话，所有以 <code>.</code> 开头的文件名和目录都将不会被列出。</li>
+  <li>A: 和上面的 <code>a</code> 参数类似，唯一的不同点就是这个命令不会列出 <code>.</code>(当前目录) 及 <code>..</code>(父目录)。</li>
+  <li>t: 用于将文件进行排序，修改文件的时间越接近于当前时间的，越排在前面。</li>
+  <li>l: 除了列出文件名称外，也会将文件权限，文件大小等详细信息列出来。</li>
+  <li>h: 和 <code>l</code> 参数一起使用，将文件大小的表现形式转换成更加可读的形式。</li>
+  <li>F: 在列出的名称后面加上符号便于区分，可执行文件后加 <code>*</code>，目录名后加 <code>/</code>。</li>
+  <li>R: 如果列出的目录不是空目录的话，这个目录下的文件也会被一同列出。</li>
 </ul>
-
-<h3 id="title">标题</h3>
-
-<p>在行首插入1到6个 <code>#</code>，对应标题1到6阶：</p>
-
-<pre><code># 这是h1
-
-## 这是h2
-
-### 这是h3
-</code></pre>
-
-<h3 id="underline">下划线</h3>
-
-<p>使用 <code>3个及3个以上</code> 的底线都可以建立一个下划线，行内不能有其它的任何东西。</p>
-
-<pre><code>___
-</code></pre>
-
-<h3 id="code">代码</h3>
-
-<p>如果要标记一小段行内代码的话，就可以使用反引号把它包起来 <code>`</code>，还是看看例子吧：</p>
-
-<pre><code>`console.log('hello world');`
-</code></pre>
-
-<p>有时候会需要在代码区段内插入反引号，这时的话就可以使用多个反引号来开启和结束这段代码，例子：</p>
-
-<pre><code>``backtick(`) is here``
-</code></pre>
-
-<p>有的时候需要在一开始就插入反引号，这时只要在代码区段的起始和结束端都放入一个空白，起始端的后面一个，结束端的前面一个，看看例子：</p>
-
-<pre><code>`` ` ``    
-</code></pre>
 
 <p>欢迎指教=^_^=</p>
 
