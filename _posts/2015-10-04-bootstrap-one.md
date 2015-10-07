@@ -11,9 +11,9 @@ Supporting v3
 
 When we shipped Bootstrap 3, we immediately discontinued all support for v2.x, causing a lot of pain for all our users out there. That was a mistake we won’t be making again. For the foreseeable future, we’ll be maintaining Bootstrap 3 with critical bug fixes and documentation improvements. v3 docs will also continue to be hosted after v4’s final release.
 
-暂时还能用，暂时先用着，等 bootstrap4 final release 出来了再换，再加上 bootstrap4 现在已经 Dropped IE8 support and moved to rem and em units 。
+bootstrap4 现在已经 Dropped IE8 support and moved to rem and em units ，所以暂时目前还是先用着。
 
-先仔细的看看模板吧，在 title 标签的前面加了两个额外的标签：
+先仔细的看看模板吧，在 title 标签的前面加了两个额外的标签，下面同样会做详细的介绍：
 
     <!DOCTYPE html>
     <html lang="zh-CN">
@@ -66,7 +66,7 @@ When we shipped Bootstrap 3, we immediately discontinued all support for v2.x, c
 
     这个属性值的作用是 Always use the latest standards rendering mode 。
     
-    <http://blogs.msdn.com/b/askie/archive/2009/03/23/understanding-compatibility-modes-in-internet-explorer-8.aspx> 
+    <http://blogs.msdn.com/b/askie/archive/2009/03/23/understanding-compatibility-modes-in-internet-explorer-8.aspx> 这篇文章对这个标签的作用进行了描述。 
     
     摘录一段来自 <https://msdn.microsoft.com/en-us/library/dd565650(v=vs.85).aspx> 的原文吧，讲得挺清楚的：
     
@@ -82,3 +82,38 @@ When we shipped Bootstrap 3, we immediately discontinued all support for v2.x, c
     
     但是目前貌似可以不用管，用吧，骚年！
     
+- meta viewport
+
+    先解释一下 viewport 的意思和目的吧，不然下面的属性可能有点难以理解，以下的内容摘录于 <http://blog.unvs.cn/archives/meta-viewport-tag.html>:
+    
+    viewport: 它在页面中设置，是应对手机模式访问网页而做的一些设置。通常手机浏览器打开页面后，会把页面放在一个虚拟的 "窗口"  - 这个比实际的窗口要大，也就是你常发现页面可以进行拖动、放大、仿效，这个窗口即 viewport。
+
+    由于 bootstrap3 开始的设计目的就是移动设备优先，为了确保适当的绘制和触屏缩放，可以加入下列的属性值：
+    
+    - width=device-width:
+    
+        将 viewport 设置为设备的宽度，这样的话就可以在不同的设备上显示了。
+        
+    - initial-scale=1.0:
+    
+        这个属性确保网页加载的时候，以 1:1 的比例呈现，不会有任何的缩放。
+        
+- meta description
+
+    以下的内容摘录于 [百度百科](http://baike.baidu.com/view/740572.htm) 并结合了自己的理解。
+
+    description 中的 content="网页描述"，是对一个网页概况的介绍，这些信息可能会出现在搜索结果中，因此需要根据网页的实际情况来设计，尽量避免与网页内容不相关的 "表述"。还有一点要注意的是最好对每个网页都有相应的描述（至少是同一个栏目中的网页有相应的描述）。
+    
+- meta keywords
+
+    这个属性和上面提到的 "description" 是类似的，keywords 也是用来描述一个网页的属性，只不过列出的内容是 关键字，而不是网页的介绍。选择关键字的时候不要选择太生僻了的字。
+     
+- html5 shim 和 respond.js
+
+    从模板中的注释就可以看出这两个文件是用来为 ie9 以下浏览器增加 html5 元素和 media 查询的支持。
+    
+- script jquery js
+
+    由于 bootstrap 中的 js 插件是借助于 jquery 来实现的，所以要先引入 jquery 文件，然后再引用 bootstrap 的 js 文件。如果你不使用 bootstrap 中的 js 插件的话 可以不引入这两个文件。
+    
+欢迎指教=^_^=
