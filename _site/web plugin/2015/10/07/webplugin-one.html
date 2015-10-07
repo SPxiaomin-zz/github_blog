@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>网站访问量统计</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>网站访问量统计</h2>
+            <p>这两天用 Jekyll 搭建了一个博客，感觉挺方便的，功能也挺强大的，突然想加一个统计访问量的东西，于是便在 google 上进行搜索，看到了一篇写的不错的 <a href="http://blog.sciencenet.cn/blog-81613-838798.html">博客</a> 。</p>
+
+<p>以下的内容摘录于上面的博客文章并结合了自己的实践经验。</p>
+
+<p>直接切入重点：</p>
+
+<ol>
+  <li>
+    <p><a href="http://www.flagcounter.com/">http://www.flagcounter.com/</a> 点击进入网站，就可以看到下面的这张图片了</p>
+
+    <p><img src="/github_blog/public/images/post/webplugin/one/one.png" alt="flagcounter网站的首页面" style="height: 300px; width: 300px" /></p>
+  </li>
+  <li>
+    <p>按照提示进行配置就可以了，在你配置的过程中，下面就会产生相应的图像出来。</p>
+  </li>
+  <li>
+    <p>配置完成了之后，点击一下右边的那个大大的黄色按钮，就会显示出来一个模态框，意思就是问你要不要进行注册以及告诉你注册了之后了好处。这是我见过的注册最简单的方式，就只要你输入你的邮箱地址就可以，发来的信件中的内容包括了你的密码之类的内容，可以方便以后进行修改，我果断输入了自己的邮箱，就这样简单的完成了注册。</p>
+  </li>
+  <li>
+    <p>输入邮箱并点击了 <code>continue</code> 之后，就会显示出代码，其实就是一张图片，之后你可以把代码放在你想要放的网站的文档位置就可以，刷新一下页面就会显示的。当你来到我的站点的时候，其实你就应该看到了这个东西的显示效果。</p>
+  </li>
+</ol>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

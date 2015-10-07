@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>html 中的图像</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>html 中的图像</h2>
+            <p>以下的内容摘录于 <a href="http://www.w3school.com.cn/html/html_images.asp">w3school</a> 并结合了自己的理解。</p>
+
+<p>在文档中显示图像，使用的是图像标签 <code>&lt;img&gt;</code>，需要注意的是这个标签是个空标签，意思是说它只包含属性，没有闭合标签。</p>
+
+<p>这个标签的属性还真的不少，但是这里只介绍日常生活中经常会用到的几个属性：</p>
+
+<ul>
+  <li>
+    <p>src 属性</p>
+
+    <p>src 指 source，它的值是图像的 url 地址。</p>
+
+    <p>定义图像的最简单语法是：</p>
+
+    <pre><code>  &lt;img src="url" /&gt;
+</code></pre>
+  </li>
+  <li>
+    <p>alt 属性</p>
+
+    <p>这个属性是用来为图像定义一串预备的可替换的文本。这个替换的文本可以自己定义，最好能准确的表述图像的内容。在浏览器无法载入图像时，alt 属性就会被显示出来，告诉读者他们失去的东西是什么。</p>
+  </li>
+  <li>
+    <p>宽高设置</p>
+
+    <p>这个标签有 height, width 属性，但是我一般使用的是 style 属性来设置的。</p>
+  </li>
+</ul>
+
+<p>还是看看例子比较的容易理解：</p>
+
+<pre><code>&lt;img src="www.jimmy.com/me.jpg" alt="我的生活照片" style="width: 100px; height: 100px" /&gt;
+</code></pre>
+
+<p>看了例子之后是不是懂了呢？欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
