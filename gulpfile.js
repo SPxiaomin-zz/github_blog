@@ -7,11 +7,24 @@ var gulp = require('gulp'),
 var less = require('gulp-less'),
     minifyCSS = require('gulp-minify-css');
 
+var imagemin = require('gulp-imagemin');
+
 var paths = {
-    less: ['public/stylesheets/less/**/*.less']
+    less: ['public/stylesheets/less/**/*.less'],
+    images: ['public/images/zone/**/*.jpg']
 };
 
 var watcherLess;
+
+gulp.task('images', function () {
+    return gulp.src(paths.images)
+        .pipe(plumber())
+        .pipe(imagemin({
+            optimizationLevel: 7,
+            progressive: true
+        }))
+        .pipe(gulp.dest('public/images/zone/min'));
+});
 
 gulp.task('styles', function () {
     return gulp.src(paths.less)
