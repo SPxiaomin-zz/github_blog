@@ -35,6 +35,7 @@ category: jekyll
     
         我觉得上面的话，还是有点难以理解，给你们看看我写的 `_layouts/post.html`:
         
+            {% raw %}
             <!DOCTYPE html>
             
             <html lang="zh-CN">
@@ -62,6 +63,7 @@ category: jekyll
                     {{ content }}   //这里就是被 Jekyll 处理过的文件
                 </body>
             </html>
+            {% endraw %}
             
     - category & categories
     

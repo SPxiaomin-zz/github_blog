@@ -71,10 +71,10 @@
           &lt;meta name="description" content="Jimmy的个人博客"&gt;
           &lt;meta name="keywords" content="Jimmy,blogs,html,css,javscript,js,node,express"&gt;
         
-          &lt;title&gt;Github &amp; Jekyll 搭建博客(working draft)&lt;/title&gt;
+          &lt;title&gt;{{ page.title }}&lt;/title&gt;
         
-          &lt;link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css"&gt;
-          &lt;link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css"&gt;
+          &lt;link rel="stylesheet" href="{{ "/public/bower_components/bootstrap/dist/css/bootstrap.min.css" | prepend: site.baseurl }}"&gt;
+          &lt;link rel="stylesheet" href="{{ "/public/stylesheets/dest/style.min.css" | prepend: site.baseurl }}"&gt;
         
           &lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;
           &lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;
@@ -85,7 +85,7 @@
       &lt;/head&gt;
         
       &lt;body&gt;
-             //这里就是被 Jekyll 处理过的文件
+          {{ content }}   //这里就是被 Jekyll 处理过的文件
       &lt;/body&gt;
   &lt;/html&gt;
 </code></pre>
