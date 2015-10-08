@@ -32,10 +32,23 @@
 <p>导航图</p>
 
 <ul>
+  <li><a href="#specialchar">特殊字符自动转换</a></li>
   <li><a href="#title">标题</a></li>
   <li><a href="#underline">下划线</a></li>
   <li><a href="#code">代码</a></li>
 </ul>
+
+<h3 id="specialchar">特殊字符自动转换</h3>
+
+<p>在 html 文件中，有些字符需要特殊的处理，比如 <code>&lt;</code> 用于起始标签， <code>&amp;</code> 用于标记 html 实体，如果你想要使用这些字符的原型，你必须使用实体的形式，像 <code>&amp;lt;</code> <code>&amp;amp</code>。</p>
+
+<p>是不是感觉很麻烦，但是在 markdown 中就方便很多了。你可以很自然地书写字符，需要转换的由它来处理就好了。如果你使用的是 html 字符实体的一部分，它会保留原状，否则它会转换成 <code>&amp;amp</code>。</p>
+
+<p>还是看例子比较容易理解一些：</p>
+
+<p>在文档中插入一个版权符号 <code>&amp;copy</code>，markdown 会保留它不懂，而如果你写 <code>AT&amp;T</code>，markdown 会把它转为 <code>AT&amp;amp;T</code>。</p>
+
+<p>还有一点十分的帅气，就是在 code 范围内，类似于　<code>&lt;</code> 和　<code>&amp;</code> 的符号会被自动的转换成 html 实体。这个特性可以让你很方便的书写 html 代码，如果你在 html 中输入这些符号的时候，都要手动输入 html 实体，烦哉烦哉。</p>
 
 <h3 id="title">标题</h3>
 

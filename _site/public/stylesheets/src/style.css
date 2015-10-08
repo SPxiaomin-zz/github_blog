@@ -8,8 +8,8 @@
   margin-bottom: 50px;
   text-align: center;
 }
-.index .row .col-md-8:nth-child(2) {
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+.index .row .col-md-4:nth-child(1) {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 .index .row .self-intro {
   /* layout */
