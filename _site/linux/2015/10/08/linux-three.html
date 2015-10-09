@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>Ubuntu 中的 tee 命令</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Ubuntu 中的 tee 命令</h2>
+            <p>以下的内容摘录于 <a href="http://www.runoob.com/linux/linux-comm-tee.html">http://www.runoob.com/linux/linux-comm-tee.html</a> 并结合了自己的理解。</p>
+
+<p>tee 作用：</p>
+
+<p>用于读取标准的输入，将其内容输出到标准输出设备，同时保存成文件。</p>
+
+<p>使用语法：</p>
+
+<pre><code>tee [-ai][--help][--version][filename...]
+</code></pre>
+
+<p>参数简介：</p>
+
+<pre><code>-a或--append 附加到已经存在的文件内容的末尾，而不是覆盖原来文件中的内容。
+
+-i或--ignore-interrupts 忽略中断信号。
+
+--help 在终端显示帮助文档并退出。
+
+--version 在终端显示版本信息并退出。
+</code></pre>
+
+<p>参数后面的是文件名称，可以多个文件。</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
