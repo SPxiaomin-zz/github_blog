@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>使用 makefile 来简化 c/cpp 文件的编译和链接(working draft)</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>使用 makefile 来简化 c/cpp 文件的编译和链接(working draft)</h2>
+            <p>虽然说我的主攻方向并不在 c/cpp 方面，但是多学点东西还是更好一点的，思路就更加广阔，并且日常生活中复习数据结构的时候还是会使用 c/cpp 来刷题、练习算法。</p>
+
+<p>我使用的是 <code>Ubuntu15.04</code> ，以下的内容摘录于 鸟哥的linux私房菜书籍并结合了自己的理解。</p>
+
+<ul>
+  <li>
+    <p>首先先来介绍如果不通过 makefile 来编译和链接 c/cpp 程序：</p>
+
+    <p>假设存在如下的两个文件：</p>
+
+    <pre><code>  //thanks.c
+  #include &lt;stdio.h&gt;
+    
+  int main(void)
+    
+  {
+      printf("Hello world\n");
+        
+      thanks2();
+        
+      return 0;
+  }
+    
+  //thanks2.c
+  #include &lt;stdio.h&gt;
+    
+  void thanks2()
+    
+  {
+      printf("Thanks you!\n");
+        
+      return;
+  }
+</code></pre>
+
+    <p>接下来编译和链接：</p>
+
+    <pre><code>  gcc -c thanks.c thanks2.c   //通过了执行这个命令之后，当前的目录中就会生成相应的 *.o 目标文件
+    
+  gcc -o thanks thanks.o thanks2.o  //链接生成可执行文件
+</code></pre>
+
+    <p>在这里讲解以下为什么不一步由源文件生成可执行文件，而要通过生成目标文件再来生成可执行文件？</p>
+
+    <p>由于我们的源码文件有时并非仅有一个文件，所以我们无法直接进行编译。这个时候就需要生成目标文件，然后再以链接制作成为二进制可执行文件。还有一点很重要，就是编译一个大型文件的时候，会花费很长的时间。如果有一天你更新了其中的一个文件内容，并且原本是通过生成目标文件的方式进行链接的话，这个时候的你就会感到十分的开心，因为你只要重新编译你修改过的源文件来生成相应的目标文件，然后再以链接制出新的二进制可执行文件即可。</p>
+  </li>
+</ul>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
