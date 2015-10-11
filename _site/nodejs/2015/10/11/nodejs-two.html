@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>process.argv 的详细解释</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>process.argv 的详细解释</h2>
+            <p>以下的内容摘录于 nodejs开发指南，并结合了自己的理解。</p>
+
+<p>process.argv 这个代表的是命令行参数数组。</p>
+
+<p>还是看例子比较的容易理解：</p>
+
+<p>源代码文件：</p>
+
+<pre><code>//test.js
+#!/usr/bin/env node
+console.log(process.argv);
+</code></pre>
+
+<p>输出的结果如下</p>
+
+<pre><code>→  ~ ✗✗✗ node test.js hello world
+[ '/home/gujunmin/.nvm/versions/node/v4.1.1/bin/node',
+  '/home/gujunmin/test.js',
+  'hello',
+  'world' ]
+</code></pre>
+
+<p>我的操作系统是 <code>Ubuntu15.04</code>，数组的第一项是 node 的安装路径，我使用的是 <code>nvm</code> 进行安装的；数组的第二项是被运行的脚本的绝对路径；从第三个元素开始之后的项就是命令的运行参数了。</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

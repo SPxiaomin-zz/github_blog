@@ -1,19 +1,19 @@
 ---
-title: nodejs 加密和解密代码文件
+title: 加密和解密代码文件
 category: nodejs
 ---
 
-偶然发现了一个练习 javascript 的 [代码库](https://github.com/kolodny/exercises)，发现那个外国人还真的挺牛逼的，将题目的解答放在了 solutions 分支上面，题目放在 master 分支上面，然而他并没有告诉你解答放在 solutions 分支上面，并且当我发现有 solutions 分支的时候，竟然还发现代码被加密了... 
+偶然发现了一个练习 javascript 的 [代码库](https://github.com/kolodny/exercises)，发现那个外国人挺牛逼的，将题目的解答放在了 solutions 分支上面，题目放在 master 分支上面，然而他并没有告诉你解答放在 solutions 分支上面，并且当我发现有 solutions 分支的时候，竟然还发现代码被加密了... 
 
 solutions 分支上面的 readme.md 文件内容：
 
-READ THIS FIRST
+    READ THIS FIRST
+    
+    Hello there, you seem to have quite an exploratory personality.
+    Anyway if you found this place, you probably can figure out how to get to the solutions.
+    Please don't publicize this branch, if people really want to know how to solve something then they'll find this themselves or ask someone else.
 
-Hello there, you seem to have quite an exploratory personality.
-Anyway if you found this place, you probably can figure out how to get to the solutions.
-Please don't publicize this branch, if people really want to know how to solve something then they'll find this themselves or ask someone else.
-
-If you do contribute a challenge, please also have a similar branch on your fork with a similar setup (some obscurity), although it isn't required.
+    If you do contribute a challenge, please also have a similar branch on your fork with a similar setup (some obscurity), although it isn't required.
 
 先看一下加密的代码文件吧：
 
