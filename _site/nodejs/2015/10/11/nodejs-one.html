@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>nodejs 加密和解密代码文件</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>nodejs 加密和解密代码文件</h2>
+            <p>偶然发现了一个练习 javascript 的 <a href="https://github.com/kolodny/exercises">代码库</a>，发现那个外国人还真的挺牛逼的，将题目的解答放在了 solutions 分支上面，题目放在 master 分支上面，然而他并没有告诉你解答放在 solutions 分支上面，并且当我发现有 solutions 分支的时候，竟然还发现代码被加密了…</p>
+
+<p>solutions 分支上面的 readme.md 文件内容：</p>
+
+<p>READ THIS FIRST</p>
+
+<p>Hello there, you seem to have quite an exploratory personality.
+Anyway if you found this place, you probably can figure out how to get to the solutions.
+Please don’t publicize this branch, if people really want to know how to solve something then they’ll find this themselves or ask someone else.</p>
+
+<p>If you do contribute a challenge, please also have a similar branch on your fork with a similar setup (some obscurity), although it isn’t required.</p>
+
+<p>先看一下加密的代码文件吧：</p>
+
+<pre><code>#!/usr/bin/env node
+
+// put the next line on top of your answer files
+//}47}$.(}:&lt;/}*88})54*q}$.(}/889}).}+(/})54*}7418})5+.(65}714-o3*
+
+var fs = require('fs');
+
+var map = {};
+var str = ' !"#$%&amp;\'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}';
+str.split('').forEach(function(ch, i) {
+  map[str[i]] = str[str.length - 1 - i];
+});
+
+process.argv.slice(2).forEach(function(file) {
+  var input = fs.readFileSync(file).toString();
+
+  var output = input.split('\n').map(function(line) {
+    return line.split('').map(function(ch) {
+      return map[ch] || ch;
+    }).join('');
+  }).join('\n');
+
+  fs.writeFileSync(file, output);
+
+});
+</code></pre>
+
+<p>知识点讲解：</p>
+
+<ul>
+  <li>
+    <p>nodejs fs API</p>
+
+    <p><a href="https://nodejs.org/api/fs.html#fs_fs_readfilesync_filename_options">官方文档</a> 写的十分的详细，果断摘录了下来。</p>
+
+    <pre><code>  fs.readFile(filename[, options], callback)
+</code></pre>
+
+    <p>filename String</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>options Object</td>
+          <td>String</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>encoding String</td>
+              <td>Null default = null</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>flag String default = ‘r’</li>
+    </ul>
+
+    <p>callback Function</p>
+
+    <p>Asynchronously reads the entire contents of a file. Example:</p>
+
+    <pre><code>  fs.readFile('/etc/passwd', function (err, data) {
+    if (err) throw err;
+    console.log(data);
+  });
+</code></pre>
+
+    <p>The callback is passed two arguments (err, data), where data is the contents of the file.</p>
+
+    <p>If no encoding is specified, then the <code>raw buffer</code> is returned.</p>
+
+    <p><code>If options is a string, then it specifies the encoding.</code> Example:</p>
+
+    <pre><code>  fs.readFile('/etc/passwd', 'utf8', callback);
+
+  fs.readFileSync(filename[, options])   Synchronous version of fs.readFile. Returns the contents of the filename.
+</code></pre>
+
+    <p>If the encoding option is specified then this function returns a string. Otherwise it returns a <code>buffer</code>.</p>
+
+    <pre><code>  fs.writeFile(filename, data[, options], callback)
+</code></pre>
+
+    <p>filename String</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>data String</td>
+          <td>Buffer</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>options Object</td>
+          <td>String</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>encoding String</td>
+              <td>Null default = ‘utf8’</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <p>mode Number default = 0o666</p>
+      </li>
+      <li>flag String default = ‘w’</li>
+    </ul>
+
+    <p>callback Function</p>
+
+    <p>Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.</p>
+
+    <p>The encoding option is ignored if data is a buffer. It defaults to ‘utf8’.</p>
+
+    <p>Example:</p>
+
+    <pre><code>  fs.writeFile('message.txt', 'Hello Node.js', function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+  });
+</code></pre>
+
+    <p><code>If options is a string, then it specifies the encoding</code>. Example:</p>
+
+    <pre><code>  fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
+
+  fs.writeFileSync(filename, data[, options])
+</code></pre>
+
+    <p>The synchronous version of fs.writeFile. Returns undefined.</p>
+  </li>
+</ul>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

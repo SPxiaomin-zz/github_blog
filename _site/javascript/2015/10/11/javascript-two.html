@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>ES5 array 的迭代方法</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>ES5 array 的迭代方法</h2>
+            <p>以下的内容摘录于 红皮书，并结合了自己的理解。</p>
+
+<p>ES5 为数组定义了一些迭代方法。每个方法都接受两个参数：</p>
+
+<ol>
+  <li>要在数组的每一项上运行的函数</li>
+  <li>可选的运行该函数的作用域对象–影响 this 的值</li>
+</ol>
+
+<p>传入这些方法中的函数会接受三个参数：</p>
+
+<ol>
+  <li>数组每项的值</li>
+  <li>该项在数组中的位置</li>
+  <li>数组对象本身</li>
+</ol>
+
+<p>开始介绍方法吧：</p>
+
+<ul>
+  <li>
+    <p>forEach(): 对数组的每一项运行给定的函数。这个方法没有返回值，<code>本质上和使用 for 循环迭代数组是一样的</code> 。</p>
+  </li>
+  <li>
+    <p>map(): 对数组中的每一项运行给定的函数，返回每次函数调用的结果组成的数组。</p>
+
+    <p>看个例子吧：</p>
+
+    <pre><code>  var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+    
+  var mapResult = numbers.map(function(item, index, array) {
+      return item * 2;
+  });
+    
+  console.log(mapResult);    //[2, 4, 6, 8, 10, 8, 6, 4, 2]
+</code></pre>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
