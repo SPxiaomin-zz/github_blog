@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>多人协作 技巧</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>多人协作 技巧</h2>
+            <p>到目前为止，我还没有进行过多人的协作，但是有时候我会 <code>git clone</code> 别人的代码库，这是就需要用到多人协作中的一部分技巧，好学的我果断都学习了。</p>
+
+<p>以下的内容摘录于 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000</a> 并结合了自己的理解。</p>
+
+<ul>
+  <li>
+    <p>参看远程仓库的信息</p>
+
+    <p>当我们从远程仓库克隆的时候，实际上 git 自动把本地的 master 分支和远程的 master 分支对应起来了，并且，远程仓库默认的名称是 origin。</p>
+
+    <pre><code>  git remote   产看远程仓库的名称
+    
+  git remote -v 查看更加详细的信息。
+    
+  →  ~/Learn/exercises ✗✗✗ git remote -v
+  origin    git@github.com:kolodny/exercises.git (fetch)
+  origin	  git@github.com:kolodny/exercises.git (push)
+</code></pre>
+  </li>
+  <li>
+    <p>推送分支</p>
+
+    <p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送的时候，要指定本地分支，这样，git 就会把该分支推送到远程仓库对应的远程分支上。</p>
+
+    <pre><code>  git push orgin [branch]
+</code></pre>
+  </li>
+  <li>
+    <p>抓取分支</p>
+
+    <p>当我们从远程库 clone 的时候，默认的情况下，我们只能看到本地的 master 分支。</p>
+
+    <p>如果我们想要在其它的分支上面进行操作的话，就必须创建远程 origin 的 branch 到本地:</p>
+
+    <pre><code>  git checkout -b [branch] origin/[branch]
+</code></pre>
+
+    <p>当你输完了这个命令的之后，并不需要 git pull 了，远程对应分支上面的内容已经到本地了：</p>
+
+    <p>→  ~/Learn/exercises ✗✗✗ git co -b solutions origin/solutions 
+  Branch solutions set up to track remote branch solutions from origin.
+  Switched to a new branch ‘solutions’</p>
+
+    <p>这是我第一次使用这个命令，第一次感受到这么酷炫的感觉，我竟然傻逼一样的 git pull 了一下…</p>
+
+    <p>如果在你将远程仓库 clone 到本地之后，在你提交你的修改到远程仓库之前，有人已经提交了，这个时候如果你再提交的话就会推送失败，git 提示我们需要使用 git pull 把最新的提交从远程仓库中抓下来，然后合并在推送。</p>
+
+    <p>如果 git pull 提示了 no tracking information ，则说明本地分支和远程分支的链接关系没有创建，使用如下的命令来搞定吧：</p>
+
+    <pre><code>  git branch --set-upstream [branch] origin/[branch]
+</code></pre>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
