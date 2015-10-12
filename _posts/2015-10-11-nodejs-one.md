@@ -131,7 +131,7 @@ solutions 分支上面的 readme.md 文件内容：
 
 - javascript
 
-    Object 类型的创建和使用方法： <http://127.0.0.1:4000/github_blog/javascript/2015/10/11/javascript-five.html>
+    Object 类型的创建和使用方法： <http://spxiaomin.github.io/github_blog/javascript/2015/10/11/javascript-five.html>
 
     String 类型的 split() 方法： <http://spxiaomin.github.io/github_blog/javascript/2015/10/11/javascript-one.html>
     
