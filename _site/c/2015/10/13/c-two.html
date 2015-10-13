@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jimmy的博客文章">
+        <meta name="keywords" content="Jimmy,blogs,html,css,javascript,js,node,express">
+
+        <title>break 语句</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>break 语句</h2>
+            <p>break 语句的一般形式：</p>
+
+<pre><code>break;
+</code></pre>
+
+<p>使用情形：</p>
+
+<p>经常放在循环语句的循环体中，且通常和 if 语句一起使用。</p>
+
+<p>作用：</p>
+
+<p>在满足一定条件时，提前退出本层循环，不管循环控制条件是否成立，使程序流程转向该循环后的下一条语句执行。</p>
+
+<p>看看例子吧：</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+
+{
+    for ( int i=1; i&lt;=100; i++ )
+    {
+        printf("hello world");
+        if ( i == 50 )
+        {
+            break;
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>还有一个特殊的情形，就是当 break 语句嵌套在多个 if 语句当中的时候也一样的起作用。</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+
+{
+    int one = 1;
+    int two = 2;
+    int i;
+    for ( i=1; i&lt;=100; i++ )
+    {
+        if ( one == 1 )
+        {
+            if ( two == 2 )
+            {
+                break;
+            }
+        }
+    }
+    
+    printf("%d\n", i);     //输出 1 
+
+    return 0;
+}
+</code></pre>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
