@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ubuntu中使用diff进行文件比较">
+        <meta name="keywords" content="Ubuntu,diff,文件比较">
+
+        <title>Ubuntu diff 进行文件比较</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Ubuntu diff 进行文件比较</h2>
+            <p>以下的内容摘录于 鸟哥的linux私房菜 并结合了自己的理解。</p>
+
+<p>直接看例子吧：</p>
+
+<pre><code>//a.txt
+hello
+world
+
+//b.txt
+hello
+</code></pre>
+
+<p>接下来输入命令并得到相应的结果：</p>
+
+<pre><code>→  ~/test ✗✗✗ diff a.txt b.txt 
+2d1 
+&lt; world
+</code></pre>
+
+<p>看到上面的 <code>&lt;</code> 号没有，这个符号代表的是命令行中的第一个文件中的内容，所以使用左尖括号是多么的形象啊！</p>
+
+<pre><code>→  ~/test ✗✗✗ diff b.txt a.txt
+1a2      //
+&gt; world
+</code></pre>
+
+<p>再看看上面的例子之后，是不是明白了呢？</p>
+
+<p><code>左边的文件代表的是你想要比较的文件，右边的文件是比较的基准！</code></p>
+
+<p>由于上面的原因，所以第一次比较的时候出现的是 <code>2d1</code> ，意思是左边的文件删除第二行(内容就是下面显示的)就和基准文件是一样的了。第二次比较的时候出现的是 <code>1a2</code> 意思是左边的文件加上一行(内容就是下面显示的)就和基准文件是一样的了。</p>
+
+<p>修改一下文件</p>
+
+<pre><code>//a.txt
+hello
+
+//b.txt
+Hello
+</code></pre>
+
+<p>输入如下的命令并得到结果</p>
+
+<pre><code>→  ~/test ✗✗✗ diff a.txt b.txt 
+1c1
+&lt; hello
+---
+&gt; Hello
+</code></pre>
+
+<p>这个就是替换的显示，懂了么？</p>
+
+<p>接下来简单的讲一下语法吧：</p>
+
+<pre><code>diff [-bBi] from-file to-file
+
+from-file: 一个将要做比较的文件名
+to-tile: 一个作为比较基准的文件名
+-b: 忽略一行当中仅有多余空白的区别(例如 "about me" 与 "about      me"视为相同)
+-B: 忽略空白行的区别
+-i: 忽略大小写的区别
+</code></pre>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
