@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ubuntu 工作管理(job control)">
+        <meta name="keywords" content="Ubuntu,job control,bg,fg,kill">
+
+        <title>Ubuntu 工作管理(job control)</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Ubuntu 工作管理(job control)</h2>
+            <p>我使用的是 <code>Ubuntu15.04</code>，由于日常生活当中经常会开比较多的进程来运行，所以会开十分多的窗口来运行这些进程，切换起来真的十分的麻烦，这几天看完了鸟哥的linux私房菜之后，果断的采用 <code>job control</code> 来工作，免得在多个终端下切换，十分的麻烦。</p>
+
+<p>以下的内容摘录于 <a href="http://vbird.dic.ksu.edu.tw/linux_basic/0440processcontrol_2.php">鸟哥的linux 私房菜</a> ，并结合了自己的理解。</p>
+
+<p>先简单的介绍一下两个相当重要的概念：</p>
+
+<ol>
+  <li>可以出现提示字节让你操作的环境就称为前景 (foreground)。</li>
+  <li>至於其他工作就可以让你放入背景 (background) 去暂停或运行。</li>
+</ol>
+
+<p>使用的有几点注意事项：</p>
+
+<ol>
+  <li>放入背景的工作想要运行时，它必须不能够与使用者互动。</li>
+  <li>放入背景的工作是不可以使用 <code>ctrl + c</code> 来终止的。</li>
+  <li>这里所提到的 <code>背景</code> 指的是在终端机模式下可以避免 <code>ctrl + c</code> 终止的一个情境，并不是放到系统的背景去喔！所以此时的工作管理依旧与终端机有关啦！如果你将目前的终端机关闭的话，最先打开的 bash 进程就会被关闭，由于每个工作都是目前 bash 子程序，所以也一样的会被关闭！</li>
+</ol>
+
+<p>开是疯狂的使用吧：</p>
+
+<ol>
+  <li>
+    <p>直接将命令丢到背景中 <code>运行</code> 的 <code>&amp;</code></p>
+
+    <pre><code> →  ~/Learn/github_blog ✗✗✗ jekyll serve &amp;
+ [2] 2674
+</code></pre>
+
+    <p>中括号中的号码为工作号码(job number)，该号码与 bash 的控制有关。</p>
+
+    <p>后面的 2674 就是这个工作在系统中的 PID。</p>
+
+    <p>这个时候要注意一点了，虽然工作是被丢到背景中去运行了，但是如果和上面输入的命令类似，有 stdout 或 stderr 的时候，然而并没有进行数据流重定向的话，该命令原本会输出到终端的内容，依旧会显示到终端的屏幕上面去。如果是在终端的命令行中，按下 <code>enter</code> 键就没事了，如果是在类似 vim 的界面中的话，滚动一下界面就没有什么问题了。</p>
+  </li>
+  <li>
+    <p>将目前正在进行的工作丢到背景中 <code>暂停</code> : <code>ctrl + z</code></p>
+
+    <p>假如我正在使用 vim 编辑文件的话，突然之间有其它的工作立刻就要进行的话，这个时候就可以果断的按下 <code>ctrl + z</code> 将目前正在进行的编辑任务暂时丢到背景中去，<code>注意是停止的</code>，并没有在运行！</p>
+  </li>
+  <li>
+    <p>查看一下目前背景中有的工作状态: <code>jobs</code></p>
+
+    <p>输入命令 <code>jobs -l</code> 就可以查看到在目前背景中的工作了：</p>
+
+    <pre><code> [5]+   747 Stopped                 vim 2015-10-27-linux-four.md  (wd: ~/Learn/github_blog/_posts)
+</code></pre>
+
+    <p>解释一下命令吧：</p>
+
+    <p>方括号中是 job numbers；后面紧跟的 <code>+</code> 号代表的是最近最后第一个被放到背景中去的工作，等一下 <code>fg</code> 命令会使用到这个东西！如果是 <code>-</code> 的话，就代表的是最近最后第二个被放置到背景中的工作，其它的工作的话，就不会有这个符号了；后面的 747 代表的是 PID；Stopped 代表的是工作的状态是停止的；后面紧接着的是运行的命令；最后圆括号中的是执行这个命令时候的工作目录。</p>
+  </li>
+  <li>
+    <p>将背景工作拿到前景来工作: <code>fg</code></p>
+
+    <p>先看看例子吧：</p>
+
+    <pre><code> →  ~/Learn/github_blog/_layouts ✗✗✗ jobs -l
+ [5]+   747 Stopped                 vim 2015-10-27-linux-four.md  (wd: ~/Learn/github_blog/_posts)
+ →  ~/Learn/github_blog/_layouts ✗✗✗ fg %5
+</code></pre>
+
+    <p>使用的命令是 <code>fg %jobnumber</code>，懂了吧？这样就可以将背景工作拿到前景来处理啦！</p>
+  </li>
+  <li>
+    <p>让在背景下状态为停止的工作运行起来: <code>bg</code></p>
+
+    <p>还记得前面介绍的 <code>ctrl + z</code> 吗，这个 <code>bg</code> 命令就是让用 <code>ctrl + z</code> 停止的在背景中的工作在背景中跑起来。</p>
+
+    <p>使用 <code>bg %jobnumber</code> 就可以了，试试吧！</p>
+  </li>
+  <li>
+    <p>让我们来杀死进程吧: <code>kill</code></p>
+
+    <p>直接看使用的语法吧:</p>
+
+    <pre><code> kill -signal %jobnumber
+ signal 代表的是用什么方式来杀死后面接的工作进程
+ -1： 重新读取一次参数的配置档(类似 reload)，就是重启的意思啦
+ -9： 立刻强制删除一个工作
+ -15： 以正常的程序方式终止一项工作。如果不加参数的话，这个就是默认的哦！
+</code></pre>
+
+    <p>如过还想要了解更多的参数的话，就可以使用 <code>kill -l</code> 和 <code>man 7 signal</code> 来进一步的了解哦。不过一般情况下，上面的命令参数真的够用了。</p>
+  </li>
+</ol>
+
+<p>欢迎指教=^_^=</p>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
