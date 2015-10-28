@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="git diff 比较文件内容与上次提交的不同之处">
+        <meta name="keywords" content="git,diff">
+
+        <title>git diff 比较文件内容的变动</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>git diff 比较文件内容的变动</h2>
+            <p>以下的内容摘录于 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000">廖雪峰老师的git教程</a> 并结合了自己的理解。</p>
+
+<p>有时候我们修该了文件的内容，但是过了一段时间之后，输入 <code>git status</code> 之后，可以看到文件内容变更了，但是不知到到底是哪里变更了，这时候就可以借助于 <code>git diff</code> 这个命令来查看文件内容到底改动了哪些地方了。</p>
+
+<p>还是看看示例比较的容易理解：</p>
+
+<p>第一次提交的文件内容：</p>
+
+<pre><code>//test.txt
+Git is a version control system.
+Git is free software.
+</code></pre>
+
+<p>修改文件的内容：</p>
+
+<pre><code>//test.txt
+Git is a distributed version control system.
+Git is free software.
+</code></pre>
+
+<p><code>记住，此时连 git add 都不要使用，不然的话在输入 git diff 的时候就看不出什么内容出来。</code> 原因是因为 git diff 比较的是文件在工作区和版本库最新版本的区别。</p>
+
+<p>此时在终端输入 <code>git diff test.txt</code> 就可以看到如下的效果了：</p>
+
+<pre><code>→  ~/test/git-test ✗✗✗ git diff test.txt
+diff --git a/test.txt b/test.txt
+index 46d49bf..9247db6 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+</code></pre>
+
+<p>如果在 linux 中使用过 diff 命令的朋友应该就可以看出来，这就是 Unix 的 diff 格式。</p>
+
+<p>是不是感觉很方便呢？</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
