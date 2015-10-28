@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="express4.x 设置模板引擎是的 ejs 可以解析 html 后缀的文件">
+        <meta name="keywords" content="express,express4.x,ejs解析html文件">
+
+        <title>express4.x 设置模板引擎使得 ejs 可以解析 html 后缀的文件</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>express4.x 设置模板引擎使得 ejs 可以解析 html 后缀的文件</h2>
+            <p>以下的内容摘录于 <a href="http://expressjs.com/4x/api.html#app.engine">express.js官方API文档</a> ，并结合了自己的理解。</p>
+
+<p>Application Settings</p>
+
+<p>The following application settings affects the behavior of the application.</p>
+
+<pre><code>Property: views
+
+Type: String or Array
+
+Value: A directory or an array of directories for the application's views. If an array, the views are looked up in the order they occur in the array.
+
+Default: process.cwd() + '/views'
+</code></pre>
+
+<p>从上面的一大段英文可得知，通过设置 <code>views</code> 的值即可相应的设置 views 文件放置的位置。具体应该怎么做呢？看看下面吧：</p>
+
+<pre><code>app.set('views', path.join(__dirname, 'views'));
+</code></pre>
+
+<p>接下来让我们来设置解析</p>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

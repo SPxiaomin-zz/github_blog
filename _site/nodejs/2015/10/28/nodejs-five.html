@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="nodejs 通过 __dirname 和 process.cwd 得知目录">
+        <meta name="keywords" content="nodejs,__dirname,process.cwd">
+
+        <title>nodejs __dirname & process.cwd 得知目录</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>nodejs __dirname & process.cwd 得知目录</h2>
+            <p><code>__dirname</code> 和 <code>process.cwd</code> 这两个都是全局的，意味着可以在任何地方使用到这两个东西。</p>
+
+<p>__dirname 表示的是 <code>当前执行脚本</code> 所在的目录。</p>
+
+<p>process.cwd 返回的是 <code>当前进程</code> 的工作目录。</p>
+
+<p>看看例子BA：</p>
+
+<pre><code>//  /home/gujunmin/test.js
+console.log(__dirname);
+console.log(process.cwd());
+
+输出的结果:
+/home/gujunmin/test
+/home/gujunmin/test
+</code></pre>
+
+<p>是不是懂了呢？</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

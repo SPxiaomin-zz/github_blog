@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ubuntu 中使用 find 命令来查找文件">
+        <meta name="keywords" content="ubuntu,find">
+
+        <title>Ubuntu find 查找文件</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Ubuntu find 查找文件</h2>
+            <p>我使用的是 <code>Ubuntu15.04</code> ，以下的内容摘录于 鸟哥的linux私房菜 并结合了自己的理解。</p>
+
+<p>对于单纯的找文件的话，还有一个 <code>locate</code> 命令，之所以使用 <code>find</code> 的原因是我所要找的文件是具有特殊的属性的，例如 SUID、文件所有者、文件的大小等等，而这些东西都是使用 locate 无法做到的。</p>
+
+<p>简单的讲一下语法:</p>
+
+<pre><code>find [PATH] [option] [action]
+PATH: 指的是你要查找的文件所在的路径。
+option: 指的是你要查找的依据，简单的说就是根据什么属性来进行文件的查找。
+属性: 时间、用户或用户组、文件权限及名称，在下面我暂时只介绍根据文件的名称来进行查找文件，其它的由于暂时没有使用到，以后有空再来介绍。
+action: 指的是对查找到的内容进行什么样的处理，默认情况下是将内容通过标准输出打印到屏幕上。
+</code></pre>
+
+<p>看看我使用的例子，应该就能够明白如何使用文件名来进行相应的查找了：</p>
+
+<pre><code>→  ~/Learn/exercises ✗✗✗ find . -name index.js
+./value/index.js
+./curry/index.js
+./invert-tree/index.js
+./merkle/index.js
+./memoize/index.js
+./flatten/index.js
+./debounce/index.js
+./async/answers/index.js
+./async/index.js
+./morse-code/index.js
+./throttle/index.js
+./map/index.js
+./once/index.js
+./middleware/index.js
+./throttle-promises/index.js
+./binary-search/index.js
+./flatten-thunk/index.js
+./sort/index.js
+./jasmine-async/index.js
+</code></pre>
+
+<p>其实 find 的还可以利用通配符还找寻文件名：</p>
+
+<pre><code>→  ~/Learn/exercises ✗✗✗ find . -name 'index*'
+./value/index.js
+./curry/index.js
+./invert-tree/index.js
+./merkle/index.js
+./.git/index
+./memoize/index.js
+./flatten/index.js
+./debounce/index.js
+./async/answers/index.js
+./async/index.js
+./morse-code/index.js
+./throttle/index.js
+./map/index.js
+./once/index.js
+./middleware/index.js
+./throttle-promises/index.js
+./binary-search/index.js
+./flatten-thunk/index.js
+./sort/index.js
+./jasmine-async/index.js
+</code></pre>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
