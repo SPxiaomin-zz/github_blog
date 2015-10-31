@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="gulp-livereload 模块学习笔记">
+        <meta name="keywords" content="gulp,gulp-livereload">
+
+        <title>gulp-livereload 模块学习</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>gulp-livereload 模块学习</h2>
+            <p>以下的内容摘录于 <a href="https://www.npmjs.com/package/gulp-livereload/">https://www.npmjs.com/package/gulp-livereload/</a> 并结合了自己的理解。</p>
+
+<p>目前我对这个模块也不是特别的熟练，暂时只介绍自己使用到的和熟练的部分。</p>
+
+<p>直接上实例：</p>
+
+<pre><code>var gulp = require('gulp'),
+    rename = require('gulp-rename'),
+    plumber = require('gulp-plumber'),
+    livereload = require('gulp-livereload'),
+    watch = require('gulp-watch');
+    
+var less = require('gulp-less'),
+    minifyCSS = require('gulp-minify-css');
+    
+var paths = {
+    less: ['public/stylesheets/less/**/*.less'],
+    html: ['views/**/*.html']
+};
+
+var watcherLess;
+var watcherHTML;
+
+gulp.task('styles', function() {
+    var stream = gulp.src(paths.less)
+        .pipe(plumber())
+        .pipe(less())
+        .pipe(gulp.dest('public/stylesheets/src'))
+        .pipe(rename({
+            extname: '.min.css'
+        }))
+        .pipe(gulp.dest('public/stylesheets/dest'))
+        .pipe(livereload());　//传送内容
+        
+    return stream;
+});
+
+gulp.task('html', function() {
+    var stream = gulp.src(paths.html)
+        .pipe(livereload());　//传送内容
+        
+    return stream;
+});
+
+gulp.task('default', ['styles', 'html'], function() {
+    livereload.listen();//开启服务器
+    watcherLess = gulp.watch(paths.less, ['styles']);
+    watcherLess.on('change', function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running styles task...');
+    });
+    
+    watcherHTML = gulp.watch(paths.html, ['html']);
+    watcherHTML.on('change', function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running html task...');
+    });
+});
+</code></pre>
+
+<ul>
+  <li>
+    <p>livereload([options])</p>
+
+    <p>Creates a stream which notifies the livereload server on what changed.</p>
+  </li>
+  <li>
+    <p>livereload.listen([options])</p>
+
+    <p>Starts a livereload server. you don’t need to worry with multiple instances as this function will end immediately if the server is already running.</p>
+  </li>
+</ul>
+
+<p>简单的说，就是先要通过 <code>livereload.listen()</code> 启动服务器，然后将文件内容传递给 <code>livereload()</code> 就可以实现浏览器的自动刷新。</p>
+
+<p>但是前提是你的 chrome 安装了 <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">livereload</a> 插件。</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
