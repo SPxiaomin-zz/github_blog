@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="gulp-rename 模块的学习总结">
+        <meta name="keywords" content="gulp,gulp-rename,重命名">
+
+        <title>gulp-rename 模块学习总结</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>gulp-rename 模块学习总结</h2>
+            <p>以下的内容摘录于 <a href="https://www.npmjs.com/package/gulp-rename">https://www.npmjs.com/package/gulp-rename</a> 并结合了自己的理解。</p>
+
+<p>Usage: gulp-rename provides simple file renaming methods.</p>
+
+<p>至于怎么使用看看例子吧：</p>
+
+<pre><code>var rename = require('gulp-rename');
+
+//rename via string
+gulp.src('./src/main/text/hello.txt')
+    .pipe(rename('main/text/ciao/goodbye.md'))
+    .pipe(gulp.dest('./dist')); // ./dist/main/text/ciao/goodbye.md
+    
+//rename via function
+gulp.src('./src/**/hello.txt')
+    .pipe(rename(function(path) {
+        path.dirname += '/ciao';
+        path.basename += '-goodbye';
+        path.extname = '.md'
+    }))
+    .pipe(gulp.dest('./dist'));    // ./dist/main/text/ciao/hello-goodbye.md
+    
+//rename via hash
+gulp.src('./src/main/text/hello.txt', { base: process.cwd() })
+    .pipe(rename({
+        dirname: 'main/text/ciao',
+        basename: 'aloha',
+        prefix: 'bonjour-',
+        suffix: '-hola',
+        extname: '.md'
+    }))
+    .pipe(gulp.dest('./dist'));  //./dist/main/text/ciao/bonjout-aloha-hola.md
+</code></pre>
+
+<p>Notes:</p>
+
+<ul>
+  <li>
+    <p>dirname is the relative path from the base directory set by gulp.src to the filename.</p>
+
+    <ul>
+      <li>
+        <p>gulp.src() uses glob-stream which sets the base to the parent of the first directory glob(*, **, [], or extglob).</p>
+
+        <p><a href="http://spxiaomin.github.io/github_blog/gulp/2015/10/30/gulp-two.html">http://spxiaomin.github.io/github_blog/gulp/2015/10/30/gulp-two.html</a> glob 学习笔记。</p>
+
+        <p><a href="http://spxiaomin.github.io/github_blog/gulp/2015/10/30/gulp-one.html">http://spxiaomin.github.io/github_blog/gulp/2015/10/30/gulp-one.html</a> 这篇文章中有 base 和 gulp.src 的相关内容说明。</p>
+
+        <p>dirname is the remaining directories or ./ if none. glob-stream versions &gt;= 3.1.0 (used by gulp &gt;= 3.2.2) accept a base option, which can be used to explicitly set the base.</p>
+      </li>
+      <li>
+        <p>gulp.dest() renames the directories between process.cwd() and dirname(i.e. the base relative to CWD).  Use dirname to rename the directories matched by the glob or descendents of the base of option.</p>
+      </li>
+    </ul>
+  </li>
+  <li>basename is the filename without the extentsion like path.basename(filename, path.extname(filename)).</li>
+  <li>extname is the file extentsion including the ‘.’ like path.extname(filename).</li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
