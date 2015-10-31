@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ubuntu 中的 wc 用来计算文件内容行数、字数、字符数">
+        <meta name="keywords" content="linux,ubuntu,wc">
+
+        <title>Ubuntu wc 计算文件内容行数、字数、字符数</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Ubuntu wc 计算文件内容行数、字数、字符数</h2>
+            <p>以下的内容摘录于 鸟哥的linux私房菜 并结合了自己的理解。</p>
+
+<p>简单的介绍一下语法:</p>
+
+<pre><code>wc [-lwn]
+参数简介：
+-l: 仅列出行数
+-w: 仅列出多少个字(英文单字)
+-m: 仅列出多少个字符
+</code></pre>
+
+<p>看看如何使用吧：</p>
+
+<pre><code>//t.js
+#!/usr/bin/env node
+
+console.log(process.argv);
+</code></pre>
+
+<p>第一种使用方法：</p>
+
+<pre><code>→  ~/test ✗✗✗ wc t.js
+ 3  3 48 t.js
+</code></pre>
+
+<p>第一个是行数，第二个是字数，第三个是字符数。</p>
+
+<p>对于行数的话，还是比较符合我的思维方式，至于单词数和字符数的话，我就不管了，一般情况下用到的机会也不多。</p>
+
+<p>第二种使用方法：</p>
+
+<pre><code>→  ~/test ✗✗✗ cat t.js | wc 
+      3       3      48
+</code></pre>
+
+<p>至于参数的使用的话，如果需要就直接接在 wc 后面就可以了。</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

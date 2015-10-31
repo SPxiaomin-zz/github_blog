@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="gulp API 学习总结">
+        <meta name="keywords" content="gulp api">
+
+        <title>gulp API 学习总结</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>gulp API 学习总结</h2>
+            <p>以下的内容摘录于 gulp 在 <a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md">github</a> 上面的文档并结合了自己的理解。</p>
+
+<ul>
+  <li>
+    <p>gulp.src(globs[, options])</p>
+
+    <p>glob refers to node-glob syntax or it can be a direct file path</p>
+
+    <p>参数简介:</p>
+
+    <p>globs:<br />
+  Type: String or Array<br />
+  Glob or array of globs to read.</p>
+
+    <p>options:</p>
+
+    <p>options.base</p>
+
+    <p>type: String<br />
+  Default: everything before a glob starts</p>
+
+    <p>E.g., consider somefile.js in client/js/somedir:</p>
+
+    <pre><code>  gulp.src('client/js/**/*.js')  //Matches 'client/js/somedir/somefile.js' and resolves 'base' to 'client/js/'
+      .pipe(minify())
+      .pipe(gulp.dest('build')); //Writes 'build/somedir/somefile.js'
+        
+  gulp.src('client/js/**/*.js', { base: 'client' })
+      .pipe(minify())
+      .pipe(gulp.dest('build')); //Writes 'build/js/somedir/somefile.js'
+</code></pre>
+
+    <p>这个 base 值，在使用 gulp.dest 的时候会使用到，下面有介绍。</p>
+  </li>
+  <li>
+    <p>gulp.dest(path[, options])</p>
+
+    <p>Can be piped to and it will write files. Re-emits all data passed to it so you can pipe to multiple folder. Folders that don’t exist will be created.</p>
+
+    <p>The write path is calculated by appending the file relative path to the given destination directory. In turn, relative paths are calculated against the file base. See gulp.src above for more info. 这里就是要你去参考上面提到的 base 值。</p>
+
+    <p>参数简介:</p>
+
+    <p>path:<br />
+  type: String or Function<br />
+  The path(output folder) to write files to. Or a function that returns it.</p>
+
+    <p>options 的话暂时没用到，以后在补充吧。</p>
+  </li>
+  <li>
+    <p>gulp.task(name[, deps], fn)</p>
+
+    <p>参数简介:</p>
+
+    <p>name:<br />
+  The name of the task. <code>Tasks that you want to run from the command line should not have spaces in them.</code></p>
+  </li>
+</ul>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
