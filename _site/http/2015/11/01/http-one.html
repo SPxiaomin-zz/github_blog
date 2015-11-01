@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="http 状态码 302 、303、307学习笔记">
+        <meta name="keywords" content="http,状态码,302,303,307">
+
+        <title>http 状态码 302 、303、307 学习</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>http 状态码 302 、303、307 学习</h2>
+            <p>以下的内容摘录于 <a href="http://www.cnblogs.com/cswuyg/p/3871976.html">http://www.cnblogs.com/cswuyg/p/3871976.html</a> 并结合了自己的理解。</p>
+
+<p>上面的那篇文章一字不漏的看了几遍，虽然说有些东西依然不是特别的明白，但是302、 303、 307之间的关系还是大致搞懂了的，这篇文章写得个人认为非常的好。</p>
+
+<p>以下讲到的都是我通过实践得到的效果:</p>
+
+<p>302 和 303 的处理效果是一样的：</p>
+
+<p>在 GET 请求处理的时候，浏览器会获取到 HTTP 响应报文头部的 Location 字段信息，并发起一个 GET 请求。 <code>i.e. GET ==&gt; GET</code></p>
+
+<p>在 POST 请求处理的时候，浏览器会获取到 HTTP 响应报文头部的 Location 字段信息，并发起一个 GET 请求。<code>i.e.  POST ==&gt; GET</code></p>
+
+<p>307 在处理 POST 请求的时候，浏览器会获取到 HTTP 响应报文头部的 Location 字段信息，并发起一个 POST 请求。<code>i.e. POST ==&gt; POST</code></p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
