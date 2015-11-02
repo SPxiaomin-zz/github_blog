@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="express4.x req.baseUrl req.url req.originalUrl 学习总结">
+        <meta name="keywords" content="express4.x,req.baseUrl,req.url, req.originalUrl">
+
+        <title>express4.x req.baseUrl req.url req.originalUrl 学习总结</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>express4.x req.baseUrl req.url req.originalUrl 学习总结</h2>
+            <p>以下的内容摘录于 <a href="http://expressjs.com/4x/api.html#req.baseUrl">http://expressjs.com/4x/api.html#req.baseUrl</a> 并结合了自己的理解。</p>
+
+<ul>
+  <li>
+    <p>req.baseUrl</p>
+
+    <p>The URL path on which a router instance was mounted. For example:</p>
+
+    <pre><code>  //routes/index.js
+  var express = require('express');
+  var router = express.Router();
+    
+  router.get('/foo', function(req, res, next) {
+      console.log(req.baseUrl); // /test
+      res.send('ok!');
+  });
+    
+  module.exports = router;
+    
+  //app.js
+  var routes = require('./routes/index');
+  app.use('/test', routes);
+</code></pre>
+  </li>
+  <li>
+    <p>req.originalUrl req.url</p>
+
+    <p>req.originalUrl is much like req.url; <code>however, it retains the original request URL.</code></p>
+
+    <p>req.url: <code>the 'mount' path is stripped and is not visible to the middleware function.</code></p>
+
+    <p>For example:</p>
+
+    <pre><code>  // routes/index.js
+  var express =require('express');
+  var router = express.Router();
+    
+  router.get('/hello', function(req, res, next) {
+      console.log(req.originalUrl);  // /test/hello
+      console.log(req.url);  // /hello
+      console.log(req.baseUrl);  // /test
+  });
+    
+  module.exports = router;
+    
+  //app.js
+  var routes = require('./routes/index');
+  app.use('/test', routes);
+</code></pre>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
