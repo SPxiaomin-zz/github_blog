@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="express4.x Router 路由控制学习总结">
+        <meta name="keywords" content="express4.x,route,router,路由控制">
+
+        <title>express4.x Router 学习总结</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>express4.x Router 学习总结</h2>
+            <p>以下的内容摘录于 <a href="http://expressjs.com/4x/api.html#router">http://expressjs.com/4x/api.html#router</a> 并结合了自己的理解。</p>
+
+<p>A router behaves like middleware itself, so you can use it as an argument to app.use().</p>
+
+<p><code>The top-level express object has a Router() function that creates a new router object.</code></p>
+
+<p>create a new router as follows:</p>
+
+<pre><code>var router = require('express').Router([options]);
+</code></pre>
+
+<p>options:</p>
+
+<p>property: caseSensitive; Description: Enable case sensitive; Default: Disabled by default, treating <code>/Foo</code> and <code>/foo</code> as the same.</p>
+
+<p>property: strict; Description: Enable strict routing; Default: Disabled by default, <code>/foo</code> and <code>/foo/</code> are treated the same by the router.</p>
+
+<ul>
+  <li>
+    <p>router.METHOD(path, [callback,…]callback)</p>
+
+    <p>The router.METHOD methods provide the routing functionality in Express, where METHOD is one of the HTTP methods, such as GET, PUT, POST, and so on, in lowercase. Thus, the actual methods are router.get(), router.post(), router.put(), and so on.</p>
+
+    <p>You can provide multiple callbacks, and all are treated equally, and behave just like middleware, except that these callbacks may invoke next(‘route’) to bypass the remaining route callback(s). You can use this mechanism to perform pre-conditions on a route then pass control to subsequent routes when there is no reason to proceed with the route matched.</p>
+
+    <p><code>Express translates the path strings to regular expressions, used internally to match incoming requests. Query string are not considered when performing these matches, for example 'GET /' route match '/', as would 'GET /?name=tobi'.</code></p>
+
+    <p>The path strings can also use regular expressions.</p>
+  </li>
+  <li>
+    <p>router.route(path)</p>
+
+    <p>Returns an instance of a single route which you can then use to handle HTTP verbs with optional middleware. <code>Use router.route() to avoid duplicate route naming and thus typo errors.</code></p>
+
+    <pre><code>  var express = require('express');
+  var router = express.Router();
+    
+  router.route('/test')
+  .get(function(req, res, next) {
+      res.send('hello');
+  })
+  .post(function(req, res, next) {
+      res.end('world');
+  });
+</code></pre>
+
+    <p>This approach re-uses the single ‘/test’ path and add handlers for various HTTP methods.</p>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
