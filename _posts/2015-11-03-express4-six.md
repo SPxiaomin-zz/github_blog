@@ -11,6 +11,8 @@ The flash is a special area of the session used for storing messages. Messages a
 
 `Flash messages are stored in the session.` First, setup session as usual by enabling session middleware. Then, use flash middleware provided by connect-flash.
 
+With the flash middleware in place, all requests will have a `req.flash()` function that can be used to flash messages.
+
 Example: 
 
     //app.js
@@ -30,14 +32,18 @@ Example:
     
     router.route('/')
     .get(function(req, res, next) {
+        //set a flash message by passing the key, followed by the value, to req.flash().
         req.flash('flash', 'test flash!');
         res.redirect(303, '/flash');
     });
     
     router.route('/flash')
     .get(function(req, res, next) {
+        //get an array of flash messages by passing the key to req.flash()
         console.log(req.flash('flash'));  // [ 'test flash!' ]
         res.send('ok');
     });
     
-All code at 
+All code at <https://github.com/SPxiaomin/NodeJs_Practice/tree/master/module_2> .
+
+欢迎指教=^_^=

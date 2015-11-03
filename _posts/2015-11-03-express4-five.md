@@ -52,7 +52,7 @@ keywords: express,express4.x,express-sesssion,session
         
 - example:
 
-    A simple example using express-session to store page views for a user.
+    A simple example using express-session to store page views for a user. All code at <https://github.com/SPxiaomin/NodeJs_Practice/tree/master/module_1>.
     
         // app.js
         var express = require('express');

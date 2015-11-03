@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Javascript Array toString() toLocaleString() valueOf() 方法学习总结">
+        <meta name="keywords" content="javascript,js,Array,toString,toLocaleString,valueOf">
+
+        <title>Javascript Array toString() toLocaleString() valueOf() 方法</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>Javascript Array toString() toLocaleString() valueOf() 方法</h2>
+            <p>以下的内容摘录于 红皮书 并结合了自己的理解。</p>
+
+<p>先上例子:</p>
+
+<pre><code>#!/usr/bin/env node
+
+var colors = ['red', 'blue', 'green'];
+
+console.log(colors.toString());   //red,blue,green
+console.log(colors.toLocaleString());  //red,blue,green
+console.log(colors.valueOf()); //[ 'red', 'blue', 'green' ]
+</code></pre>
+
+<p>从上面的例子应该就可以看出来如下的东西:</p>
+
+<p>toString() 和 toLocaleString(): 返回由数组中的每个值的字符串形式拼接而成的一个以逗号分隔的字符串。唯一的区别是前者会调用数组中每一项的 toString() 方法，后者会调用数组中每一项的　toLocaleString() 方法。</p>
+
+<p>valueOf(): 返回的还是原来的数组。</p>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
