@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="express4.x express-session 模块学习总结">
+        <meta name="keywords" content="express,express4.x,express-sesssion,session">
+
+        <title>express4.x express-session 模块学习总结</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>express4.x express-session 模块学习总结</h2>
+            <p>以下的内容摘录于 <a href="https://github.com/expressjs/session">https://github.com/expressjs/session</a> 并结合了自己的理解。</p>
+
+<p>暂时对这个模块中涉及的内容有些东西还是无法理解，暂时只介绍自己理解了以及使用到了的部分，日后再补充。</p>
+
+<ul>
+  <li>
+    <p>Installation</p>
+
+    <pre><code>  sudo npm install --save express-session  // 我使用的是 Ubuntu15.04 ，所以需要加上 sudo 超级用户权限
+</code></pre>
+  </li>
+  <li>
+    <p>API</p>
+
+    <p>看个例子：</p>
+
+    <pre><code>  var session = require('express-session');
+  app.use(session({
+      secret: 'secret',
+      resave: false,
+      saveUninitialized: false
+  });
+    
+  // 后面就可以使用 req.session 访问 session 存储的内容了
+</code></pre>
+
+    <p>session(options)</p>
+
+    <p>create a session middleware with the given options.</p>
+
+    <p><code>Note: Session data is not saved in the cookie itself, just the session ID. Session data is stored server side.</code></p>
+
+    <p>Warning: <code>The default server-side session storage, MemoryStore, is purposely not designed for a production environment.</code> It will leak memory under most conditions, does not scale past a single process, and is meant for debugging and developing.</p>
+
+    <ul>
+      <li>
+        <p>options(只讲解使用到了和理解了的部分):</p>
+
+        <p>express-session accepts these properties in the options object.</p>
+
+        <p>resave: Forces the session to be saved back to the sessoin store, even if the session was never modified during the request. <code>The default value is true, but using the default has been deprecated, as the default will change in the future.</code> Please research into this setting and choose what is appropriate to your use-case.</p>
+
+        <p>saveUninitialized: Forces a session that is ‘uninitialized’ to be saved to the store. <code>The default value is true, but using the default has been deprecated, as the default will change in the future. </code>Please research into this setting and choose what is appropriate to your use-case.</p>
+
+        <p>secret(<code>required option</code>): This is the secret used to sign the session ID cookie. This can be either a string for a single secret, or an array of multiple secrets. If an array of secrets is provided, only the first element will be used to sign the session ID cookie, while all the elements will be considered when verifying the signature in requests.</p>
+
+        <p>store: The session store instance, defaults to a new <code>MemoryStore</code> instance.</p>
+      </li>
+      <li>
+        <p>req.session</p>
+
+        <p>To store or access session data, simply use the request propery <code>req.session</code>, which is (generally) serizlized as JSON by the store, so nested are typically fine.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>example:</p>
+
+    <p>A simple example using express-session to store page views for a user.</p>
+
+    <pre><code>  // app.js
+  var express = require('express');
+  var parseurl = require('parseurl'); //解析路由，用到了 memoization 技术缓存
+  var logger = require('morgan');  //请求路由记录
+  var session = require('express-session');
+    
+  var routes = require('./routes/index.js');
+    
+  var app = express();
+    
+  app.use(logger('dev'));
+  app.use(session({
+      secret: 'secret',
+      resave: false,
+      saveUninitialized: false
+  }));
+    
+  app.use(function(req, res, next) {
+      var views = req.session.views;
+        
+      if ( !views ) {     //如果是第一次访问的话，就初始化对象
+          views = req.session.views = {};
+      }
+        
+      var pathname = parurl(req).pathname; //类似于 nodejs 内部模块 url，这个模块对 url 进行了包装，采用 memoization 实现缓存
+        
+      views[pathname] = ( views[pathname] || 0 ) + 1;  
+        
+      next();  //别忘记了这行代码，继续交给后续的 middleware 处理
+  });
+    
+  app.use('/', routes);
+    
+  app.listen(3000, function(req, res, next) {
+      console.log('App started on Port 3000');
+  });
+    
+  // routes/index.js
+  var express = require('express');
+  var router = express.Router();
+    
+  router.route('/foo')
+  .get(function(req, res, next) {
+      res.send('you viewed this page ' + req.session.views['/foo'] + ' times');
+  });
+    
+  router.route('/bar')
+  .get(function(req, res, next) {
+      res.send('you viewed this page ' + req.session.views['/bar'] + ' times');
+  });
+    
+  module.exports = router.
+</code></pre>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
