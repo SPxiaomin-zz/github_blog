@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="bash shell script 生成 jekyll 固定格式文件名">
+        <meta name="keywords" content="bash,jekyll,文件名">
+
+        <title>bash shell script 生成 jekyll 固定格式文件名</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>bash shell script 生成 jekyll 固定格式文件名</h2>
+            <p>前段时间使用 jekyll 在 github 上面搭建了这个博客，几乎每天都会有学习到的想要记录下来的内容，每一篇博客文章标题的格式是固定的，一个字符一个字符的输入也有一个月的时间了，实在是十分的麻烦，今天受不了了，果断写了个 script ，这也是我第一次写自己的 script 。</p>
+
+<p>直接上代码:</p>
+
+<pre><code>#!/bin/bash
+# Program:
+#    when writing blog in jekyll, the title format is YYYY-MM-DD-title.md. This program let the user input the title, and then open the file named YYYY-MM-DD-title.md by vim for the user to edit.
+
+PATH=/home/gujunmin/.nvm/versions/node/v5.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/bin
+export PATH
+
+echo 'I will use the vim to open a file whose name is YYYY-MM-DD-title.md (YYYY-MM-DD is the date of now, title is what you input.)'
+read -p 'Please input your title: ' title
+
+filename=${title:-'filename'}  # to prevent the user pressing [Enter]
+
+Date=$(date +%F)
+file=${Date}'-'${filename}'.md'
+
+vim ${file}
+</code></pre>
+
+<p>看看执行样例:</p>
+
+<pre><code>→  ~/bin ✗✗✗ wb
+I will use the vim to open a file whose name is YYYY-MM-DD-title.md (YYYY-MM-DD is the date of now, title is what you input.)
+Please input your title: test    //输入之后按下回车，就使用 vim 打开了对应文件名的文件
+→  ~/bin ✗✗✗ wb
+I will use the vim to open a file whose name is YYYY-MM-DD-title.md (YYYY-MM-DD is the date of now, title is what you input.)
+Please input your title:      //输入之后按下回车，就使用 vim 打开了文件名为 YYYY-MM-DD-filename.md 的文件了
+</code></pre>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
