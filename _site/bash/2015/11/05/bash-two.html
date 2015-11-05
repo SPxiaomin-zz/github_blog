@@ -5,10 +5,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="bash shell script 生成 jekyll 固定格式文件名">
-        <meta name="keywords" content="bash,jekyll,文件名">
+        <meta name="description" content="bash shell script 简化并丰富 cd 命令的功能">
+        <meta name="keywords" content="bash,shell,script,cd,简化cd命令">
 
-        <title>bash shell script 生成 jekyll 固定格式文件名</title>
+        <title>bash shell script 简化并丰富 cd 命令的功能</title>
 
         <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
@@ -24,37 +24,32 @@
     <body>
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
-            <h2>bash shell script 生成 jekyll 固定格式文件名</h2>
-            <p>前段时间使用 jekyll 在 github 上面搭建了这个博客，几乎每天都会有学习到的想要记录下来的内容，每一篇博客文章标题的格式是固定的，一个字符一个字符的输入也有一个月的时间了，实在是十分的麻烦，今天受不了了，果断写了个 script ，这也是我第一次写自己的 script 。</p>
-
-<p>直接上代码:</p>
+            <h2>bash shell script 简化并丰富 cd 命令的功能</h2>
+            <p>直接上代码:</p>
 
 <pre><code>#!/bin/bash
 # 作用:
-#       在 jekyll 中写博客文章的时候，博客文章文件名的标题格式是固定的 YYYY-MM-DD-title.md ，使用 date +%F 来生成 YYYY-MM-DD，然后再用 命令参数$1 或 read命令读入 title，最后使用字符拼接并使用 vim 打开。
+#       使用 cd ../ 用来一个一个的目录回退目录十分的麻烦，现在只需使用 c number 就可以实现回退几个目录的作用，只输入 c 的话就会回退到根目录，原来的 cd /directory 命令简化成为了 c /directory
 # 使用:
-#       1. wb test ==&gt; YYYY-MM-DD-test.md
-#       2. wb
-#          test ==&gt; YYYY-MM-DD-test.md
+#       1. c ==&gt; 回到根目录
+#       2. c 2 ==&gt; 回退两个目录，数字 1-9
+#       3. c /test ==&gt; 去到 /test 目录
 
-if [ -n "$1" ]; then
-    filename=$(date +%F)'-'$1'.md'
-    vim ${filename}
-else
-    unset title
-    while [ -z ${title} ]
+if [ -z "$1" ]; then
+    cd ~
+elif [ -n "$(echo $1 | grep '^[1-9]$')" ]; then
+    for i in $(seq 1 $1)
     do
-        read -p "Please input the title: " title
+        cd ../
     done
-
-    filename=$(date +%F)'-'${title}'.md'
-    vim ${filename}
+else
+    cd $1
 fi
 </code></pre>
 
 <p>在使用之前有个要特别注意的问题：</p>
 
-<p>先看看我写的博客文章 <a href="http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.md">http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.md</a> ，然后你就会知道 =&gt; 当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。所以需要使用 <code>alias wb='. wb'</code> 的设置。其实不设置也不会有什么影响。</p>
+<p>先看看我写的博客文章 <a href="http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.md">http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.md</a> ，然后你就会知道 =&gt; 当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。所以需要使用 <code>alias c='. c'</code> 的设置。</p>
 
 <p>欢迎指教=^_^=</p>
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="script 使用直接执行的方式和使用source来执行的方式的区别">
+        <meta name="keywords" content="script,执行方式,source">
+
+        <title>script 执行执行方式的区别(source, sh script, ./script)</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>script 执行执行方式的区别(source, sh script, ./script)</h2>
+            <p>以下的内容摘录于 鸟哥的linux私房菜 并结合了自己的理解。</p>
+
+<p><code>不同的 script 执行方式会造成不一样的结果，尤其对 bash 的执行环境影响很大。</code></p>
+
+<ul>
+  <li>
+    <p>利用直接执行的方式来执行 script</p>
+
+    <p>直接执行指的是:</p>
+
+    <ol>
+      <li>使用 绝对路径/相对路径/$PATH路径 执行</li>
+      <li>使用 bash/sh 执行</li>
+    </ol>
+
+    <p>使用这些方式执行脚本的时候，其实 script 是在子进程的 bash 内执行的。<code>当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。</code></p>
+  </li>
+  <li>
+    <p>利用 source 来执行脚本</p>
+
+    <p>这种方式和使用 <code>.</code> 执行是一样的，都是在父进程中执行。</p>
+
+    <p><code>如果在父进程中执行，各项操作都会在原本的 bash 内生效！</code> 这也是为什么你不注销系统而要让某些写入 ~/.bashrc 的设置生效时，需要使用　<code>source ~/.bashrc</code> ，而不能使用 <code>bash ~/.bashrc</code> 。</p>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
