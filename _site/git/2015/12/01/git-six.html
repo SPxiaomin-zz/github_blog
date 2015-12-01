@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="git 远程仓库学习">
+        <meta name="keywords" content="git,远程仓库">
+
+        <title>git 远程仓库</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>git 远程仓库</h2>
+            <ul>
+  <li>
+    <p>准备工作</p>
+
+    <p>在使用 git 远程仓库之前，首先需要使用 <code>ssh-keygen -t rsa -C "email@example.com"</code> 生成秘钥，因为本地 git 仓库和远程的 git 仓库是通过 SSH 加密的。</p>
+
+    <p>然后就将 <code>~/.ssh</code> 目录下的 <code>id_rsa.pub</code> 这个文件中的秘钥添加到 github 中去。</p>
+  </li>
+  <li>
+    <p>总共有两种使用远程仓库的方式</p>
+
+    <ol>
+      <li>
+        <p>先有本地仓库，然后和 github 上的远程仓库关联</p>
+
+        <p>先和远程仓库进行关联:</p>
+
+        <pre><code> git remote add origin git@github.com:SPxiaomin/learn.git    //origin 是远程仓库的名称。
+</code></pre>
+
+        <p>推送本地分支到远程:</p>
+
+        <pre><code> →  ~/gitreview ✗✗✗ git push -u origin master 
+ Branch master set up to track remote branch master from origin.
+</code></pre>
+
+        <p>从远程仓库拉取内容:</p>
+
+        <pre><code> git pull origin master 
+        
+ 或
+        
+ git pull //加上 -u 参数之后就可以使用此简化命令了，或者可以使用 git branch --set-upstream-to=origin/&lt;branch&gt; master 也可以达到同样的效果
+</code></pre>
+      </li>
+      <li>
+        <p>从 github clone 已有的仓库到本地</p>
+
+        <p>git clone git@github.com:SPxiaomin/learn.git</p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
