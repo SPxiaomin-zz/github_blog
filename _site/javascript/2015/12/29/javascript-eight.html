@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="JavaScript best practices 阅读摘要">
+        <meta name="keywords" content="JavaScript best practices">
+
+        <title>JavaScript best practices 阅读摘要</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>JavaScript best practices 阅读摘要</h2>
+            <h1 id="call-things-by-their-name--easy-short-and-readable-variable-and-function-names">Call things by their name — easy, short and readable variable and function names</h1>
+
+<p>good variable and function names should be easy to understand and tell you what is going on — not more and not less.</p>
+
+<p>One trap to avoid is marrying values and functionality in names. A function called isLegalDrinkingAge() makes more sense than isOverEighteen() as the legal drinking age varies from country to country, and there are other things than drinking to consider that are limited by age.</p>
+
+<p>Hungarian notation. For example, if you have a variable called familyName and it is supposed to be a string, you would write it as sFamilyName in “Hungarian”.</p>
+
+<p>Keeping to English is a good idea, too.</p>
+
+<p>See your code as a narrative. If you can read line by line and understand what is going on, well done. If you need to use a sketchpad to keep up with the flow of logic, then your code needs some work.</p>
+
+<h1 id="avoid-globals">Avoid globals</h1>
+
+<p>Global variables and function names are an incredibly bad idea. The reason is that every JavaScript file included in the page runs in the same scope. If you have global variables or functions in your code, scripts included after yours that contain the same variable and function names will overwrite your variables/functions.</p>
+
+<p>workarounds to avoid using globals:</p>
+
+<ul>
+  <li>
+    <p>return pointers ,a public alias</p>
+
+    <pre><code>  myNameSpace = function(){
+    var current = null;
+    function init(){...}
+    function change(){...}
+    function verify(){...}
+    return{
+      init:init,
+      set:change
+    }
+  }();
+</code></pre>
+  </li>
+  <li>
+    <p>If you don’t need any of your variables or functions to be available to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name to it:</p>
+
+    <pre><code>  (function(){
+    var current = null;
+    function init(){...}
+    function change(){...}
+    function verify(){...}
+  })();
+</code></pre>
+  </li>
+</ul>
+
+<h1 id="stick-to-a-strict-coding-style">Stick to a strict coding style</h1>
+
+<p>Clean and valid code</p>
+
+<h1 id="comment-as-much-as-needed-but-not-more">Comment as much as needed but not more</h1>
+
+<ul>
+  <li>
+    <p>Again the trick is moderation. Comment when there is an important thing to say, and if you do comment use the /* */ notation. Single line comments using // can be problematic if people minify your code without stripping comments and in general are less versatile.</p>
+  </li>
+  <li>
+    <p>If you comment out parts of your code to be used at a later stage or to debug code there is a pretty sweet trick you can do:</p>
+
+    <p>Adding a double slash before the closing star-slash sets your code up so that you can comment and uncomment the whole block by simply adding or removing a slash before the opening slash-star:</p>
+
+    <pre><code>  module = function(){
+    var current = null;
+    function init(){
+    };
+  /*
+    function show(){
+      current = 1;
+    };
+    function hide(){
+      show();
+    };
+  // */
+    return{init:init,show:show,current:current}
+  }();
+</code></pre>
+
+    <p>With the code set up as shown in the above block, adding a slash before the opening slash-star will turn the multiline comment into two one-line comments, “unhiding” the code in between and causing it to be executed. Removing the slash will comment it out again.</p>
+  </li>
+  <li>
+    <p>For larger applications comment documentation in JavaDoc style makes a lot of sense — you are seeding the overall documentation of your product by writing code.</p>
+  </li>
+</ul>
+
+<h1 id="avoid-mixing-with-other-technologies">Avoid mixing with other technologies</h1>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
