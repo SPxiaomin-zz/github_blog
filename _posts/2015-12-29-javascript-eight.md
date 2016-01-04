@@ -90,3 +90,27 @@ By adding a class called “error” to the element when there is an error, you 
     }
 
 # Use shortcut notation when it makes sense
+
+- using an object literal
+- using the [] array shortcut
+- using “ternary notation”. `var direction = (x > 100) ? 1 : -1;`
+- providing a preset value for a variable if it is not defined `var x = v || 10; `
+
+# Modularize — one function per task
+
+- This is a general programming best practice — making sure that you create functions that fulfill one job at a time makes it easy for other developers to debug and change your code without having to scan through all the code to work out what code block performs what function.
+- This also applies to creating helper functions for common tasks. If you find yourself doing the same thing in several different functions then it is a good idea to create a more generic helper function instead, and reuse that functionality where it is needed.
+- By having all your functions only perform one task you can have a main init() function for your application that contains all the application structure. That way you can easily change the application and remove functionality without having to scan the rest of the document for dependencies.
+
+# Enhance progressively
+
+- In essence what you should do is write code that works regardless of available technology. In the case of JavaScript, this means that when scripting is not available (say on a BlackBerry, or because of an over-zealous security policy) your web products should still allow users to reach a certain goal, not block them because of the lack of JavaScript which they can’t turn on, or don’t want to.
+- It is amazing how many times you will build a massively convoluted JavaScript solution for a problem that can be solved easily without it. 
+
+# Allow for configuration and translation
+
+- One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time. These include any text used in elements you create (including button values and alternative text for images), CSS class and ID names and general parameters of the interface you build.
+
+# Avoid heavy nesting
+
+- 
