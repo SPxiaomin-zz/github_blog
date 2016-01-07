@@ -29,7 +29,7 @@
 
 <p>solutions 分支上面的 readme.md 文件内容：</p>
 
-<pre><code>READ THIS FIRST
+<div class="highlighter-rouge"><pre class="highlight"><code>READ THIS FIRST
 
 Hello there, you seem to have quite an exploratory personality.
 Anyway if you found this place, you probably can figure out how to get to the solutions.
@@ -37,35 +37,37 @@ Please don't publicize this branch, if people really want to know how to solve s
 
 If you do contribute a challenge, please also have a similar branch on your fork with a similar setup (some obscurity), although it isn't required.
 </code></pre>
+</div>
 
 <p>先看一下加密和解密的代码文件吧：</p>
 
-<pre><code>#!/usr/bin/env node
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#!/usr/bin/env node
+</span>
+<span class="c1">// put the next line on top of your answer files</span>
+<span class="c1">//}47}$.(}:&lt;/}*88})54*q}$.(}/889}).}+(/})54*}7418})5+.(65}714-o3*</span>
 
-// put the next line on top of your answer files
-//}47}$.(}:&lt;/}*88})54*q}$.(}/889}).}+(/})54*}7418})5+.(65}714-o3*
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
 
-var fs = require('fs');
+<span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">' !"#$%&amp;\'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}'</span><span class="p">;</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ch</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">map</span><span class="p">[</span><span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">i</span><span class="p">];</span>
+<span class="p">});</span>
 
-var map = {};
-var str = ' !"#$%&amp;\'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}';
-str.split('').forEach(function(ch, i) {
-  map[str[i]] = str[str.length - 1 - i];
-});
+<span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">file</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
 
-process.argv.slice(2).forEach(function(file) {
-  var input = fs.readFileSync(file).toString();
+  <span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">map</span><span class="p">[</span><span class="nx">ch</span><span class="p">]</span> <span class="o">||</span> <span class="nx">ch</span><span class="p">;</span>
+    <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+  <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">);</span>
 
-  var output = input.split('\n').map(function(line) {
-    return line.split('').map(function(ch) {
-      return map[ch] || ch;
-    }).join('');
-  }).join('\n');
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">output</span><span class="p">);</span>
 
-  fs.writeFileSync(file, output);
-
-});
+<span class="p">});</span>
 </code></pre>
+</div>
 
 <p>知识点讲解：</p>
 
@@ -77,8 +79,9 @@ process.argv.slice(2).forEach(function(file) {
 
     <p>异步读取文件内容：</p>
 
-    <pre><code>  fs.readFile(filename[, options], callback)
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.readFile(filename[, options], callback)
 </code></pre>
+    </div>
 
     <p>filename String</p>
 
@@ -97,34 +100,38 @@ process.argv.slice(2).forEach(function(file) {
 
     <p>Asynchronously reads the entire contents of a file. Example:</p>
 
-    <pre><code>  fs.readFile('/etc/passwd', function (err, data) {
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.readFile('/etc/passwd', function (err, data) {
     if (err) throw err;
     console.log(data);
   });
 </code></pre>
+    </div>
 
     <p>The callback is passed two arguments (err, data), where data is the contents of the file.</p>
 
-    <p>If no encoding is specified, then the <code>raw buffer</code> is returned.</p>
+    <p>If no encoding is specified, then the <code class="highlighter-rouge">raw buffer</code> is returned.</p>
 
-    <p><code>If options is a string, then it specifies the encoding.</code> Example:</p>
+    <p><code class="highlighter-rouge">If options is a string, then it specifies the encoding.</code> Example:</p>
 
-    <pre><code>  fs.readFile('/etc/passwd', 'utf8', callback);
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.readFile('/etc/passwd', 'utf8', callback);
 </code></pre>
+    </div>
 
     <p>同步读取文件内容：</p>
 
-    <pre><code>  fs.readFileSync(filename[, options])
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.readFileSync(filename[, options])
 </code></pre>
+    </div>
 
     <p>Synchronous version of fs.readFile. Returns the contents of the filename.</p>
 
-    <p>If the encoding option is specified then this function returns a string. Otherwise it returns a <code>buffer</code>.</p>
+    <p>If the encoding option is specified then this function returns a string. Otherwise it returns a <code class="highlighter-rouge">buffer</code>.</p>
 
     <p>异步将内容写入文件：</p>
 
-    <pre><code>  fs.writeFile(filename, data[, options], callback)
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.writeFile(filename, data[, options], callback)
 </code></pre>
+    </div>
 
     <p>filename String</p>
 
@@ -148,25 +155,28 @@ process.argv.slice(2).forEach(function(file) {
 
     <p>Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.</p>
 
-    <p><code>The encoding option is ignored if data is a buffer. It defaults to 'utf8'.</code></p>
+    <p><code class="highlighter-rouge">The encoding option is ignored if data is a buffer. It defaults to 'utf8'.</code></p>
 
     <p>Example:</p>
 
-    <pre><code>  fs.writeFile('message.txt', 'Hello Node.js', function (err) {
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.writeFile('message.txt', 'Hello Node.js', function (err) {
     if (err) throw err;
     console.log('It\'s saved!');
   });
 </code></pre>
+    </div>
 
-    <p><code>If options is a string, then it specifies the encoding</code>. Example:</p>
+    <p><code class="highlighter-rouge">If options is a string, then it specifies the encoding</code>. Example:</p>
 
-    <pre><code>  fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 </code></pre>
+    </div>
 
     <p>同步将内容写入文件：</p>
 
-    <pre><code>  fs.writeFileSync(filename, data[, options])
+    <div class="highlighter-rouge"><pre class="highlight"><code>  fs.writeFileSync(filename, data[, options])
 </code></pre>
+    </div>
 
     <p>The synchronous version of fs.writeFile. Returns undefined.</p>
   </li>
@@ -194,7 +204,7 @@ process.argv.slice(2).forEach(function(file) {
 
 <p>不懂了也关系，接下来我就一行一行代码来进行解释：</p>
 
-<pre><code>var fs = require('fs');
+<div class="highlighter-rouge"><pre class="highlight"><code>var fs = require('fs');
 //引入 fs 模块，因为要对代码文件进行加密以及解密的话，必然要读取文件的内容
 
 var map = {};
@@ -225,13 +235,15 @@ process.argv.slice(2).forEach(function(file) {
     最后将通过写入原来的文件覆盖文件内容的方式加密和解密原来的文件
 });
 </code></pre>
+</div>
 
 <p>通过了这么详细的讲解，是不是懂了呢？</p>
 
 <p>最后简单的讲解一下使用的方法吧：</p>
 
-<pre><code>node [上面的代码所属的文件名称] [你想加密以及解密的文件名称...]
+<div class="highlighter-rouge"><pre class="highlight"><code>node [上面的代码所属的文件名称] [你想加密以及解密的文件名称...]
 </code></pre>
+</div>
 
 <p>欢迎指教=^_^=</p>
 

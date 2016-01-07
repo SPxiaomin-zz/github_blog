@@ -57,38 +57,39 @@
       <li>
         <p>layout:</p>
 
-        <p>简单的说一下作用吧，这个变量指定的是使用的是 <code>_layouts</code> 目录之下的的那个文件来包含 <code>_posts</code> 或者其它目录中的文件内容。还有两点要注意的：Use the layout file name <code>without</code> the file extension. Layout files <code>must</code> be placed in the  <code>_layouts</code> directory.</p>
+        <p>简单的说一下作用吧，这个变量指定的是使用的是 <code class="highlighter-rouge">_layouts</code> 目录之下的的那个文件来包含 <code class="highlighter-rouge">_posts</code> 或者其它目录中的文件内容。还有两点要注意的：Use the layout file name <code class="highlighter-rouge">without</code> the file extension. Layout files <code class="highlighter-rouge">must</code> be placed in the  <code class="highlighter-rouge">_layouts</code> directory.</p>
 
-        <p>我觉得上面的话，还是有点难以理解，给你们看看我写的 <code>_layouts/post.html</code>:</p>
+        <p>我觉得上面的话，还是有点难以理解，给你们看看我写的 <code class="highlighter-rouge">_layouts/post.html</code>:</p>
 
-        <pre><code>  &lt;!DOCTYPE html&gt;
+        <div class="highlighter-rouge"><pre class="highlight"><code>  <span class="cp">&lt;!DOCTYPE html&gt;</span>
         
-  &lt;html lang="zh-CN"&gt;
-      &lt;head&gt;
-          &lt;meta charset="utf-8"&gt;
-          &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
-          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-          &lt;meta name="description" content="Jimmy的个人博客"&gt;
-          &lt;meta name="keywords" content="Jimmy,blogs,html,css,javscript,js,node,express"&gt;
+  <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"zh-CN"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;head&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"Jimmy的个人博客"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"Jimmy,blogs,html,css,javscript,js,node,express"</span><span class="nt">&gt;</span>
         
-          &lt;title&gt;{{ page.title }}&lt;/title&gt;
+          <span class="nt">&lt;title&gt;</span>{{ page.title }}<span class="nt">&lt;/title&gt;</span>
         
-          &lt;link rel="stylesheet" href="{{ "/public/bower_components/bootstrap/dist/css/bootstrap.min.css" | prepend: site.baseurl }}"&gt;
-          &lt;link rel="stylesheet" href="{{ "/public/stylesheets/dest/style.min.css" | prepend: site.baseurl }}"&gt;
+          <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"{{ "</span><span class="err">/</span><span class="na">public</span><span class="err">/</span><span class="na">bower_components</span><span class="err">/</span><span class="na">bootstrap</span><span class="err">/</span><span class="na">dist</span><span class="err">/</span><span class="na">css</span><span class="err">/</span><span class="na">bootstrap</span><span class="err">.</span><span class="na">min</span><span class="err">.</span><span class="na">css</span><span class="err">"</span> <span class="err">|</span> <span class="na">prepend:</span> <span class="na">site</span><span class="err">.</span><span class="na">baseurl</span> <span class="err">}}"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"{{ "</span><span class="err">/</span><span class="na">public</span><span class="err">/</span><span class="na">stylesheets</span><span class="err">/</span><span class="na">dest</span><span class="err">/</span><span class="na">style</span><span class="err">.</span><span class="na">min</span><span class="err">.</span><span class="na">css</span><span class="err">"</span> <span class="err">|</span> <span class="na">prepend:</span> <span class="na">site</span><span class="err">.</span><span class="na">baseurl</span> <span class="err">}}"</span><span class="nt">&gt;</span>
         
-          &lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;
-          &lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;
-          &lt;!--[if lt IE 9]&gt;
+          <span class="c">&lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;</span>
+          <span class="c">&lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;</span>
+          <span class="c">&lt;!--[if lt IE 9]&gt;
             &lt;script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
             &lt;script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"&gt;&lt;/script&gt;
-          &lt;![endif]--&gt;
-      &lt;/head&gt;
+          &lt;![endif]--&gt;</span>
+      <span class="nt">&lt;/head&gt;</span>
         
-      &lt;body&gt;
+      <span class="nt">&lt;body&gt;</span>
           {{ content }}   //这里就是被 Jekyll 处理过的文件
-      &lt;/body&gt;
-  &lt;/html&gt;
+      <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
 </code></pre>
+        </div>
       </li>
       <li>
         <p>category &amp; categories</p>
@@ -97,26 +98,28 @@
 
         <p>讲一下使用的方法吧，看看例子就应该明白了：</p>
 
-        <pre><code>  category: jekyll
+        <div class="highlighter-rouge"><pre class="highlight"><code>  category: jekyll
     
   categories: [jekyll, github]
 </code></pre>
+        </div>
 
         <p>只有第二个设置一个文件属于多个类别的时候，格式要注意，可以是 a yaml list 或者是 a comma-separated string. 如果不懂什么是 yaml list 的话，可以看看我写的 yaml 入门学习笔记。</p>
 
-        <p>配置完成了之后，就可以通过 <code>site.categories</code> 来访问对应类别的文件了。至于怎么使用的话，看看我写的代码吧：</p>
+        <p>配置完成了之后，就可以通过 <code class="highlighter-rouge">site.categories</code> 来访问对应类别的文件了。至于怎么使用的话，看看我写的代码吧：</p>
 
-        <pre><code>  {% for category in site.categories %}
-  &lt;h3&gt;{{ category | first }} &lt;small&gt;[{{ category | last | size }}]&lt;/small&gt;&lt;/h3&gt;
-  &lt;ul&gt;
-      {% for post in category.last %}
-      &lt;li&gt;{{ post.date | date:"%a， %b %d， %y"}} -&gt; &lt;a href="{{ site.baseurl }}{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
-      {% endfor %}
-  &lt;/ul&gt;
-  {% endfor %}
-</code></pre>
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">category</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">site.categories</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+  </span><span class="err">&lt;h</span><span class="mi">3</span><span class="err">&gt;</span><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">category</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="p">}</span><span class="err">}</span><span class="w"> </span><span class="err">&lt;small&gt;</span><span class="p">[{</span><span class="err">{</span><span class="w"> </span><span class="err">category</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">size</span><span class="w"> </span><span class="p">}</span><span class="err">}</span><span class="p">]</span><span class="err">&lt;/small&gt;&lt;/h</span><span class="mi">3</span><span class="err">&gt;</span><span class="w">
+  </span><span class="err">&lt;ul&gt;</span><span class="w">
+      </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">post</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">category.last</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+      </span><span class="err">&lt;li&gt;</span><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">post.date</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">date:</span><span class="nt">"%a， %b %d， %y"</span><span class="err">}}</span><span class="w"> </span><span class="err">-&gt;</span><span class="w"> </span><span class="err">&lt;a</span><span class="w"> </span><span class="err">href=</span><span class="s2">"{{ site.baseurl }}{{ post.url }}"</span><span class="err">&gt;</span><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">post.title</span><span class="w"> </span><span class="p">}</span><span class="err">}&lt;/a&gt;&lt;/li&gt;</span><span class="w">
+      </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">endfor</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+  </span><span class="err">&lt;/ul&gt;</span><span class="w">
+  </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">endfor</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+</span></code></pre>
+        </div>
 
-        <p>上面的代码中还涉及到了 <code>filters</code>，简单的讲一下这个东西的作用吧，其实就是一个方法，接收 <code>|</code> 左边的内容作为输入，然后看 <code>|</code> 后面还有没有 filter，如果没有了的话，就将处理结果返回。如果还有的话，将处理的结果传给下一个 filter 。上面我提到的那篇关于 liquid 的文档中对这个东西进行了详细的解释，但是个人觉得十分的绕口，还是给你们看看原文吧：</p>
+        <p>上面的代码中还涉及到了 <code class="highlighter-rouge">filters</code>，简单的讲一下这个东西的作用吧，其实就是一个方法，接收 <code class="highlighter-rouge">|</code> 左边的内容作为输入，然后看 <code class="highlighter-rouge">|</code> 后面还有没有 filter，如果没有了的话，就将处理结果返回。如果还有的话，将处理的结果传给下一个 filter 。上面我提到的那篇关于 liquid 的文档中对这个东西进行了详细的解释，但是个人觉得十分的绕口，还是给你们看看原文吧：</p>
 
         <p>Advanced output: Filters</p>
 
@@ -150,8 +153,9 @@
 
     <p>语法：</p>
 
-    <pre><code>  word-wrap: normal|break-word;
+    <div class="highlighter-rouge"><pre class="highlight"><code>  word-wrap: normal|break-word;
 </code></pre>
+    </div>
 
     <p>值    描述</p>
 
@@ -168,8 +172,9 @@
 
     <p>语法：</p>
 
-    <pre><code>  word-break: normal|break-all|keep-all;
+    <div class="highlighter-rouge"><pre class="highlight"><code>  word-break: normal|break-all|keep-all;
 </code></pre>
+    </div>
 
     <p>值    描述</p>
 

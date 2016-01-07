@@ -33,15 +33,16 @@
   <li>
     <p>Installation</p>
 
-    <pre><code>  sudo npm install --save express-session  // 我使用的是 Ubuntu15.04 ，所以需要加上 sudo 超级用户权限
+    <div class="highlighter-rouge"><pre class="highlight"><code>  sudo npm install --save express-session  // 我使用的是 Ubuntu15.04 ，所以需要加上 sudo 超级用户权限
 </code></pre>
+    </div>
   </li>
   <li>
     <p>API</p>
 
     <p>看个例子：</p>
 
-    <pre><code>  var session = require('express-session');
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var session = require('express-session');
   app.use(session({
       secret: 'secret',
       resave: false,
@@ -50,14 +51,15 @@
     
   // 后面就可以使用 req.session 访问 session 存储的内容了
 </code></pre>
+    </div>
 
     <p>session(options)</p>
 
     <p>create a session middleware with the given options.</p>
 
-    <p><code>Note: Session data is not saved in the cookie itself, just the session ID. Session data is stored server side.</code></p>
+    <p><code class="highlighter-rouge">Note: Session data is not saved in the cookie itself, just the session ID. Session data is stored server side.</code></p>
 
-    <p>Warning: <code>The default server-side session storage, MemoryStore, is purposely not designed for a production environment.</code> It will leak memory under most conditions, does not scale past a single process, and is meant for debugging and developing.</p>
+    <p>Warning: <code class="highlighter-rouge">The default server-side session storage, MemoryStore, is purposely not designed for a production environment.</code> It will leak memory under most conditions, does not scale past a single process, and is meant for debugging and developing.</p>
 
     <ul>
       <li>
@@ -65,18 +67,18 @@
 
         <p>express-session accepts these properties in the options object.</p>
 
-        <p>resave: Forces the session to be saved back to the sessoin store, even if the session was never modified during the request. <code>The default value is true, but using the default has been deprecated, as the default will change in the future.</code> Please research into this setting and choose what is appropriate to your use-case.</p>
+        <p>resave: Forces the session to be saved back to the sessoin store, even if the session was never modified during the request. <code class="highlighter-rouge">The default value is true, but using the default has been deprecated, as the default will change in the future.</code> Please research into this setting and choose what is appropriate to your use-case.</p>
 
-        <p>saveUninitialized: Forces a session that is ‘uninitialized’ to be saved to the store. <code>The default value is true, but using the default has been deprecated, as the default will change in the future. </code>Please research into this setting and choose what is appropriate to your use-case.</p>
+        <p>saveUninitialized: Forces a session that is ‘uninitialized’ to be saved to the store. <code class="highlighter-rouge">The default value is true, but using the default has been deprecated, as the default will change in the future. </code>Please research into this setting and choose what is appropriate to your use-case.</p>
 
-        <p>secret(<code>required option</code>): This is the secret used to sign the session ID cookie. This can be either a string for a single secret, or an array of multiple secrets. If an array of secrets is provided, only the first element will be used to sign the session ID cookie, while all the elements will be considered when verifying the signature in requests.</p>
+        <p>secret(<code class="highlighter-rouge">required option</code>): This is the secret used to sign the session ID cookie. This can be either a string for a single secret, or an array of multiple secrets. If an array of secrets is provided, only the first element will be used to sign the session ID cookie, while all the elements will be considered when verifying the signature in requests.</p>
 
-        <p>store: The session store instance, defaults to a new <code>MemoryStore</code> instance.</p>
+        <p>store: The session store instance, defaults to a new <code class="highlighter-rouge">MemoryStore</code> instance.</p>
       </li>
       <li>
         <p>req.session</p>
 
-        <p>To store or access session data, simply use the request propery <code>req.session</code>, which is (generally) serizlized as JSON by the store, so nested are typically fine.</p>
+        <p>To store or access session data, simply use the request propery <code class="highlighter-rouge">req.session</code>, which is (generally) serizlized as JSON by the store, so nested are typically fine.</p>
       </li>
     </ul>
   </li>
@@ -85,7 +87,7 @@
 
     <p>A simple example using express-session to store page views for a user. All code at <a href="https://github.com/SPxiaomin/NodeJs_Practice/tree/master/module_1">https://github.com/SPxiaomin/NodeJs_Practice/tree/master/module_1</a>.</p>
 
-    <pre><code>  // app.js
+    <div class="highlighter-rouge"><pre class="highlight"><code>  // app.js
   var express = require('express');
   var parseurl = require('parseurl'); //解析路由，用到了 memoization 技术缓存
   var logger = require('morgan');  //请求路由记录
@@ -138,6 +140,7 @@
     
   module.exports = router.
 </code></pre>
+    </div>
   </li>
 </ul>
 

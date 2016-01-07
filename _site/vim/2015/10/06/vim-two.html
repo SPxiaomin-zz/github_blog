@@ -29,9 +29,9 @@
 
 <p>以下的内容摘录于 <a href="http://yyq123.blogspot.com/2011/11/vim-listchars.html">http://yyq123.blogspot.com/2011/11/vim-listchars.html</a> <a href="http://imkeke.net/articles/vim-set-tab/">http://imkeke.net/articles/vim-set-tab/</a> ，并结合了自己的理解。</p>
 
-<p>还是先看看我 <code>~/.vimrc</code> 中的对 tab 部分的设置吧，下面的代码设定了 tab 的宽度以及如何确定用 tab 制表符还是用空格来表示一个缩进：</p>
+<p>还是先看看我 <code class="highlighter-rouge">~/.vimrc</code> 中的对 tab 部分的设置吧，下面的代码设定了 tab 的宽度以及如何确定用 tab 制表符还是用空格来表示一个缩进：</p>
 
-<pre><code>"设置一个 tab 显示出来是多少个空格的长度，默认8
+<div class="highlighter-rouge"><pre class="highlight"><code>"设置一个 tab 显示出来是多少个空格的长度，默认8
 set tabstop=4
 
 "表示在编辑模式的时候按退格键的时候退回缩进的长度，简单的说就是去掉自动缩进产生的空格，当 set expandtab
@@ -57,12 +57,13 @@ hi NonText ctermfg=239
 "nbsp tab trail 是由 SpecialKey 高亮组来定义颜色的
 hi SpecialKey ctermfg=239
 </code></pre>
+</div>
 
 <p>是不是有些特殊的字符，感觉很酷炫，用了半年的 vim 了，我也是今天才知道的怎么写出这些酷炫的字符，虽然说一开始使用的时候见到过：</p>
 
 <ol>
-  <li>在 vim 的命令模式下输入 <code>:digraph</code>，就可以查看想要的字符，记住字符左边的输入方式。</li>
-  <li>在插入模式下，点击快捷键 <code>Ctrl-k</code>，然后输入上一步你记住的编码，就可以了。</li>
+  <li>在 vim 的命令模式下输入 <code class="highlighter-rouge">:digraph</code>，就可以查看想要的字符，记住字符左边的输入方式。</li>
+  <li>在插入模式下，点击快捷键 <code class="highlighter-rouge">Ctrl-k</code>，然后输入上一步你记住的编码，就可以了。</li>
 </ol>
 
 <p>欢迎指教=^_^=</p>

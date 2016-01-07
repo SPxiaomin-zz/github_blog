@@ -33,21 +33,23 @@
 
 <p>源代码文件：</p>
 
-<pre><code>//test.js
+<div class="highlighter-rouge"><pre class="highlight"><code>//test.js
 #!/usr/bin/env node
 console.log(process.argv);
 </code></pre>
+</div>
 
 <p>输出的结果如下</p>
 
-<pre><code>→  ~ ✗✗✗ node test.js hello world
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~ ✗✗✗ node test.js hello world
 [ '/home/gujunmin/.nvm/versions/node/v4.1.1/bin/node',
   '/home/gujunmin/test.js',
   'hello',
   'world' ]
 </code></pre>
+</div>
 
-<p>我的操作系统是 <code>Ubuntu15.04</code>，数组的第一项是 node 的安装路径，我使用的是 <code>nvm</code> 进行安装的；数组的第二项是被运行的脚本的绝对路径；从第三个元素开始之后的项就是命令的运行参数了。</p>
+<p>我的操作系统是 <code class="highlighter-rouge">Ubuntu15.04</code>，数组的第一项是 node 的安装路径，我使用的是 <code class="highlighter-rouge">nvm</code> 进行安装的；数组的第二项是被运行的脚本的绝对路径；从第三个元素开始之后的项就是命令的运行参数了。</p>
 
 <p>欢迎指教=^_^=</p>
 

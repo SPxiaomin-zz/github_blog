@@ -29,32 +29,33 @@
 
 <p>直接上代码:</p>
 
-<pre><code>#!/bin/bash
-# 作用:
-#       在 jekyll 中写博客文章的时候，博客文章文件名的标题格式是固定的 YYYY-MM-DD-title.md ，使用 date +%F 来生成 YYYY-MM-DD，然后再用 命令参数$1 或 read命令读入 title，最后使用字符拼接并使用 vim 打开。
-# 使用:
-#       1. wb test ==&gt; YYYY-MM-DD-test.md
-#       2. wb
-#          test ==&gt; YYYY-MM-DD-test.md
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># 作用:</span>
+<span class="c">#       在 jekyll 中写博客文章的时候，博客文章文件名的标题格式是固定的 YYYY-MM-DD-title.md ，使用 date +%F 来生成 YYYY-MM-DD，然后再用 命令参数$1 或 read命令读入 title，最后使用字符拼接并使用 vim 打开。</span>
+<span class="c"># 使用:</span>
+<span class="c">#       1. wb test ==&gt; YYYY-MM-DD-test.md</span>
+<span class="c">#       2. wb</span>
+<span class="c">#          test ==&gt; YYYY-MM-DD-test.md</span>
 
-if [ -n "$1" ]; then
-    filename=$(date +%F)'-'$1'.md'
-    vim ${filename}
-else
-    unset title
-    while [ -z ${title} ]
-    do
-        read -p "Please input the title: " title
-    done
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s1">'-'</span><span class="nv">$1</span><span class="s1">'.md'</span>
+    vim <span class="k">${</span><span class="nv">filename</span><span class="k">}</span>
+<span class="k">else
+    </span><span class="nb">unset </span>title
+    <span class="k">while</span> <span class="o">[</span> -z <span class="k">${</span><span class="nv">title</span><span class="k">}</span> <span class="o">]</span>
+    <span class="k">do
+        </span><span class="nb">read</span> -p <span class="s2">"Please input the title: "</span> title
+    <span class="k">done
 
-    filename=$(date +%F)'-'${title}'.md'
-    vim ${filename}
-fi
+    </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s1">'-'</span><span class="k">${</span><span class="nv">title</span><span class="k">}</span><span class="s1">'.md'</span>
+    vim <span class="k">${</span><span class="nv">filename</span><span class="k">}</span>
+<span class="k">fi</span>
 </code></pre>
+</div>
 
 <p>在使用之前有个要特别注意的问题：</p>
 
-<p>先看看我写的博客文章 <a href="http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html">http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html</a> ，然后你就会知道 =&gt; 当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。所以需要使用 <code>alias wb='. wb'</code> 的设置。其实不设置也不会有什么影响。</p>
+<p>先看看我写的博客文章 <a href="http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html">http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html</a> ，然后你就会知道 =&gt; 当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。所以需要使用 <code class="highlighter-rouge">alias wb='. wb'</code> 的设置。其实不设置也不会有什么影响。</p>
 
 <p>欢迎指教=^_^=</p>
 

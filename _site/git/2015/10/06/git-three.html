@@ -25,15 +25,15 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>git add . & git add -A 的区别</h2>
-            <p><code>git add</code> 这个命令只要一使用 <code>git</code> 的话，就一定会使用到，但是当有很多的文件同时修改的时候，如果一个一个的 <code>git add</code> 的话，一定十分的麻烦。</p>
+            <p><code class="highlighter-rouge">git add</code> 这个命令只要一使用 <code class="highlighter-rouge">git</code> 的话，就一定会使用到，但是当有很多的文件同时修改的时候，如果一个一个的 <code class="highlighter-rouge">git add</code> 的话，一定十分的麻烦。</p>
 
-<p>于是便有了以下的简化操作，到底是使用 <code>git add .</code> 还是使用 <code>git add -A</code> 呢？这两个命令有什么区别呢？</p>
+<p>于是便有了以下的简化操作，到底是使用 <code class="highlighter-rouge">git add .</code> 还是使用 <code class="highlighter-rouge">git add -A</code> 呢？这两个命令有什么区别呢？</p>
 
 <p>在 <a href="http://stackoverflow.com/questions/572549/difference-between-git-add-a-and-git-add">stackoverflow</a> 上面已经有人解决了这个问题，我从其中摘录了一部分下来，足矣，如果你有兴趣的话，可以把它全部都看完。</p>
 
 <p>下面的命令是对于 git v2 的版本来说的：</p>
 
-<pre><code>git add . and git add -A . add new/modified/deleted files in the current directory
+<div class="highlighter-rouge"><pre class="highlight"><code>git add . and git add -A . add new/modified/deleted files in the current directory
 
 git add --ignore-removal . adds new/modified files in the current directory
 
@@ -41,6 +41,7 @@ git add -u . adds modified/deleted files in the current directory
 
 without the dot, add all files in the project regardless of the current directory
 </code></pre>
+</div>
 
 <p>欢迎指教=^_^=</p>
 

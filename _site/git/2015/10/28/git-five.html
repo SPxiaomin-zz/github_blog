@@ -27,29 +27,31 @@
             <h2>git diff 比较文件内容的变动</h2>
             <p>以下的内容摘录于 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000">廖雪峰老师的git教程</a> 并结合了自己的理解。</p>
 
-<p>有时候我们修该了文件的内容，但是过了一段时间之后，输入 <code>git status</code> 之后，可以看到文件内容变更了，但是不知到到底是哪里变更了，这时候就可以借助于 <code>git diff</code> 这个命令来查看文件内容到底改动了哪些地方了。</p>
+<p>有时候我们修该了文件的内容，但是过了一段时间之后，输入 <code class="highlighter-rouge">git status</code> 之后，可以看到文件内容变更了，但是不知到到底是哪里变更了，这时候就可以借助于 <code class="highlighter-rouge">git diff</code> 这个命令来查看文件内容到底改动了哪些地方了。</p>
 
 <p>还是看看示例比较的容易理解：</p>
 
 <p>第一次提交的文件内容：</p>
 
-<pre><code>//test.txt
+<div class="highlighter-rouge"><pre class="highlight"><code>//test.txt
 Git is a version control system.
 Git is free software.
 </code></pre>
+</div>
 
 <p>修改文件的内容：</p>
 
-<pre><code>//test.txt
+<div class="highlighter-rouge"><pre class="highlight"><code>//test.txt
 Git is a distributed version control system.
 Git is free software.
 </code></pre>
+</div>
 
-<p><code>记住，此时连 git add 都不要使用，不然的话在输入 git diff 的时候就看不出什么内容出来。</code> 原因是因为 git diff 比较的是文件在工作区和版本库最新版本的区别。</p>
+<p><code class="highlighter-rouge">记住，此时连 git add 都不要使用，不然的话在输入 git diff 的时候就看不出什么内容出来。</code> 原因是因为 git diff 比较的是文件在工作区和版本库最新版本的区别。</p>
 
-<p>此时在终端输入 <code>git diff test.txt</code> 就可以看到如下的效果了：</p>
+<p>此时在终端输入 <code class="highlighter-rouge">git diff test.txt</code> 就可以看到如下的效果了：</p>
 
-<pre><code>→  ~/test/git-test ✗✗✗ git diff test.txt
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test/git-test ✗✗✗ git diff test.txt
 diff --git a/test.txt b/test.txt
 index 46d49bf..9247db6 100644
 --- a/test.txt
@@ -59,6 +61,7 @@ index 46d49bf..9247db6 100644
 +Git is a distributed version control system.
  Git is free software.
 </code></pre>
+</div>
 
 <p>如果在 linux 中使用过 diff 命令的朋友应该就可以看出来，这就是 Unix 的 diff 格式。</p>
 

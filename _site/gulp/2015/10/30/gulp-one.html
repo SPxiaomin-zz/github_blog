@@ -48,7 +48,7 @@
 
     <p>E.g., consider somefile.js in client/js/somedir:</p>
 
-    <pre><code>  gulp.src('client/js/**/*.js')  //Matches 'client/js/somedir/somefile.js' and resolves 'base' to 'client/js/'
+    <div class="highlighter-rouge"><pre class="highlight"><code>  gulp.src('client/js/**/*.js')  //Matches 'client/js/somedir/somefile.js' and resolves 'base' to 'client/js/'
       .pipe(minify())
       .pipe(gulp.dest('build')); //Writes 'build/somedir/somefile.js'
         
@@ -56,6 +56,7 @@
       .pipe(minify())
       .pipe(gulp.dest('build')); //Writes 'build/js/somedir/somefile.js'
 </code></pre>
+    </div>
 
     <p>这个 base 值，在使用 gulp.dest 的时候会使用到，下面有介绍。</p>
   </li>
@@ -80,20 +81,20 @@
     <p>参数简介:</p>
 
     <p>name:<br />
-  The name of the task. <code>Tasks that you want to run from the command line should not have spaces in them.</code></p>
+  The name of the task. <code class="highlighter-rouge">Tasks that you want to run from the command line should not have spaces in them.</code></p>
 
     <p>deps:<br />
   Type: Array<br />
   An array of tasks to be executed and completed before your task will run.</p>
 
-    <p><code>Note: Are your tasks running before the dependencies are complete? Make sure your dependency tasks are correctly using the async run hints: take in a callback or return a promise or event stream.</code></p>
+    <p><code class="highlighter-rouge">Note: Are your tasks running before the dependencies are complete? Make sure your dependency tasks are correctly using the async run hints: take in a callback or return a promise or event stream.</code></p>
 
     <p>you can also omit the function if you only want to run the dependency tasks.</p>
 
-    <p><code>The tasks will run in parallel(all at once), so don't assume that the tasks will start/finish in order.</code></p>
+    <p><code class="highlighter-rouge">The tasks will run in parallel(all at once), so don't assume that the tasks will start/finish in order.</code></p>
 
     <p>fn:<br />
-  The function that performs the task’s operations. Generally this takes the form of <code>gulp.src().pipe(someplugin())</code> .</p>
+  The function that performs the task’s operations. Generally this takes the form of <code class="highlighter-rouge">gulp.src().pipe(someplugin())</code> .</p>
   </li>
   <li>
     <p>gulp.watch(glob[, opts], tasks) or gulp.watch(glob [, opts, cb])</p>
@@ -118,11 +119,12 @@
 
         <p>看看例子:</p>
 
-        <pre><code>  var watcher = gulp.watch('js/**/*.js', ['uglify','reload']);
+        <div class="highlighter-rouge"><pre class="highlight"><code>  var watcher = gulp.watch('js/**/*.js', ['uglify','reload']);
   watcher.on('change', function(event) {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
   });
 </code></pre>
+        </div>
       </li>
       <li>
         <p>gulp.watch(glob[, opts, cb])</p>
@@ -139,7 +141,7 @@
   Type: Function<br />
   Callback to called on each change.</p>
 
-        <p>The callback will be passed an object, <code>event</code>, that describes the change:</p>
+        <p>The callback will be passed an object, <code class="highlighter-rouge">event</code>, that describes the change:</p>
 
         <p>event.type<br />
   Type: String<br />
@@ -151,10 +153,11 @@
 
         <p>看看例子：</p>
 
-        <pre><code>  gulp.watch('js/**/*.js', function(event) {
+        <div class="highlighter-rouge"><pre class="highlight"><code>  gulp.watch('js/**/*.js', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
   });
 </code></pre>
+        </div>
       </li>
     </ul>
   </li>

@@ -25,7 +25,7 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>Ubuntu 中的 ls 命令</h2>
-            <p>我使用的是 <code>Ubuntu15.04</code>，在日常生活当中，<code>ls</code> 这个命令经常会用到。总结一下经常会用到的参数，并且会在能力水平不断的提升的同时不断的更新内容。</p>
+            <p>我使用的是 <code class="highlighter-rouge">Ubuntu15.04</code>，在日常生活当中，<code class="highlighter-rouge">ls</code> 这个命令经常会用到。总结一下经常会用到的参数，并且会在能力水平不断的提升的同时不断的更新内容。</p>
 
 <p>以下的内容摘录与 <a href="http://www.runoob.com/linux/linux-comm-ls.html">http://www.runoob.com/linux/linux-comm-ls.html</a>，并结合自己的理解。</p>
 
@@ -35,18 +35,19 @@
 
 <p>语法：</p>
 
-<pre><code>ls [-aAtlFR] [name]
+<div class="highlighter-rouge"><pre class="highlight"><code>ls [-aAtlFR] [name]
 </code></pre>
+</div>
 
 <p>参数讲解：</p>
 
 <ul>
-  <li>a: 用于显示所有的文件及目录，如果不加这个参数的话，所有以 <code>.</code> 开头的文件名和目录都将不会被列出。</li>
-  <li>A: 和上面的 <code>a</code> 参数类似，唯一的不同点就是这个命令不会列出 <code>.</code>(当前目录) 及 <code>..</code>(父目录)。</li>
+  <li>a: 用于显示所有的文件及目录，如果不加这个参数的话，所有以 <code class="highlighter-rouge">.</code> 开头的文件名和目录都将不会被列出。</li>
+  <li>A: 和上面的 <code class="highlighter-rouge">a</code> 参数类似，唯一的不同点就是这个命令不会列出 <code class="highlighter-rouge">.</code>(当前目录) 及 <code class="highlighter-rouge">..</code>(父目录)。</li>
   <li>t: 用于将文件进行排序，修改文件的时间越接近于当前时间的，越排在前面。</li>
   <li>l: 除了列出文件名称外，也会将文件权限，文件大小等详细信息列出来。</li>
-  <li>h: 和 <code>l</code> 参数一起使用，将文件大小的表现形式转换成更加可读的形式。</li>
-  <li>F: 在列出的名称后面加上符号便于区分，可执行文件后加 <code>*</code>，目录名后加 <code>/</code>。</li>
+  <li>h: 和 <code class="highlighter-rouge">l</code> 参数一起使用，将文件大小的表现形式转换成更加可读的形式。</li>
+  <li>F: 在列出的名称后面加上符号便于区分，可执行文件后加 <code class="highlighter-rouge">*</code>，目录名后加 <code class="highlighter-rouge">/</code>。</li>
   <li>R: 如果列出的目录不是空目录的话，这个目录下的文件也会被一同列出。</li>
 </ul>
 

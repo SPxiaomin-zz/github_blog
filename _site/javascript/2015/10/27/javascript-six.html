@@ -29,11 +29,11 @@
 
 <p>作用：</p>
 
-<p>Math.random() 这个方法返回 <code>[0,1)</code> 这个范围之间的一个随机数。</p>
+<p>Math.random() 这个方法返回 <code class="highlighter-rouge">[0,1)</code> 这个范围之间的一个随机数。</p>
 
 <p>使用示例：</p>
 
-<pre><code>function selectFrom(lowerValue, upperValue) {
+<div class="highlighter-rouge"><pre class="highlight"><code>function selectFrom(lowerValue, upperValue) {
     var choices = upperValue - lowerValue + 1;
     return Math.floor(Math.random() * choices + lowerValue);
 }
@@ -41,6 +41,7 @@
 var num = selectFrom(2, 10);
 console.log(num); //输出的是介于2和10之间的 (包括2和10) 的一个数值
 </code></pre>
+</div>
 
 <p>上面的这个函数可以从你给出的最大值和最小值之间任意的选取一个值！</p>
 

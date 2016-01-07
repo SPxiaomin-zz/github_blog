@@ -33,7 +33,7 @@
 
 <p>正确示例代码：</p>
 
-<pre><code>&lt;style&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;style&gt;
     .test p:nth-child(2) {
         background-color: red;
     }
@@ -45,6 +45,7 @@
     &lt;p&gt;第二个段落。&lt;/p&gt;
 &lt;/div&gt;
 </code></pre>
+</div>
 
 <p>正确显示效果：</p>
 
@@ -64,7 +65,7 @@
 
 <p>错误示例代码：</p>
 
-<pre><code>&lt;style&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;style&gt;
     .test p:nth-child(1) {
         background-color: red;
     }
@@ -76,6 +77,7 @@
     &lt;p&gt;第二个段落。&lt;/p&gt;
 &lt;/div&gt;
 </code></pre>
+</div>
 
 <p>错误显示效果：</p>
 
@@ -104,13 +106,13 @@
   <li>
     <p>同类型:</p>
 
-    <p>就是说必须和 <code>:th-child()</code> 前面指定的元素是同一个类型的。</p>
+    <p>就是说必须和 <code class="highlighter-rouge">:th-child()</code> 前面指定的元素是同一个类型的。</p>
   </li>
 </ul>
 
-<p>还有一个非常坑的地方，就是使用 <code>class</code> 的时候，看看例子吧。</p>
+<p>还有一个非常坑的地方，就是使用 <code class="highlighter-rouge">class</code> 的时候，看看例子吧。</p>
 
-<pre><code>&lt;div class="box"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="box"&gt;
     &lt;div class="one"&gt;A&lt;/div&gt;
     &lt;div class="one"&gt;B&lt;/div&gt;
     &lt;div class="two"&gt;C&lt;/div&gt;
@@ -123,12 +125,13 @@
     background-color:#FC3;
 }
 </code></pre>
+</div>
 
-<p>上面的代码想选择 <code>class=two</code> 的第二个元素，逻辑上貌似没什么错误，但是仔细的想想我上面提到的顺序，就可以发现不对了。</p>
+<p>上面的代码想选择 <code class="highlighter-rouge">class=two</code> 的第二个元素，逻辑上貌似没什么错误，但是仔细的想想我上面提到的顺序，就可以发现不对了。</p>
 
 <p>改正后的代码如下：</p>
 
-<pre><code>&lt;div class="box"&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="box"&gt;
     &lt;div class="one two"&gt;A&lt;/div&gt;
     &lt;div class="one two"&gt;B&lt;/div&gt;
     &lt;div class="two"&gt;C&lt;/div&gt;
@@ -141,6 +144,7 @@
     background-color:#FC3;
 }
 </code></pre>
+</div>
 
 <p>代码效果如下</p>
 

@@ -56,15 +56,16 @@
 
     <p>看看例子吧：</p>
 
-    <pre><code>  var colors = ["red", "green", "blue", "yellow", "purple"];
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var colors = ["red", "green", "blue", "yellow", "purple"];
   var colors2 = colors.slice(1);
   var colors3 = colors.slice(1, 4);
     
   console.log(colors2);  //["green", "blue", "yellow", "purple"]
   console.log(colors3);  //["green", "blue", "yellow"]
 </code></pre>
+    </div>
 
-    <p>当传入的参数是负数的情况下可以通过 <code>用数组的长度加上该数</code> 来转化为正数。接下来就和上面的处理方式是一样的了。但是如果结束位置小于起始位置的话，则返回空数组。</p>
+    <p>当传入的参数是负数的情况下可以通过 <code class="highlighter-rouge">用数组的长度加上该数</code> 来转化为正数。接下来就和上面的处理方式是一样的了。但是如果结束位置小于起始位置的话，则返回空数组。</p>
   </li>
   <li>
     <p>String slice()</p>
@@ -79,20 +80,21 @@
 
     <p>第一个参数指定子字符串的开始位置。</p>
 
-    <p>第二个参数指定的是子字符串最后一个字符 <code>后面</code> 的位置。</p>
+    <p>第二个参数指定的是子字符串最后一个字符 <code class="highlighter-rouge">后面</code> 的位置。</p>
 
     <p>这个方法不会修改字符串本身的值，对原始的字符串没有任何的影响。</p>
 
     <p>看看例子吧：</p>
 
-    <pre><code>  var stringValue = "hello world";
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var stringValue = "hello world";
     
   console.log(stringValue.slice(3));        //"lo world"
     
   console.log(stringValue.slice(3, 7));     //"lo w"
 </code></pre>
+    </div>
 
-    <p>如果传入的参数是负值的话，可以通过用 <code>数组的长度加上该数</code> 来转换为正数。接下来的处理方式就和上面的是一样的了。</p>
+    <p>如果传入的参数是负值的话，可以通过用 <code class="highlighter-rouge">数组的长度加上该数</code> 来转换为正数。接下来的处理方式就和上面的是一样的了。</p>
   </li>
 </ul>
 

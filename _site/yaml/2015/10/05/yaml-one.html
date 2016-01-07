@@ -25,7 +25,7 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>YAML 入门学习</h2>
-            <p>由于目前正在使用 <code>Jekyll</code> 搭建博客，如果不学 <code>YAML</code> 的话，那连个配置文件都可能出错，果断学习了。看到了两个写的还不错的文章 -&gt; <a href="http://blog.csdn.net/ruby_cn/article/details/177567">http://blog.csdn.net/ruby_cn/article/details/177567</a> <a href="http://einverne.github.io/2015/08/08/yaml.html">http://einverne.github.io/2015/08/08/yaml.html</a>，其实 <a href="https://en.wikipedia.org/wiki/YAML">Wikipedia</a> 上写的内容也非常的不错。以下的内容摘录于上述的来源并结合了自己的理解。</p>
+            <p>由于目前正在使用 <code class="highlighter-rouge">Jekyll</code> 搭建博客，如果不学 <code class="highlighter-rouge">YAML</code> 的话，那连个配置文件都可能出错，果断学习了。看到了两个写的还不错的文章 -&gt; <a href="http://blog.csdn.net/ruby_cn/article/details/177567">http://blog.csdn.net/ruby_cn/article/details/177567</a> <a href="http://einverne.github.io/2015/08/08/yaml.html">http://einverne.github.io/2015/08/08/yaml.html</a>，其实 <a href="https://en.wikipedia.org/wiki/YAML">Wikipedia</a> 上写的内容也非常的不错。以下的内容摘录于上述的来源并结合了自己的理解。</p>
 
 <ul>
   <li>
@@ -33,24 +33,26 @@
 
     <p>还是先从例子开始吧，看看下面的代码：</p>
 
-    <pre><code>  - Memoirs Found in a Bathtub
+    <div class="highlighter-rouge"><pre class="highlight"><code>  - Memoirs Found in a Bathtub
   - Snow Crash
   - Ghost World
 </code></pre>
+    </div>
 
-    <p>如果学过 <code>markdown</code> 的朋友会不会说这就是其中的列表呀！在 yaml 中，这些有顺序的列表叫做 <code>序列(sequence)</code>。序列包括了一组有顺序的数据，当你在程序中载入这个序列，他们的顺序是保持不变的。</p>
+    <p>如果学过 <code class="highlighter-rouge">markdown</code> 的朋友会不会说这就是其中的列表呀！在 yaml 中，这些有顺序的列表叫做 <code class="highlighter-rouge">序列(sequence)</code>。序列包括了一组有顺序的数据，当你在程序中载入这个序列，他们的顺序是保持不变的。</p>
 
     <p>序列中可以包括各种数据类型：</p>
 
-    <pre><code>  ---
+    <div class="highlighter-rouge"><pre class="highlight"><code>  ---
   - 1           # Numbers
   - Snow Crash  # Strings
   - 2003-07-24  # Dates
 </code></pre>
+    </div>
 
-    <p>上面的列表以三个 <code>-</code> 开头，这个东西有个专有名称 -&gt; <code>文档分隔符(document separator)</code>，它表示了一段 yaml 文档的开始。这个东东也可以用来划分多个文档，看看例子吧：</p>
+    <p>上面的列表以三个 <code class="highlighter-rouge">-</code> 开头，这个东西有个专有名称 -&gt; <code class="highlighter-rouge">文档分隔符(document separator)</code>，它表示了一段 yaml 文档的开始。这个东东也可以用来划分多个文档，看看例子吧：</p>
 
-    <pre><code>  ---
+    <div class="highlighter-rouge"><pre class="highlight"><code>  ---
   - Harry Potter and the Prisoner of Azkaban
   - Harry Potter and the Goblet of Fire
   - Harry Potter and the Order of the Phoenix
@@ -59,29 +61,32 @@
   - Snow Crash
   - Ghost World
 </code></pre>
+    </div>
 
-    <p>如果使用 <code>JSON</code> 的朋友的话，还有另外的一种写法，一看到就会觉得十分的熟悉：</p>
+    <p>如果使用 <code class="highlighter-rouge">JSON</code> 的朋友的话，还有另外的一种写法，一看到就会觉得十分的熟悉：</p>
 
-    <pre><code>  [Mark McGwire, Sammy Sosa, Ken Griffey]
+    <div class="highlighter-rouge"><pre class="highlight"><code>  [Mark McGwire, Sammy Sosa, Ken Griffey]
 </code></pre>
+    </div>
 
     <p>上面的这种写法叫做序列的行内表示。</p>
 
     <p>还有更复杂的，来个二维数组表示法吧：</p>
 
-    <pre><code>  - [name        , hr, avg  ]
+    <div class="highlighter-rouge"><pre class="highlight"><code>  - [name        , hr, avg  ]
   - [Mark McGwire, 65, 0.278]
   - [Sammy Sosa  , 63, 0.288]
 </code></pre>
+    </div>
 
     <p>摘录两句来自 Wiki 的原文：</p>
 
     <ul>
-      <li>Conventional block format uses a <code>hyphen+space</code> to begin a new item in list.</li>
+      <li>Conventional block format uses a <code class="highlighter-rouge">hyphen+space</code> to begin a new item in list.</li>
       <li>Optional inline format is delimited by comma+space and enclosed in brackets (similar to JSON).</li>
     </ul>
 
-    <p>你一定会十分的疑惑为什么要有个 <code>space</code> 呢？ Wiki 也对此做出了回答：</p>
+    <p>你一定会十分的疑惑为什么要有个 <code class="highlighter-rouge">space</code> 呢？ Wiki 也对此做出了回答：</p>
 
     <ul>
       <li>YAML requires that colons and commas used as list separators be followed by a space so that scalar values containing embedded punctuation (such as 5,280 or http://www.wikipedia.org) can generally be represented without needing to be enclosed in quotes.</li>
@@ -92,12 +97,13 @@
 
     <p>照旧，先看个例子：</p>
 
-    <pre><code>  Stanislaw Lem: Memoirs Found in a Bathtub
+    <div class="highlighter-rouge"><pre class="highlight"><code>  Stanislaw Lem: Memoirs Found in a Bathtub
   Neal Stephenson: Snowcrash
   Daniel Clowes: Ghost World
 </code></pre>
+    </div>
 
-    <p>在 yaml 中，这样的字典结构称为 <code>map</code>，map 通常用来存放成对的数据，冒号左面的称为 key，后面的叫做 value。</p>
+    <p>在 yaml 中，这样的字典结构称为 <code class="highlighter-rouge">map</code>，map 通常用来存放成对的数据，冒号左面的称为 key，后面的叫做 value。</p>
 
     <p>字典也有对应的行内形式：</p>
 
@@ -109,7 +115,7 @@
 
     <p>Keys are separated from values by a colon+space. Inline Blocks, common in YAML data streams, use comma+space to separate the key: value pairs between braces.</p>
 
-    <p>这里加 <code>space</code> 的原因和上面序列是一样的。</p>
+    <p>这里加 <code class="highlighter-rouge">space</code> 的原因和上面序列是一样的。</p>
   </li>
 </ul>
 
@@ -117,7 +123,7 @@
 
 <p>hash 内包含 list:</p>
 
-<pre><code>american:
+<div class="highlighter-rouge"><pre class="highlight"><code>american:
   - Boston Red Sox
   - Detroit Tigers
   - New York Yankees
@@ -126,28 +132,30 @@ national:
   - Chicago Cubs
   - Atlanta Braves
 </code></pre>
+</div>
 
 <p>给学过 json 的朋友看个对应的例子，这样的话就比较好理解了：</p>
 
-<pre><code>{
-  "american": [
-    "Boston Red Sox", 
-    "Detroit Tigers", 
-    "New York Yankees"
-  ], 
-  "national": [
-    "New York Mets", 
-    "Chicago Cubs", 
-    "Atlanta Braves"
-  ]
-}
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"american"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Boston Red Sox"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Detroit Tigers"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"New York Yankees"</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+  </span><span class="nt">"national"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"New York Mets"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Chicago Cubs"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Atlanta Braves"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 <p>看完之后是不是和我当时的心情一样，原来如此。</p>
 
 <p>list 内包含 map:</p>
 
-<pre><code>- # one hr
+<div class="highlighter-rouge"><pre class="highlight"><code>- # one hr
   name: Mark McGwire
   hr:   65
   avg:  0.278
@@ -156,10 +164,11 @@ national:
   hr:   63
   avg:  0.288
 </code></pre>
+</div>
 
 <p>相应的 json 形式：</p>
 
-<pre><code>[
+<div class="highlighter-rouge"><pre class="highlight"><code>[
   {
     "hr": 65, 
     "avg": 0.27800000000000002, 
@@ -172,8 +181,9 @@ national:
   }
 ]
 </code></pre>
+</div>
 
-<p>上面的这种形式被用在了 <code>Front Matter defaults</code> 设置中。</p>
+<p>上面的这种形式被用在了 <code class="highlighter-rouge">Front Matter defaults</code> 设置中。</p>
 
 <p>对于上面的 list 和 map 简单的来说和 json 中的数组和对象表示是一一对应的，可以进行类比学习。</p>
 
@@ -185,7 +195,7 @@ national:
 
     <p>看个例子：</p>
 
-    <pre><code>  ---
+    <div class="highlighter-rouge"><pre class="highlight"><code>  ---
   Concerning Car Washes: &gt;
     
     We are sorry to have misplaced this letter.
@@ -194,25 +204,27 @@ national:
     
     Sorry.
 </code></pre>
+    </div>
 
-    <p>注意上面的那个 <code>&gt;</code>，它表示一个 <code>folded block</code> 的开始。所谓的 folded block`，就是一行一行紧挨着的句子将组成一个段落，这个段落就像我们读课文那样可以阅读。</p>
+    <p>注意上面的那个 <code class="highlighter-rouge">&gt;</code>，它表示一个 <code class="highlighter-rouge">folded block</code> 的开始。所谓的 folded block`，就是一行一行紧挨着的句子将组成一个段落，这个段落就像我们读课文那样可以阅读。</p>
 
     <p>简单点说的话就想下面的样子。</p>
 
-    <pre><code>  ---
+    <div class="highlighter-rouge"><pre class="highlight"><code>  ---
   Concerning Car Washes: &gt;
     
     We are sorry to have misplaced this letter.We were told by a reliable source that youwere the owner of "Hank Bros.: the Car Wash!".
     
     Sorry.
 </code></pre>
+    </div>
   </li>
   <li>
     <p>yaml 中的 literal block</p>
 
     <p>看个例子：</p>
 
-    <pre><code>  Concerning "Jim O'Connor": |
+    <div class="highlighter-rouge"><pre class="highlight"><code>  Concerning "Jim O'Connor": |
 
     You are receiving Jim O'Connor's mail for several reasons:
     - The nameplate on your mailbox still says his name.
@@ -220,8 +232,9 @@ national:
     - He is living in your ceiling.
     - He held a raygun to the postmans head.
 </code></pre>
+    </div>
 
-    <p>竖线(也称为管道pipe)取代了上面例子中的 <code>&gt;</code>，表示了一个 literal block 的开始。literal block 表示每个句子自成一节，简单点说就是原来是什么样子就是什么样子，每一行会在行尾加上一个换行符，而上面的 folded block 的话会对句子进行合并。</p>
+    <p>竖线(也称为管道pipe)取代了上面例子中的 <code class="highlighter-rouge">&gt;</code>，表示了一个 literal block 的开始。literal block 表示每个句子自成一节，简单点说就是原来是什么样子就是什么样子，每一行会在行尾加上一个换行符，而上面的 folded block 的话会对句子进行合并。</p>
   </li>
 </ul>
 
@@ -229,7 +242,7 @@ national:
 
 <p>Block literals</p>
 
-<p>Strings do not require quotation. There are two ways to write multi-line strings, one preserving newlines (using the <code>|</code> character) and one that folds the newlines (using the <code>&gt;</code> character), both followed by a newline character.</p>
+<p>Strings do not require quotation. There are two ways to write multi-line strings, one preserving newlines (using the <code class="highlighter-rouge">|</code> character) and one that folds the newlines (using the <code class="highlighter-rouge">&gt;</code> character), both followed by a newline character.</p>
 
 <p>摘录了一个几个来自 wiki 的注意事项：</p>
 

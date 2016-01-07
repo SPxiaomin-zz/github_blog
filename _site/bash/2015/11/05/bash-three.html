@@ -27,7 +27,7 @@
             <h2>script 执行执行方式的区别(source, sh script, ./script)</h2>
             <p>以下的内容摘录于 鸟哥的linux私房菜 并结合了自己的理解。</p>
 
-<p><code>不同的 script 执行方式会造成不一样的结果，尤其对 bash 的执行环境影响很大。</code></p>
+<p><code class="highlighter-rouge">不同的 script 执行方式会造成不一样的结果，尤其对 bash 的执行环境影响很大。</code></p>
 
 <ul>
   <li>
@@ -40,14 +40,14 @@
       <li>使用 bash/sh 执行</li>
     </ol>
 
-    <p>使用这些方式执行脚本的时候，其实 script 是在子进程的 bash 内执行的。<code>当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。</code></p>
+    <p>使用这些方式执行脚本的时候，其实 script 是在子进程的 bash 内执行的。<code class="highlighter-rouge">当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。</code></p>
   </li>
   <li>
     <p>利用 source 来执行脚本</p>
 
-    <p>这种方式和使用 <code>.</code> 执行是一样的，都是在父进程中执行。</p>
+    <p>这种方式和使用 <code class="highlighter-rouge">.</code> 执行是一样的，都是在父进程中执行。</p>
 
-    <p><code>如果在父进程中执行，各项操作都会在原本的 bash 内生效！</code> 这也是为什么你不注销系统而要让某些写入 ~/.bashrc 的设置生效时，需要使用　<code>source ~/.bashrc</code> ，而不能使用 <code>bash ~/.bashrc</code> 。</p>
+    <p><code class="highlighter-rouge">如果在父进程中执行，各项操作都会在原本的 bash 内生效！</code> 这也是为什么你不注销系统而要让某些写入 ~/.bashrc 的设置生效时，需要使用　<code class="highlighter-rouge">source ~/.bashrc</code> ，而不能使用 <code class="highlighter-rouge">bash ~/.bashrc</code> 。</p>
   </li>
 </ul>
 

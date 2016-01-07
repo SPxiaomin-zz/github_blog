@@ -25,7 +25,7 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>多人协作 技巧</h2>
-            <p>到目前为止，我还没有进行过多人的协作，但是有时候我会 <code>git clone</code> 别人的代码库，这是就需要用到多人协作中的一部分技巧，好学的我果断都学习了。</p>
+            <p>到目前为止，我还没有进行过多人的协作，但是有时候我会 <code class="highlighter-rouge">git clone</code> 别人的代码库，这是就需要用到多人协作中的一部分技巧，好学的我果断都学习了。</p>
 
 <p>以下的内容摘录于 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000</a> 并结合了自己的理解。</p>
 
@@ -35,7 +35,7 @@
 
     <p>当我们从远程仓库克隆的时候，实际上 git 自动把本地的 master 分支和远程的 master 分支对应起来了，并且，远程仓库默认的名称是 origin。</p>
 
-    <pre><code>  git remote   产看远程仓库的名称
+    <div class="highlighter-rouge"><pre class="highlight"><code>  git remote   产看远程仓库的名称
     
   git remote -v 查看更加详细的信息。
     
@@ -43,14 +43,16 @@
   origin    git@github.com:kolodny/exercises.git (fetch)
   origin      git@github.com:kolodny/exercises.git (push)
 </code></pre>
+    </div>
   </li>
   <li>
     <p>推送分支</p>
 
     <p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送的时候，要指定本地分支，这样，git 就会把该分支推送到远程仓库对应的远程分支上。</p>
 
-    <pre><code>  git push orgin [branch]
+    <div class="highlighter-rouge"><pre class="highlight"><code>  git push orgin [branch]
 </code></pre>
+    </div>
   </li>
   <li>
     <p>抓取分支</p>
@@ -59,15 +61,17 @@
 
     <p>如果我们想要在其它的分支上面进行操作的话，就必须创建远程 origin 的 branch 到本地:</p>
 
-    <pre><code>  git checkout -b [branch] origin/[branch]
+    <div class="highlighter-rouge"><pre class="highlight"><code>  git checkout -b [branch] origin/[branch]
 </code></pre>
+    </div>
 
     <p>当你输完了这个命令的之后，并不需要 git pull 了，远程对应分支上面的内容已经到本地了：</p>
 
-    <pre><code>  →  ~/Learn/exercises ✗✗✗ git co -b solutions origin/solutions
+    <div class="highlighter-rouge"><pre class="highlight"><code>  →  ~/Learn/exercises ✗✗✗ git co -b solutions origin/solutions
   Branch solutions set up to track remote branch solutions from origin.
   Switched to a new branch 'solutions'
 </code></pre>
+    </div>
 
     <p>这是我第一次使用这个命令，第一次感受到这么酷炫的感觉，我竟然傻逼一样的 git pull 了一下…</p>
 
@@ -75,8 +79,9 @@
 
     <p>如果 git pull 提示了 no tracking information ，则说明本地分支和远程分支的链接关系没有创建，使用如下的命令来搞定吧：</p>
 
-    <pre><code>  git branch --set-upstream [branch] origin/[branch]
+    <div class="highlighter-rouge"><pre class="highlight"><code>  git branch --set-upstream [branch] origin/[branch]
 </code></pre>
+    </div>
   </li>
 </ul>
 

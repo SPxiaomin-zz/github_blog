@@ -27,16 +27,18 @@
             <h2>Listen error 的解决方法</h2>
             <p>随着文件数量的增加，在终端中输入 jekyll serve 启动服务器的时候，突然发现了一个错误：</p>
 
-<pre><code>FATAL: Listen error: unable to monitor directories for changes.
+<div class="highlighter-rouge"><pre class="highlight"><code>FATAL: Listen error: unable to monitor directories for changes.
 Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this.
 </code></pre>
+</div>
 
 <p>这个错误提示信息讲得还挺详细的，告诉了我们解决方法的网址，果断打开，看了之后，我心里默默的说了一句，原来如此！</p>
 
-<p>我使用的是 <code>Ubuntu15.04</code>， 解决方案是在终端输入如下的命令：</p>
+<p>我使用的是 <code class="highlighter-rouge">Ubuntu15.04</code>， 解决方案是在终端输入如下的命令：</p>
 
-<pre><code>echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
+<div class="highlighter-rouge"><pre class="highlight"><code>echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
 </code></pre>
+</div>
 
 <p>然后问题就解决了，重新输入 jekyll serve 之后就可以重启服务器了。</p>
 

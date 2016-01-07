@@ -33,15 +33,16 @@
 
 <p>先简单的讲解一下语法:</p>
 
-<pre><code>cut -d '分隔字符' -f fields &lt;==用于对有特定分隔符分隔的数据进行处理，比如 a:b:c
+<div class="highlighter-rouge"><pre class="highlight"><code>cut -d '分隔字符' -f fields &lt;==用于对有特定分隔符分隔的数据进行处理，比如 a:b:c
 cut -c 字符范围 &lt;==用于排列整齐的信息，取出特定范围内的数据，比如:  declare -i a=1, declare -i b=2
 </code></pre>
+</div>
 
-<p><code>上述的内容中有一点需要特别注意的事情，就是上述的 分隔字符 只能是一个，不能有多个。所以在处理由多个同样的分隔符分隔的数据时会比较的不适合。</code></p>
+<p><code class="highlighter-rouge">上述的内容中有一点需要特别注意的事情，就是上述的 分隔字符 只能是一个，不能有多个。所以在处理由多个同样的分隔符分隔的数据时会比较的不适合。</code></p>
 
 <p>看看例子吧：</p>
 
-<pre><code>→  ~/Learn/github_blog/_posts ✗✗✗ echo $PATH
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/Learn/github_blog/_posts ✗✗✗ echo $PATH
 /home/gujunmin/.nvm/versions/node/v4.1.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 →  ~/Learn/github_blog/_posts ✗✗✗ echo $PATH | cut -d ':' -f 1
 /home/gujunmin/.nvm/versions/node/v4.1.1/bin
@@ -69,6 +70,7 @@ GDM_LANG="en_US"
 GNOME_DESKTOP_SESSION_ID="this-is-deprecated"
 GNOME_KEYRING_CONTROL=""
 </code></pre>
+</div>
 
 <p>欢迎指教=^_^=</p>
 

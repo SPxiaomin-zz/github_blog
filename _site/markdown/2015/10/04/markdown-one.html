@@ -25,7 +25,7 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>markdown 学习笔记</h2>
-            <p>用了也有两个月时间的 <code>markdown</code> 了，但是还是经常有些重要的细节东西会忘记，特意写了这篇文章来记下需要用到的比较重要的东西，那些个人认为不重要的东西暂时了解吧，等到需要用到的话再去查。</p>
+            <p>用了也有两个月时间的 <code class="highlighter-rouge">markdown</code> 了，但是还是经常有些重要的细节东西会忘记，特意写了这篇文章来记下需要用到的比较重要的东西，那些个人认为不重要的东西暂时了解吧，等到需要用到的话再去查。</p>
 
 <p>以下的内容摘录于 <a href="http://wowubuntu.com/markdown/#header">Wow!Ubuntu</a>。</p>
 
@@ -40,50 +40,55 @@
 
 <h3 id="specialchar">特殊字符自动转换</h3>
 
-<p>在 html 文件中，有些字符需要特殊的处理，比如 <code>&lt;</code> 用于起始标签， <code>&amp;</code> 用于标记 html 实体，如果你想要使用这些字符的原型，你必须使用实体的形式，像 <code>&amp;lt;</code> <code>&amp;amp</code>。</p>
+<p>在 html 文件中，有些字符需要特殊的处理，比如 <code class="highlighter-rouge">&lt;</code> 用于起始标签， <code class="highlighter-rouge">&amp;</code> 用于标记 html 实体，如果你想要使用这些字符的原型，你必须使用实体的形式，像 <code class="highlighter-rouge">&amp;lt;</code> <code class="highlighter-rouge">&amp;amp</code>。</p>
 
-<p>是不是感觉很麻烦，但是在 markdown 中就方便很多了。你可以很自然地书写字符，需要转换的由它来处理就好了。如果你使用的是 html 字符实体的一部分，它会保留原状，否则它会转换成 <code>&amp;amp</code>。</p>
+<p>是不是感觉很麻烦，但是在 markdown 中就方便很多了。你可以很自然地书写字符，需要转换的由它来处理就好了。如果你使用的是 html 字符实体的一部分，它会保留原状，否则它会转换成 <code class="highlighter-rouge">&amp;amp</code>。</p>
 
 <p>还是看例子比较容易理解一些：</p>
 
-<p>在文档中插入一个版权符号 <code>&amp;copy</code>，markdown 会保留它不懂，而如果你写 <code>AT&amp;T</code>，markdown 会把它转为 <code>AT&amp;amp;T</code>。</p>
+<p>在文档中插入一个版权符号 <code class="highlighter-rouge">&amp;copy</code>，markdown 会保留它不懂，而如果你写 <code class="highlighter-rouge">AT&amp;T</code>，markdown 会把它转为 <code class="highlighter-rouge">AT&amp;amp;T</code>。</p>
 
-<p>还有一点十分的帅气，就是在 code 范围内，类似于　<code>&lt;</code> 和　<code>&amp;</code> 的符号会被自动的转换成 html 实体。这个特性可以让你很方便的书写 html 代码，如果你在 html 中输入这些符号的时候，都要手动输入 html 实体，烦哉烦哉。</p>
+<p>还有一点十分的帅气，就是在 code 范围内，类似于　<code class="highlighter-rouge">&lt;</code> 和　<code class="highlighter-rouge">&amp;</code> 的符号会被自动的转换成 html 实体。这个特性可以让你很方便的书写 html 代码，如果你在 html 中输入这些符号的时候，都要手动输入 html 实体，烦哉烦哉。</p>
 
 <h3 id="title">标题</h3>
 
-<p>在行首插入1到6个 <code>#</code>，对应标题1到6阶：</p>
+<p>在行首插入1到6个 <code class="highlighter-rouge">#</code>，对应标题1到6阶：</p>
 
-<pre><code># 这是h1
+<div class="highlighter-rouge"><pre class="highlight"><code># 这是h1
 
 ## 这是h2
 
 ### 这是h3
 </code></pre>
+</div>
 
 <h3 id="underline">下划线</h3>
 
-<p>使用 <code>3个及3个以上</code> 的底线都可以建立一个下划线，行内不能有其它的任何东西。</p>
+<p>使用 <code class="highlighter-rouge">3个及3个以上</code> 的底线都可以建立一个下划线，行内不能有其它的任何东西。</p>
 
-<pre><code>___
+<div class="highlighter-rouge"><pre class="highlight"><code>___
 </code></pre>
+</div>
 
 <h3 id="code">代码</h3>
 
-<p>如果要标记一小段行内代码的话，就可以使用反引号把它包起来 <code>`</code>，还是看看例子吧：</p>
+<p>如果要标记一小段行内代码的话，就可以使用反引号把它包起来 <code class="highlighter-rouge">`</code>，还是看看例子吧：</p>
 
-<pre><code>`console.log('hello world');`
+<div class="highlighter-rouge"><pre class="highlight"><code>`console.log('hello world');`
 </code></pre>
+</div>
 
 <p>有时候会需要在代码区段内插入反引号，这时的话就可以使用多个反引号来开启和结束这段代码，例子：</p>
 
-<pre><code>``backtick(`) is here``
+<div class="highlighter-rouge"><pre class="highlight"><code>``backtick(`) is here``
 </code></pre>
+</div>
 
 <p>有的时候需要在一开始就插入反引号，这时只要在代码区段的起始和结束端都放入一个空白，起始端的后面一个，结束端的前面一个，看看例子：</p>
 
-<pre><code>`` ` ``    
+<div class="highlighter-rouge"><pre class="highlight"><code>`` ` ``    
 </code></pre>
+</div>
 
 <p>欢迎指教=^_^=</p>
 

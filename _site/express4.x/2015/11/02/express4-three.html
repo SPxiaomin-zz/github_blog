@@ -29,18 +29,19 @@
 
 <p>A router behaves like middleware itself, so you can use it as an argument to app.use().</p>
 
-<p><code>The top-level express object has a Router() function that creates a new router object.</code></p>
+<p><code class="highlighter-rouge">The top-level express object has a Router() function that creates a new router object.</code></p>
 
 <p>create a new router as follows:</p>
 
-<pre><code>var router = require('express').Router([options]);
+<div class="highlighter-rouge"><pre class="highlight"><code>var router = require('express').Router([options]);
 </code></pre>
+</div>
 
 <p>options:</p>
 
-<p>property: caseSensitive; Description: Enable case sensitive; Default: Disabled by default, treating <code>/Foo</code> and <code>/foo</code> as the same.</p>
+<p>property: caseSensitive; Description: Enable case sensitive; Default: Disabled by default, treating <code class="highlighter-rouge">/Foo</code> and <code class="highlighter-rouge">/foo</code> as the same.</p>
 
-<p>property: strict; Description: Enable strict routing; Default: Disabled by default, <code>/foo</code> and <code>/foo/</code> are treated the same by the router.</p>
+<p>property: strict; Description: Enable strict routing; Default: Disabled by default, <code class="highlighter-rouge">/foo</code> and <code class="highlighter-rouge">/foo/</code> are treated the same by the router.</p>
 
 <ul>
   <li>
@@ -50,16 +51,16 @@
 
     <p>You can provide multiple callbacks, and all are treated equally, and behave just like middleware, except that these callbacks may invoke next(‘route’) to bypass the remaining route callback(s). You can use this mechanism to perform pre-conditions on a route then pass control to subsequent routes when there is no reason to proceed with the route matched.</p>
 
-    <p><code>Express translates the path strings to regular expressions, used internally to match incoming requests. Query string are not considered when performing these matches, for example 'GET /' route match '/', as would 'GET /?name=tobi'.</code></p>
+    <p><code class="highlighter-rouge">Express translates the path strings to regular expressions, used internally to match incoming requests. Query string are not considered when performing these matches, for example 'GET /' route match '/', as would 'GET /?name=tobi'.</code></p>
 
     <p>The path strings can also use regular expressions.</p>
   </li>
   <li>
     <p>router.route(path)</p>
 
-    <p>Returns an instance of a single route which you can then use to handle HTTP verbs with optional middleware. <code>Use router.route() to avoid duplicate route naming and thus typo errors.</code></p>
+    <p>Returns an instance of a single route which you can then use to handle HTTP verbs with optional middleware. <code class="highlighter-rouge">Use router.route() to avoid duplicate route naming and thus typo errors.</code></p>
 
-    <pre><code>  var express = require('express');
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var express = require('express');
   var router = express.Router();
     
   router.route('/test')
@@ -70,6 +71,7 @@
       res.end('world');
   });
 </code></pre>
+    </div>
 
     <p>This approach re-uses the single ‘/test’ path and add handlers for various HTTP methods.</p>
   </li>

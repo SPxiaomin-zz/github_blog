@@ -31,7 +31,7 @@
 
 <p>直接上实例：</p>
 
-<pre><code>var gulp = require('gulp'),
+<div class="highlighter-rouge"><pre class="highlight"><code>var gulp = require('gulp'),
     rename = require('gulp-rename'),
     plumber = require('gulp-plumber'),
     livereload = require('gulp-livereload'),
@@ -82,6 +82,7 @@ gulp.task('default', ['styles', 'html'], function() {
     });
 });
 </code></pre>
+</div>
 
 <ul>
   <li>
@@ -96,7 +97,7 @@ gulp.task('default', ['styles', 'html'], function() {
   </li>
 </ul>
 
-<p>简单的说，就是先要通过 <code>livereload.listen()</code> 启动服务器，然后将文件内容传递给 <code>livereload()</code> 就可以实现浏览器的自动刷新。</p>
+<p>简单的说，就是先要通过 <code class="highlighter-rouge">livereload.listen()</code> 启动服务器，然后将文件内容传递给 <code class="highlighter-rouge">livereload()</code> 就可以实现浏览器的自动刷新。</p>
 
 <p>但是前提是你的 chrome 安装了 <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">livereload</a> 插件。</p>
 

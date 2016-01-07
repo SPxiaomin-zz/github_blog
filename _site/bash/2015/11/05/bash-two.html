@@ -27,29 +27,30 @@
             <h2>bash shell script 简化并丰富 cd 命令的功能</h2>
             <p>直接上代码:</p>
 
-<pre><code>#!/bin/bash
-# 作用:
-#       使用 cd ../ 用来一个一个的目录回退目录十分的麻烦，现在只需使用 c number 就可以实现回退几个目录的作用，只输入 c 的话就会回退到根目录，原来的 cd /directory 命令简化成为了 c /directory
-# 使用:
-#       1. c ==&gt; 回到根目录
-#       2. c 2 ==&gt; 回退两个目录，数字 1-9
-#       3. c /test ==&gt; 去到 /test 目录
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># 作用:</span>
+<span class="c">#       使用 cd ../ 用来一个一个的目录回退目录十分的麻烦，现在只需使用 c number 就可以实现回退几个目录的作用，只输入 c 的话就会回退到根目录，原来的 cd /directory 命令简化成为了 c /directory</span>
+<span class="c"># 使用:</span>
+<span class="c">#       1. c ==&gt; 回到根目录</span>
+<span class="c">#       2. c 2 ==&gt; 回退两个目录，数字 1-9</span>
+<span class="c">#       3. c /test ==&gt; 去到 /test 目录</span>
 
-if [ -z "$1" ]; then
-    cd ~
-elif [ -n "$(echo $1 | grep '^[1-9]$')" ]; then
-    for i in $(seq 1 $1)
-    do
-        cd ../
-    done
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">cd</span> ~
+<span class="k">elif</span> <span class="o">[</span> -n <span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$1</span> | grep <span class="s1">'^[1-9]$'</span><span class="k">)</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+    for </span>i <span class="k">in</span> <span class="k">$(</span>seq 1 <span class="nv">$1</span><span class="k">)</span>
+    <span class="k">do
+        </span><span class="nb">cd</span> ../
+    <span class="k">done
 else
-    cd $1
-fi
+    </span><span class="nb">cd</span> <span class="nv">$1</span>
+<span class="k">fi</span>
 </code></pre>
+</div>
 
 <p>在使用之前有个要特别注意的问题：</p>
 
-<p>先看看我写的博客文章 <a href="http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html">http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html</a> ，然后你就会知道 =&gt; 当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。所以需要使用 <code>alias c='. c'</code> 的设置。</p>
+<p>先看看我写的博客文章 <a href="http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html">http://spxiaomin.github.io/github_blog/bash/2015/11/05/bash-three.html</a> ，然后你就会知道 =&gt; 当子进程完成后，子进程内的各项变量或操作就会结束而不会传回父进程中。所以需要使用 <code class="highlighter-rouge">alias c='. c'</code> 的设置。</p>
 
 <p>欢迎指教=^_^=</p>
 

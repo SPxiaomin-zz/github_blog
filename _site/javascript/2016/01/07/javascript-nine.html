@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="JavaScript DOM 编程艺术（2th) 表单学习总结">
+        <meta name="keywords" content="JavaScript DOM 编程艺术（2th) 表单学习总结">
+
+        <title>JavaScript DOM 编程艺术（2th) 表单学习总结</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>JavaScript DOM 编程艺术（2th) 表单学习总结</h2>
+            <ul>
+  <li>
+    <p>检测是否支持 <code class="highlighter-rouge">某种类型</code> 的输入控件</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  function inputSupportsType(type) {
+      if ( !document.createElement ) {
+          return false;
+      }
+      var input = document.createElement('input');
+      input.setAttribute('type', type);   //good
+      if ( input.type === 'text' &amp;&amp; type !== 'text' ) { //good
+          return false;
+      }
+      return true;
+  }
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>检测 <code class="highlighter-rouge">特定的属性</code></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  function elementSupportsAttribute(elementName, attribute) {
+      if ( !document.createElement ) {
+          return false;
+      }
+      var element = document.createElement(elementName);
+      return (attribute in element);  //good
+  }
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>标签结合与样式设置</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">label</code> 与 <code class="highlighter-rouge">input</code> 使用 <code class="highlighter-rouge">div</code> 合并在一起</li>
+      <li><code class="highlighter-rouge">label</code> <code class="highlighter-rouge">input</code> 设置成 <code class="highlighter-rouge">block</code> 使得 <code class="highlighter-rouge">上下</code> 排列，设置成 <code class="highlighter-rouge">inline-block</code> 使得 <code class="highlighter-rouge">水平</code> 排列</li>
+      <li><code class="highlighter-rouge">fieldset</code> 设置 <code class="highlighter-rouge">border: 0;</code> 去除边框</li>
+    </ul>
+  </li>
+  <li>
+    <p>字段标签</p>
+
+    <ul>
+      <li>设置鼠标点击事件，使得对应 <code class="highlighter-rouge">id</code> 的控件实现 <code class="highlighter-rouge">focus</code></li>
+      <li>设置原因：有些浏览器没有实现</li>
+      <li>
+        <p>代码：</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>  function focusLabels() {
+      if ( !document.getElementsByTagName ) {
+          return false;
+      }
+      var id;
+      var labels = document.getElementsByTagName('label');
+      for ( var i=0; i&lt;labels.length; i++ ) {
+          id = labels[i].getAttribute('for');
+          if ( id ) {
+              (function(id) {
+                  labels[i].onclick = function() {
+                      var element = document.getElementById(id);
+                      if ( !element ) {
+                          return false;
+                      }
+                      element.focus(); //good
+                  };
+              })(id); //good，借助函数按值传递的特性
+          }
+      }
+  }
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>form 对象学习</p>
+
+    <ul>
+      <li>定义: 代表的是一个表单</li>
+      <li>获取: <code class="highlighter-rouge">document.forms</code></li>
+      <li>
+        <p>特性:</p>
+
+        <ul>
+          <li><code class="highlighter-rouge">document.forms[i].elements</code> 是一个 <code class="highlighter-rouge">数组</code>，具有 <code class="highlighter-rouge">length</code> 属性</li>
+          <li><code class="highlighter-rouge">document.forms[i].elements</code> 只关注属于表单元素的元素，如 <code class="highlighter-rouge">input</code> 、<code class="highlighter-rouge">textarea</code></li>
+          <li><code class="highlighter-rouge">document.forms[i].elements[i].value</code> 可以通过此方式取得与　<code class="highlighter-rouge">document.forms[i].elements[i].getAttribute('value')</code>　一样的效果</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>占位字符</p>
+
+    <ul>
+      <li>设置占位文本</li>
+      <li>设置原因：有些浏览器不支持 <code class="highlighter-rouge">placeholder</code> 属性，并且有些浏览器不能正确的识别空的表单字段，从而导致用户不能通过 <code class="highlighter-rouge">Tab</code> 按键进入空的字段</li>
+      <li>样式设置: 借助 <code class="highlighter-rouge">class</code> 属性，设置 <code class="highlighter-rouge">color: grey</code></li>
+      <li>
+        <p>代码：</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>  function resetField(whichform) {
+      var element;
+      var placeholder;
+        
+      if ( !Modernizr.input.placeholder ) {
+          for ( var i=0, length=whichform.elements.length; i&lt;length; i++ ) { //good, 在 `pre-loop` 部分取得表单元素的个数，提高性能，避免重复计算
+              element = whichform.elements[i];
+              if ( element.type !== 'submit' ) {
+                  placeholder = element.placeholder || element.getAttribute('placeholder'); //good, 不同浏览器对未知属性的实现方式不同
+                  if ( placeholer ) {
+                      (function(placeholder) {
+                          element.onfocus = function() {
+                              if ( this.value === placeholder ) { //good, 通过 this 取得当前对象
+                                  this.className = ''; //good，取得类名的方式
+                                  this.value = ''; 
+                              }
+                          };
+                          element.onblur = function() {
+                              if ( this.value === '' ) {
+                                  this.className = 'placeholder'; 
+                                  this.value = placeholder;
+                              }
+                          };
+                          element.onblur();  //good
+                      })(placeholder); //good，借助函数按值传递的特性
+                  }
+              }
+          }
+      }
+  }
+        
+  function prepareForms() {
+      for ( var i=0, length=document.forms.length; i&lt;length; i++ ) {
+          resetField(document.forms[i]);
+      }
+  }
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>表单验证</p>
+
+    <ul>
+      <li>设置了 <code class="highlighter-rouge">required</code> 的表单控件，有时候浏览器不一定支持，需要额外设置脚本进行支持；与此同时可以进行一定的验证，设置了类型的表单控件有的浏览器不一定支持验证功能，这时也需要设置额外的脚本进行支持</li>
+      <li>
+        <p>代码:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>  function isFilled(field) {
+      if ( field.value.replace(' ', '').length === 0 ) {  //good
+          return false;
+      }
+      var placeholder = field.placeholder || field.getAttribute('placeholder'); //good
+      return (field.value !== placeholder);
+  }
+        
+        
+  function isEmail(field) {
+      return (field.value.indexOf('@') !== -1 &amp;&amp; field.value.indexOf('.') !== -1); //good
+  }
+        
+        
+  function validateForm(whichform) {
+      var element;
+      for ( var i=0, length=whichform.elements.length; i&lt;length; i++ ) { //good
+          element = whichform.elements[i];
+          if ( element.required ) {
+              if ( !isFilled(element) ) {
+                  alert('Please fill in the ' + element.name + ' field.');
+                  return false;
+              }
+          }
+          if ( element.type === 'email' ) {
+              if ( !isEmail(element) ) {
+                  alert('The ' + element.name + ' field must be filled with a valid email address.');
+                  return false;
+              }
+          }
+      }
+      return true;
+  }
+        
+        
+  function prepareForms() {
+      var thisform;
+        
+      for ( var i=0, length=document.forms.length; i&lt;length; i++ ) {
+          thisform = document.forms[i];
+          resetField(thisform);
+          thisform.onsubmit = function() {
+              return validateForm(thisform); //good, 通过返回的逻辑值来进一步确定是否进行表单的提交
+          };
+      }
+  }
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>提交表单</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  function getXMLObject() {
+      if ( typeof XMLHttpRequest === 'undefined' ) { //good，也可以通过 window.XMLHttpRequest 进行检测
+          try {
+              return new ActiveXObject('Microsoft.XMLHTTP');
+          } catch(error) {
+          }
+      }
+      return new XMLHttpRequest();
+  }
+    
+  function displayAjaxLoading(element) {
+      while ( element.hasChildNodes() ) {　//good，检测是否还有孩子节点存在
+          element.removeChild(element.lastChild);
+      }
+    
+      var img = document.createElement('img');
+      img.setAttribute('src', 'images/loading.gif');
+      img.setAttribute('alt', 'loading...');
+      element.appendChild(img);
+  }
+    
+    
+  function submitFormWithAjax(whichform, thetarget) {
+      var xhr = getXMLObject();
+      if ( !xhr ) {
+          return false;
+      }
+      displayAjaxLoading(thetarget);
+      var dataParts = [];
+      var element;
+      for ( var i=0, len=whichform.elements.length; i&lt;len; i++ ) { //good
+          element = whichform.elements[i];
+          dataParts[i] = element.name + '=' + encodeURIComponent(element.value);　//good, 进行编码
+      }
+      var data = dataParts.join('&amp;');
+      xhr.onreadystatechange = function() {  //good, 在 open 之前
+          if ( xhr.readyState === 4 ) {
+              if ( xhr.status === 200 ) {
+                  var matches = xhr.responseText.match(/&lt;article&gt;([\s\S]+)&lt;\/article&gt;/); //good，正则表达式写的好
+                  if ( matches.length &gt; 0 ) {
+                      thetarget.innerHTML = matches[1];
+                  } else {
+                      thetarget.innerHTML = '&lt;p&gt;Oops, there was an error. Sorry.&lt;/p&gt;';
+                  }
+              } else {
+                  thetarget.innerHTML = '&lt;p&gt;' + xhr.status + '&lt;/p&gt;';
+              }
+          }
+      };
+      xhr.open('POST', whichform.getAttribute('action'), true); //good, 取属性用的好
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  //good，在 open 和 send 之间
+      xhr.send(data);
+      return true;
+  }
+    
+    
+  function prepareForms() {
+      var thisform;
+      var article = document.getElementsByTagName('article')[0];
+      for ( var i=0, len=document.forms.length; i&lt;len; i++ ) { //good
+          thisform = document.forms[i];
+          resetField(thisform);
+          thisform.onsubmit = function() {
+              if ( !validateForm(this) ) {
+                  return false;
+              }
+              if ( submitFormWithAjax(this, article) ) {
+                  return false;
+              }
+              return true;
+          };
+      }
+  }
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>欢迎指教=^_^=</p>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

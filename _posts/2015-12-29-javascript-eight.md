@@ -113,4 +113,33 @@ By adding a class called “error” to the element when there is an error, you 
 
 # Avoid heavy nesting
 
-- 
+- Nesting code explains its logic and makes it much easier to read, however nesting it too far can also make it hard to follow what you are trying to do. Readers of your code shouldn’t have to scroll horizontally, or suffer confusion when their code editors wrap long lines (this makes your indentation efforts moot anyway).
+- The other problem of nesting is variable names and loops. As you normally start your first loop with i as the iterator variable, you’ll go on with j,k,l and so on. This can become messy quite quickly.
+
+# Optimize loops
+
+- Loops can become very slow if you don’t do them right. 
+
+    - One of the most common mistake is to read the length attribute of an array at every iteration
+    
+            var names = ['George','Ringo','Paul','John'];
+            for(var i=0,j=names.length;i<j;i++){
+                doSomeThingWith(names[i]);
+            }
+
+    - Another thing to ensure is that you keep computation-heavy code outside loops. This includes regular expressions and — more importantly — DOM manipulation. You can create the DOM nodes in the loop but avoid inserting them into the document. 
+    
+#  Keep DOM access to a minimum
+
+- Accessing the DOM in browsers is an expensive thing to do. The DOM is a very complex API and rendering in browsers can take up a lot of time. You can see this when running complex web applications when your computer is already maxed out with other work — changes take longer or get shown half way through and so on.
+- Instead of constantly creating and applying elements, have a tool function that turns a string into DOM elements and call this function at the end of your generation process to disturb the browser rendering once rather than continually.
+
+# Don’t yield to browser whims
+
+- Writing code specific to a certain browser is a sure-fire way to keep your code hard to maintain and make it get dated really quickly. 
+- This is wasted time and effort — we should build code based on agreed standards as outlined in this course of articles, not for one browser. 
+- If something amazing works in one browser only and you really have to use it, put that code in its own script document and name it with browser and version. This means that you can find and remove this functionality more easily, should this browser become obsolete.
+
+# Don’t trust any data
+
+- One of the main points to bear in mind when talking about code and data security is not to trust any data. This is not only about evil people wanting to hack your systems; it starts with plain usability. Users will enter incorrect data, all the time. Not because they are stupid, but because they are busy, distracted or the wording on your instructions is confusing them.

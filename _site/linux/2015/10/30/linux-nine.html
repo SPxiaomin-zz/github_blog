@@ -33,7 +33,7 @@
 
 <p>看看语法吧：</p>
 
-<pre><code>grep [-inv] [-A] [-B] [--color=auto] '需要查找的字符串' filename
+<div class="highlighter-rouge"><pre class="highlight"><code>grep [-inv] [-A] [-B] [--color=auto] '需要查找的字符串' filename
 参数简介:
 -i: 忽略大小写的不同，所以大小写视为相同的
 -n: 顺便输出行号
@@ -46,28 +46,31 @@
 基础正则表达式: ^ $ . \ * [] [n1-n2] [^] \{n,m\}
 扩展型正则表达式: + ? | () ()+
 </code></pre>
+</div>
 
 <p>看看例子吧：</p>
 
 <p>测试文件内容：</p>
 
-<pre><code>//t.js
+<div class="highlighter-rouge"><pre class="highlight"><code>//t.js
 #!/usr/bin/env node
 
 console.log(process.argv);
 </code></pre>
+</div>
 
 <p>命令执行和结果显示：</p>
 
-<pre><code>→  ~/test ✗✗✗ grep 'console' t.js
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test ✗✗✗ grep 'console' t.js
 console.log(process.argv);
 →  ~/test ✗✗✗ grep -i 'CONSOLE' t.js
 console.log(process.argv);
 →  ~/test ✗✗✗ grep -v 'console' t.js
 #!/usr/bin/env node
 </code></pre>
+</div>
 
-<p>至于 <code>-A</code> 和 <code>-B</code> 的话，从字面上并结合上面的例子应该就非常的好理解，我就不举例说明了。我的做法是在 <code>~/.bashrc</code> 文件中加上这么一句话: <code>alias grep='grep --color=auto -A3 -B3 -n'</code> ，是不是会感觉到特别的方便。</p>
+<p>至于 <code class="highlighter-rouge">-A</code> 和 <code class="highlighter-rouge">-B</code> 的话，从字面上并结合上面的例子应该就非常的好理解，我就不举例说明了。我的做法是在 <code class="highlighter-rouge">~/.bashrc</code> 文件中加上这么一句话: <code class="highlighter-rouge">alias grep='grep --color=auto -A3 -B3 -n'</code> ，是不是会感觉到特别的方便。</p>
 
 <p>欢迎指教=^_^=</p>
 

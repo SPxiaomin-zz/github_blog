@@ -31,7 +31,7 @@
 
 <p>The following application settings affects the behavior of the application.</p>
 
-<pre><code>Property: views
+<div class="highlighter-rouge"><pre class="highlight"><code>Property: views
 
 Type: String or Array
 
@@ -39,15 +39,17 @@ Value: A directory or an array of directories for the application's views. If an
 
 Default: process.cwd() + '/views'
 </code></pre>
+</div>
 
-<p>从上面的一大段英文可得知，通过设置 <code>views</code> 的值即可相应的设置 views 文件放置的位置。具体应该怎么做呢？看看下面吧：</p>
+<p>从上面的一大段英文可得知，通过设置 <code class="highlighter-rouge">views</code> 的值即可相应的设置 views 文件放置的位置。具体应该怎么做呢？看看下面吧：</p>
 
-<pre><code>app.set('views', path.join(__dirname, 'views'));
+<div class="highlighter-rouge"><pre class="highlight"><code>app.set('views', path.join(__dirname, 'views'));
 </code></pre>
+</div>
 
 <p>接下来让我们来设置 ejs 引擎用来解析文件名后缀为 .html 的文件：</p>
 
-<pre><code>app.engine(ext, callback)
+<div class="highlighter-rouge"><pre class="highlight"><code>app.engine(ext, callback)
 Registers the given template engine callback as ext.
 
 By default, Express will require() the engine based on the file extension. For example, if you try to render a “foo.jade” file, Express invokes the following internally, and caches the require() on subsequent calls to increase performance.
@@ -66,15 +68,17 @@ var engines = require('consolidate');
 app.engine('haml', engines.haml);
 app.engine('html', engines.hogan);
 </code></pre>
+</div>
 
-<p>通过上面那么一大段话的解释，应该就可以明白到，通过使用 <code>app.engine('html', require('ejs').renderFile);</code> 之后，我们就可以使用 ejs 模板引擎来解析我们的 html 文件了。</p>
+<p>通过上面那么一大段话的解释，应该就可以明白到，通过使用 <code class="highlighter-rouge">app.engine('html', require('ejs').renderFile);</code> 之后，我们就可以使用 ejs 模板引擎来解析我们的 html 文件了。</p>
 
 <p>还有一个小小的技巧，看看下面的代码应该就可以明白怎么做了:</p>
 
-<pre><code>app.set('view engine', 'html');
+<div class="highlighter-rouge"><pre class="highlight"><code>app.set('view engine', 'html');
 </code></pre>
+</div>
 
-<p>通过上面的这一行代码的设置之后，就可以这样使用 <code>res.render('index');</code> 而不需要 <code>res.render('index.html');</code> 这样来使用了！</p>
+<p>通过上面的这一行代码的设置之后，就可以这样使用 <code class="highlighter-rouge">res.render('index');</code> 而不需要 <code class="highlighter-rouge">res.render('index.html');</code> 这样来使用了！</p>
 
 <p>是不是懂了呢？</p>
 

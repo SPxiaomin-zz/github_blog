@@ -36,39 +36,39 @@
       <li>
         <p>标准输入</p>
 
-        <p><code>&lt;</code>: 将原本需要由键盘输入的数据改由 <code>文件内容</code> 来替代。</p>
+        <p><code class="highlighter-rouge">&lt;</code>: 将原本需要由键盘输入的数据改由 <code class="highlighter-rouge">文件内容</code> 来替代。</p>
 
-        <p><code>&lt;&lt;</code>: 使用指定的字符代替原来的 <code>ctrl+d</code> 结束输入，方便程序的写作。</p>
+        <p><code class="highlighter-rouge">&lt;&lt;</code>: 使用指定的字符代替原来的 <code class="highlighter-rouge">ctrl+d</code> 结束输入，方便程序的写作。</p>
       </li>
       <li>
         <p>标准输出</p>
 
-        <p><code>1&gt;</code>: 以 <code>覆盖</code> 的方法将 <code>正确</code> 的数据输出到指定的地方。</p>
+        <p><code class="highlighter-rouge">1&gt;</code>: 以 <code class="highlighter-rouge">覆盖</code> 的方法将 <code class="highlighter-rouge">正确</code> 的数据输出到指定的地方。</p>
 
-        <p><code>1&gt;&gt;</code>: 以 <code>累加</code> 的方法将 <code>正确</code> 的数据输出到指定的地方。</p>
+        <p><code class="highlighter-rouge">1&gt;&gt;</code>: 以 <code class="highlighter-rouge">累加</code> 的方法将 <code class="highlighter-rouge">正确</code> 的数据输出到指定的地方。</p>
 
         <p>数字1可以省略，默认情况下就是1。</p>
       </li>
       <li>
         <p>错误输出</p>
 
-        <p><code>2&gt;</code>: 以 <code>覆盖</code> 的方式将 <code>错误</code> 的数据输出到指定的地方。</p>
+        <p><code class="highlighter-rouge">2&gt;</code>: 以 <code class="highlighter-rouge">覆盖</code> 的方式将 <code class="highlighter-rouge">错误</code> 的数据输出到指定的地方。</p>
 
-        <p><code>2&gt;&gt;</code>: 以 <code>累加</code> 的方式将 <code>错误</code> 的数据输出到指定的地方。</p>
+        <p><code class="highlighter-rouge">2&gt;&gt;</code>: 以 <code class="highlighter-rouge">累加</code> 的方式将 <code class="highlighter-rouge">错误</code> 的数据输出到指定的地方。</p>
       </li>
     </ol>
   </li>
   <li>
     <p>小技巧:</p>
 
-    <p>可以将不需要的数据重定向到 <code>/dev/null</code> 垃圾桶黑洞中去。</p>
+    <p>可以将不需要的数据重定向到 <code class="highlighter-rouge">/dev/null</code> 垃圾桶黑洞中去。</p>
   </li>
   <li>
     <p>注意事项</p>
 
     <ol>
-      <li><code>1&gt;</code> 、<code>2&gt;</code> 等中的数字和符号之间 <code>没有空格</code> 。</li>
-      <li><code>find / -name test &gt; list 2&gt;&amp;1</code> 中的 &amp; 号左边没有空格。<code>find / -name test &amp;&gt; list</code> 的效果和前面的命令是一样的。</li>
+      <li><code class="highlighter-rouge">1&gt;</code> 、<code class="highlighter-rouge">2&gt;</code> 等中的数字和符号之间 <code class="highlighter-rouge">没有空格</code> 。</li>
+      <li><code class="highlighter-rouge">find / -name test &gt; list 2&gt;&amp;1</code> 中的 &amp; 号左边没有空格。<code class="highlighter-rouge">find / -name test &amp;&gt; list</code> 的效果和前面的命令是一样的。</li>
     </ol>
   </li>
 </ul>

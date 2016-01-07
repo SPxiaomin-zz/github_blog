@@ -33,7 +33,7 @@
 
     <p>The URL path on which a router instance was mounted. For example:</p>
 
-    <pre><code>  //routes/index.js
+    <div class="highlighter-rouge"><pre class="highlight"><code>  //routes/index.js
   var express = require('express');
   var router = express.Router();
     
@@ -48,17 +48,18 @@
   var routes = require('./routes/index');
   app.use('/test', routes);
 </code></pre>
+    </div>
   </li>
   <li>
     <p>req.originalUrl req.url</p>
 
-    <p>req.originalUrl is much like req.url; <code>however, it retains the original request URL.</code></p>
+    <p>req.originalUrl is much like req.url; <code class="highlighter-rouge">however, it retains the original request URL.</code></p>
 
-    <p>req.url: <code>the 'mount' path is stripped and is not visible to the middleware function.</code></p>
+    <p>req.url: <code class="highlighter-rouge">the 'mount' path is stripped and is not visible to the middleware function.</code></p>
 
     <p>For example:</p>
 
-    <pre><code>  // routes/index.js
+    <div class="highlighter-rouge"><pre class="highlight"><code>  // routes/index.js
   var express =require('express');
   var router = express.Router();
     
@@ -74,6 +75,7 @@
   var routes = require('./routes/index');
   app.use('/test', routes);
 </code></pre>
+    </div>
   </li>
 </ul>
 

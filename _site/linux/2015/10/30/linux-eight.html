@@ -29,26 +29,29 @@
 
 <p>简单的介绍一下语法:</p>
 
-<pre><code>wc [-lwn]
+<div class="highlighter-rouge"><pre class="highlight"><code>wc [-lwn]
 参数简介：
 -l: 仅列出行数
 -w: 仅列出多少个字(英文单字)
 -m: 仅列出多少个字符
 </code></pre>
+</div>
 
 <p>看看如何使用吧：</p>
 
-<pre><code>//t.js
+<div class="highlighter-rouge"><pre class="highlight"><code>//t.js
 #!/usr/bin/env node
 
 console.log(process.argv);
 </code></pre>
+</div>
 
 <p>第一种使用方法：</p>
 
-<pre><code>→  ~/test ✗✗✗ wc t.js
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test ✗✗✗ wc t.js
  3  3 48 t.js
 </code></pre>
+</div>
 
 <p>第一个是行数，第二个是字数，第三个是字符数。</p>
 
@@ -56,9 +59,10 @@ console.log(process.argv);
 
 <p>第二种使用方法：</p>
 
-<pre><code>→  ~/test ✗✗✗ cat t.js | wc 
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test ✗✗✗ cat t.js | wc 
       3       3      48
 </code></pre>
+</div>
 
 <p>至于参数的使用的话，如果需要就直接接在 wc 后面就可以了。</p>
 

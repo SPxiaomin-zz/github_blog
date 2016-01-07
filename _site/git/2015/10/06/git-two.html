@@ -25,13 +25,13 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>git 删除版本库中的文件</h2>
-            <p>我使用的系统是 <code>Ubuntu15.04</code> 的，所以时不时会产生一些缓存文件，当把文件提交到 <code>github</code> 上之前一般没有注意到那么多，毕竟是隐藏的文件，但是在 <code>github</code> 上查看文件的时候，就会发现，于是就要删除了。</p>
+            <p>我使用的系统是 <code class="highlighter-rouge">Ubuntu15.04</code> 的，所以时不时会产生一些缓存文件，当把文件提交到 <code class="highlighter-rouge">github</code> 上之前一般没有注意到那么多，毕竟是隐藏的文件，但是在 <code class="highlighter-rouge">github</code> 上查看文件的时候，就会发现，于是就要删除了。</p>
 
 <p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000">廖雪峰老师的 git 教程</a> 上面写的十分的清楚，以下的内容摘录于上面并结合了自己的理解。</p>
 
-<p>当我们看到了无用的文件的时候，我们一般的情况下会通过文件管理器或者是 <code>rm</code> 命令把文件删除掉。通过 <code>rm</code> 命令删除了文件之后，我看了一下目前仓库的状态：</p>
+<p>当我们看到了无用的文件的时候，我们一般的情况下会通过文件管理器或者是 <code class="highlighter-rouge">rm</code> 命令把文件删除掉。通过 <code class="highlighter-rouge">rm</code> 命令删除了文件之后，我看了一下目前仓库的状态：</p>
 
-<pre><code>┌[2015-10-06/8.24  16:12:01]
+<div class="highlighter-rouge"><pre class="highlight"><code>┌[2015-10-06/8.24  16:12:01]
 ├[0+10][~/Learn/github_blog/_posts]
 └[gujunmin@www ╰_╯]$ git st
 On branch gh-pages
@@ -44,12 +44,13 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
+</div>
 
-<p>现在的话可以做两个选择，第一是确实从版本库中删除该文件，按照提示的第一个命令敲就行了，然后在 <code>git commmit</code>，这样文件就从版本库中被删除了。</p>
+<p>现在的话可以做两个选择，第一是确实从版本库中删除该文件，按照提示的第一个命令敲就行了，然后在 <code class="highlighter-rouge">git commmit</code>，这样文件就从版本库中被删除了。</p>
 
 <p>现在我的这种情况当然是要把文件从版本库中删除，但是有时候我们很可能删错了文件，这时候我们一点也不要害怕，因为版本库中还有备份，看看上面提示的第二个命令就知道怎么做了。</p>
 
-<p>但是我们还是要十分的小心，因为 <code>git checkout</code> 这个命令其实是使用版本库中的最新版本来恢复的，也就是最后的一次提交。</p>
+<p>但是我们还是要十分的小心，因为 <code class="highlighter-rouge">git checkout</code> 这个命令其实是使用版本库中的最新版本来恢复的，也就是最后的一次提交。</p>
 
 <p>欢迎指教=^_^=</p>
 

@@ -29,14 +29,15 @@
 
 <p>先上例子:</p>
 
-<pre><code>#!/usr/bin/env node
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#!/usr/bin/env node
+</span>
+<span class="kd">var</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">];</span>
 
-var colors = ['red', 'blue', 'green'];
-
-console.log(colors.toString());   //red,blue,green
-console.log(colors.toLocaleString());  //red,blue,green
-console.log(colors.valueOf()); //[ 'red', 'blue', 'green' ]
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>   <span class="c1">//red,blue,green</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">());</span>  <span class="c1">//red,blue,green</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">());</span> <span class="c1">//[ 'red', 'blue', 'green' ]</span>
 </code></pre>
+</div>
 
 <p>从上面的例子应该就可以看出来如下的东西:</p>
 

@@ -46,14 +46,14 @@
 
 <ul>
   <li>
-    <p>forEach(): 对数组的每一项运行给定的函数。这个方法没有返回值，<code>本质上和使用 for 循环迭代数组是一样的</code> 。</p>
+    <p>forEach(): 对数组的每一项运行给定的函数。这个方法没有返回值，<code class="highlighter-rouge">本质上和使用 for 循环迭代数组是一样的</code> 。</p>
   </li>
   <li>
     <p>map(): 对数组中的每一项运行给定的函数，返回每次函数调用的结果组成的数组。</p>
 
     <p>看个例子吧：</p>
 
-    <pre><code>  var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
     
   var mapResult = numbers.map(function(item, index, array) {
       return item * 2;
@@ -61,6 +61,7 @@
     
   console.log(mapResult);    //[2, 4, 6, 8, 10, 8, 6, 4, 2]
 </code></pre>
+    </div>
   </li>
 </ul>
 

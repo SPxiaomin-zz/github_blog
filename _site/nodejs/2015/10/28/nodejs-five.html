@@ -25,15 +25,15 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>nodejs __dirname & process.cwd 得知目录</h2>
-            <p><code>__dirname</code> 和 <code>process.cwd</code> 这两个都是全局的，意味着可以在任何地方使用到这两个东西。</p>
+            <p><code class="highlighter-rouge">__dirname</code> 和 <code class="highlighter-rouge">process.cwd</code> 这两个都是全局的，意味着可以在任何地方使用到这两个东西。</p>
 
-<p>__dirname 表示的是 <code>当前执行脚本</code> 所在的目录。</p>
+<p>__dirname 表示的是 <code class="highlighter-rouge">当前执行脚本</code> 所在的目录。</p>
 
-<p>process.cwd 返回的是 <code>当前进程</code> 的工作目录。</p>
+<p>process.cwd 返回的是 <code class="highlighter-rouge">当前进程</code> 的工作目录。</p>
 
 <p>看看例子BA：</p>
 
-<pre><code>//  /home/gujunmin/test.js
+<div class="highlighter-rouge"><pre class="highlight"><code>//  /home/gujunmin/test.js
 console.log(__dirname);
 console.log(process.cwd());
 
@@ -41,6 +41,7 @@ console.log(process.cwd());
 /home/gujunmin/test
 /home/gujunmin/test
 </code></pre>
+</div>
 
 <p>是不是懂了呢？</p>
 

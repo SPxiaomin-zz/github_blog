@@ -47,7 +47,7 @@
   <li>
     <p>return pointers ,a public alias</p>
 
-    <pre><code>  myNameSpace = function(){
+    <div class="highlighter-rouge"><pre class="highlight"><code>  myNameSpace = function(){
     var current = null;
     function init(){...}
     function change(){...}
@@ -58,17 +58,19 @@
     }
   }();
 </code></pre>
+    </div>
   </li>
   <li>
     <p>If you don’t need any of your variables or functions to be available to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name to it:</p>
 
-    <pre><code>  (function(){
+    <div class="highlighter-rouge"><pre class="highlight"><code>  (function(){
     var current = null;
     function init(){...}
     function change(){...}
     function verify(){...}
   })();
 </code></pre>
+    </div>
   </li>
 </ul>
 
@@ -87,7 +89,7 @@
 
     <p>Adding a double slash before the closing star-slash sets your code up so that you can comment and uncomment the whole block by simply adding or removing a slash before the opening slash-star:</p>
 
-    <pre><code>  module = function(){
+    <div class="highlighter-rouge"><pre class="highlight"><code>  module = function(){
     var current = null;
     function init(){
     };
@@ -102,6 +104,7 @@
     return{init:init,show:show,current:current}
   }();
 </code></pre>
+    </div>
 
     <p>With the code set up as shown in the above block, adding a slash before the opening slash-star will turn the multiline comment into two one-line comments, “unhiding” the code in between and causing it to be executed. Removing the slash will comment it out again.</p>
   </li>
@@ -112,6 +115,100 @@
 
 <h1 id="avoid-mixing-with-other-technologies">Avoid mixing with other technologies</h1>
 
+<p>By adding a class called “error” to the element when there is an error, you can ensure that the styling information is kept inside the CSS, which is more appropriate:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var f = document.getElementById('mainform');
+var inputs = f.getElementsByTagName('input');
+for(var i=0,j=inputs.length;i&lt;j;i++){
+  if(inputs[i].className === 'mandatory' &amp;&amp;
+     inputs[i].value === ''){
+    inputs[i].className += ' error';
+  }
+}
+</code></pre>
+</div>
+
+<h1 id="use-shortcut-notation-when-it-makes-sense">Use shortcut notation when it makes sense</h1>
+
+<ul>
+  <li>using an object literal</li>
+  <li>using the [] array shortcut</li>
+  <li>using “ternary notation”. <code class="highlighter-rouge">var direction = (x &gt; 100) ? 1 : -1;</code></li>
+  <li>providing a preset value for a variable if it is not defined <code class="highlighter-rouge">var x = v || 10; </code></li>
+</ul>
+
+<h1 id="modularize--one-function-per-task">Modularize — one function per task</h1>
+
+<ul>
+  <li>This is a general programming best practice — making sure that you create functions that fulfill one job at a time makes it easy for other developers to debug and change your code without having to scan through all the code to work out what code block performs what function.</li>
+  <li>This also applies to creating helper functions for common tasks. If you find yourself doing the same thing in several different functions then it is a good idea to create a more generic helper function instead, and reuse that functionality where it is needed.</li>
+  <li>By having all your functions only perform one task you can have a main init() function for your application that contains all the application structure. That way you can easily change the application and remove functionality without having to scan the rest of the document for dependencies.</li>
+</ul>
+
+<h1 id="enhance-progressively">Enhance progressively</h1>
+
+<ul>
+  <li>In essence what you should do is write code that works regardless of available technology. In the case of JavaScript, this means that when scripting is not available (say on a BlackBerry, or because of an over-zealous security policy) your web products should still allow users to reach a certain goal, not block them because of the lack of JavaScript which they can’t turn on, or don’t want to.</li>
+  <li>It is amazing how many times you will build a massively convoluted JavaScript solution for a problem that can be solved easily without it.</li>
+</ul>
+
+<h1 id="allow-for-configuration-and-translation">Allow for configuration and translation</h1>
+
+<ul>
+  <li>One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time. These include any text used in elements you create (including button values and alternative text for images), CSS class and ID names and general parameters of the interface you build.</li>
+</ul>
+
+<h1 id="avoid-heavy-nesting">Avoid heavy nesting</h1>
+
+<ul>
+  <li>Nesting code explains its logic and makes it much easier to read, however nesting it too far can also make it hard to follow what you are trying to do. Readers of your code shouldn’t have to scroll horizontally, or suffer confusion when their code editors wrap long lines (this makes your indentation efforts moot anyway).</li>
+  <li>The other problem of nesting is variable names and loops. As you normally start your first loop with i as the iterator variable, you’ll go on with j,k,l and so on. This can become messy quite quickly.</li>
+</ul>
+
+<h1 id="optimize-loops">Optimize loops</h1>
+
+<ul>
+  <li>
+    <p>Loops can become very slow if you don’t do them right.</p>
+
+    <ul>
+      <li>
+        <p>One of the most common mistake is to read the length attribute of an array at every iteration</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>  var names = ['George','Ringo','Paul','John'];
+  for(var i=0,j=names.length;i&lt;j;i++){
+      doSomeThingWith(names[i]);
+  }
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Another thing to ensure is that you keep computation-heavy code outside loops. This includes regular expressions and — more importantly — DOM manipulation. You can create the DOM nodes in the loop but avoid inserting them into the document.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="keep-dom-access-to-a-minimum">Keep DOM access to a minimum</h1>
+
+<ul>
+  <li>Accessing the DOM in browsers is an expensive thing to do. The DOM is a very complex API and rendering in browsers can take up a lot of time. You can see this when running complex web applications when your computer is already maxed out with other work — changes take longer or get shown half way through and so on.</li>
+  <li>Instead of constantly creating and applying elements, have a tool function that turns a string into DOM elements and call this function at the end of your generation process to disturb the browser rendering once rather than continually.</li>
+</ul>
+
+<h1 id="dont-yield-to-browser-whims">Don’t yield to browser whims</h1>
+
+<ul>
+  <li>Writing code specific to a certain browser is a sure-fire way to keep your code hard to maintain and make it get dated really quickly.</li>
+  <li>This is wasted time and effort — we should build code based on agreed standards as outlined in this course of articles, not for one browser.</li>
+  <li>If something amazing works in one browser only and you really have to use it, put that code in its own script document and name it with browser and version. This means that you can find and remove this functionality more easily, should this browser become obsolete.</li>
+</ul>
+
+<h1 id="dont-trust-any-data">Don’t trust any data</h1>
+
+<ul>
+  <li>One of the main points to bear in mind when talking about code and data security is not to trust any data. This is not only about evil people wanting to hack your systems; it starts with plain usability. Users will enter incorrect data, all the time. Not because they are stupid, but because they are busy, distracted or the wording on your instructions is confusing them.</li>
+</ul>
 
 
             <div id="disqus_thread"></div>

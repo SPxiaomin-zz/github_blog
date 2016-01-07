@@ -27,15 +27,15 @@
             <h2>express4.x connect-flash 模块学习</h2>
             <p>以下的内容摘录于 <a href="https://github.com/jaredhanson/connect-flash">https://github.com/jaredhanson/connect-flash</a> 并结合了自己的理解。</p>
 
-<p>The flash is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user.<code> The flash is typically used in combination with redirects, ensuring that the message is available to the next page that is to be rendered.</code></p>
+<p>The flash is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user.<code class="highlighter-rouge"> The flash is typically used in combination with redirects, ensuring that the message is available to the next page that is to be rendered.</code></p>
 
-<p><code>Flash messages are stored in the session.</code> First, setup session as usual by enabling session middleware. Then, use flash middleware provided by connect-flash.</p>
+<p><code class="highlighter-rouge">Flash messages are stored in the session.</code> First, setup session as usual by enabling session middleware. Then, use flash middleware provided by connect-flash.</p>
 
-<p>With the flash middleware in place, all requests will have a <code>req.flash()</code> function that can be used to flash messages.</p>
+<p>With the flash middleware in place, all requests will have a <code class="highlighter-rouge">req.flash()</code> function that can be used to flash messages.</p>
 
 <p>Example:</p>
 
-<pre><code>//app.js
+<div class="highlighter-rouge"><pre class="highlight"><code>//app.js
 var flash = require('connect-flash');
 var session = require('session');
 var app = express();
@@ -64,6 +64,7 @@ router.route('/flash')
     res.send('ok');
 });
 </code></pre>
+</div>
 
 <p>All code at <a href="https://github.com/SPxiaomin/NodeJs_Practice/tree/master/module_2">https://github.com/SPxiaomin/NodeJs_Practice/tree/master/module_2</a> .</p>
 

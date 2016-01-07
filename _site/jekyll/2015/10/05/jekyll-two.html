@@ -25,7 +25,7 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>Front Matter defaults 设置以及本地运行生效问题</h2>
-            <p>先介绍下 <code>default</code> 的设置问题吧，<a href="http://jekyllrb.com/docs/configuration/">官方文档</a> 真的写的很详细了。下面的内容摘录于官方文档并结合了自己的理解。</p>
+            <p>先介绍下 <code class="highlighter-rouge">default</code> 的设置问题吧，<a href="http://jekyllrb.com/docs/configuration/">官方文档</a> 真的写的很详细了。下面的内容摘录于官方文档并结合了自己的理解。</p>
 
 <p>Front Matter defaults</p>
 
@@ -33,23 +33,24 @@
 
 <p>Often times, you will find that you are repeating a lot of configuration options. Setting the same layout in each file, adding the same category - or categories - to a post, etc. You can even add custom variables like author names, which might be the same for the majority of posts on your blog.</p>
 
-<p>Instead of repeating this configuration each time you create a new post or page, Jekyll provides a way to set these defaults in the site configuration. To do this, you can specify site-wide defaults using the <code>defaults</code> key in the <code>_config.yml</code> file in your projects root directory.</p>
+<p>Instead of repeating this configuration each time you create a new post or page, Jekyll provides a way to set these defaults in the site configuration. To do this, you can specify site-wide defaults using the <code class="highlighter-rouge">defaults</code> key in the <code class="highlighter-rouge">_config.yml</code> file in your projects root directory.</p>
 
 <p>The defaults key holds an array of scope/values pairs that define what defaults should be set for a particular file path, and optionally, a file type in that path.</p>
 
-<p>Let’s say that you want to add a default layout to all pages and posts in your site. You would add this to your <code>_config.yml</code> file:</p>
+<p>Let’s say that you want to add a default layout to all pages and posts in your site. You would add this to your <code class="highlighter-rouge">_config.yml</code> file:</p>
 
-<pre><code>defaults:
+<div class="highlighter-rouge"><pre class="highlight"><code>defaults:
   -
     scope:
       path: "" # an empty string here means all files in the project
     values:
       layout: "default"
 </code></pre>
+</div>
 
 <p>Here, we are scoping the values to any file that exists in the scopes path. Since the path is set as an empty string, it will apply to all files in your project. You probably don’t want to set a layout on every file in your project - like css files, for example - so you can also specify a type value under the scope key.</p>
 
-<pre><code>defaults:
+<div class="highlighter-rouge"><pre class="highlight"><code>defaults:
   -
     scope:
       path: "" # an empty string here means all files in the project
@@ -57,12 +58,13 @@
     values:
       layout: "default"
 </code></pre>
+</div>
 
-<p>Now, this will only set the layout for files where the type is posts. The different types that are available to you are <code>pages</code>, <code>posts</code>, <code>drafts</code> or <code>any collection</code> in your site. While type is optional, you must specify a value for path when creating a scope/values pair.</p>
+<p>Now, this will only set the layout for files where the type is posts. The different types that are available to you are <code class="highlighter-rouge">pages</code>, <code class="highlighter-rouge">posts</code>, <code class="highlighter-rouge">drafts</code> or <code class="highlighter-rouge">any collection</code> in your site. While type is optional, you must specify a value for path when creating a scope/values pair.</p>
 
 <p>As mentioned earlier, you can set multiple scope/values pairs for defaults.</p>
 
-<pre><code>defaults:
+<div class="highlighter-rouge"><pre class="highlight"><code>defaults:
   -
     scope:
       path: ""
@@ -77,12 +79,13 @@
       layout: "project" # overrides previous default layout
       author: "Mr. Hyde"
 </code></pre>
+</div>
 
-<p>With these defaults, all posts would use the my-site layout. Any html files that exist in the projects/ folder will use the project layout, if it exists. Those files will also have the page.author <code>liquid variable</code> set to Mr. Hyde as well as have the category for the page set to project.</p>
+<p>With these defaults, all posts would use the my-site layout. Any html files that exist in the projects/ folder will use the project layout, if it exists. Those files will also have the page.author <code class="highlighter-rouge">liquid variable</code> set to Mr. Hyde as well as have the category for the page set to project.</p>
 
 <p>但是设置之后，奇怪的问题是为什么没有效果，果断的 Google 了一下，<a href="http://stackoverflow.com/questions/30610668/jekyll-front-matter-defaults-not-working">stackoverflow</a> 中有人已经解答了这个问题。</p>
 
-<p>简单的说就是当你在本地运行的时候，当已经通过 <code>jekyll serve</code> 启动服务器之后，如果再修改这个配置文件的话，配置并不会生效，因为它不属于网站的一部分，只有当 <code>重启服务器</code> 的时候才会生效 。</p>
+<p>简单的说就是当你在本地运行的时候，当已经通过 <code class="highlighter-rouge">jekyll serve</code> 启动服务器之后，如果再修改这个配置文件的话，配置并不会生效，因为它不属于网站的一部分，只有当 <code class="highlighter-rouge">重启服务器</code> 的时候才会生效 。</p>
 
 <p><a href="http://jekyllrb.com/docs/variables/">Jekyll 官网</a> 对此进行了解释：</p>
 

@@ -29,64 +29,70 @@
 
 <p>直接看例子吧：</p>
 
-<pre><code>//a.txt
+<div class="highlighter-rouge"><pre class="highlight"><code>//a.txt
 hello
 world
 
 //b.txt
 hello
 </code></pre>
+</div>
 
 <p>接下来输入命令并得到相应的结果：</p>
 
-<pre><code>→  ~/test ✗✗✗ diff a.txt b.txt 
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test ✗✗✗ diff a.txt b.txt 
 2d1 
 &lt; world
 </code></pre>
+</div>
 
-<p>看到上面的 <code>&lt;</code> 号没有，这个符号代表的是命令行中的第一个文件中的内容，所以使用左尖括号是多么的形象啊！</p>
+<p>看到上面的 <code class="highlighter-rouge">&lt;</code> 号没有，这个符号代表的是命令行中的第一个文件中的内容，所以使用左尖括号是多么的形象啊！</p>
 
-<pre><code>→  ~/test ✗✗✗ diff b.txt a.txt
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test ✗✗✗ diff b.txt a.txt
 1a2      //
 &gt; world
 </code></pre>
+</div>
 
 <p>再看看上面的例子之后，是不是明白了呢？</p>
 
-<p><code>左边的文件代表的是你想要比较的文件，右边的文件是比较的基准！</code></p>
+<p><code class="highlighter-rouge">左边的文件代表的是你想要比较的文件，右边的文件是比较的基准！</code></p>
 
-<p>由于上面的原因，所以第一次比较的时候出现的是 <code>2d1</code> ，意思是左边的文件删除第二行(内容就是下面显示的)就和基准文件是一样的了。第二次比较的时候出现的是 <code>1a2</code> 意思是左边的文件加上一行(内容就是下面显示的)就和基准文件是一样的了。</p>
+<p>由于上面的原因，所以第一次比较的时候出现的是 <code class="highlighter-rouge">2d1</code> ，意思是左边的文件删除第二行(内容就是下面显示的)就和基准文件是一样的了。第二次比较的时候出现的是 <code class="highlighter-rouge">1a2</code> 意思是左边的文件加上一行(内容就是下面显示的)就和基准文件是一样的了。</p>
 
 <p>修改一下文件</p>
 
-<pre><code>//a.txt
+<div class="highlighter-rouge"><pre class="highlight"><code>//a.txt
 hello
 
 //b.txt
 Hello
 </code></pre>
+</div>
 
 <p>输入如下的命令并得到结果</p>
 
-<pre><code>→  ~/test ✗✗✗ diff a.txt b.txt 
+<div class="highlighter-rouge"><pre class="highlight"><code>→  ~/test ✗✗✗ diff a.txt b.txt 
 1c1
 &lt; hello
 ---
 &gt; Hello
 </code></pre>
+</div>
 
 <p>这个就是替换的显示，懂了么？</p>
 
 <p>接下来简单的讲一下语法吧：</p>
 
-<pre><code>diff [-bBi] from-file to-file
-
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gh">diff [-bBi] from-file to-file
+</span>
 from-file: 一个将要做比较的文件名
 to-tile: 一个作为比较基准的文件名
 -b: 忽略一行当中仅有多余空白的区别(例如 "about me" 与 "about      me"视为相同)
 -B: 忽略空白行的区别
 -i: 忽略大小写的区别
 </code></pre>
+</div>
 
 <p>欢迎指教=^_^=</p>
 

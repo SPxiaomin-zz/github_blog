@@ -25,29 +25,29 @@
         <div class="container post">
             <a href="/github_blog/">&lt;- Back to Home</a>
             <h2>在 git 中配置别名，简化操作</h2>
-            <p>在大一下学期的时候学习了一下 <code>git</code>，但是当时真的很少用到，于是没有管它。但是从大一下学期寒假开始，我就开始使用得多起来了，原因是我在一次升级 <code>Ubuntu</code> 系统的时候，忘记了代码备份，努力的成果全部没有…</p>
+            <p>在大一下学期的时候学习了一下 <code class="highlighter-rouge">git</code>，但是当时真的很少用到，于是没有管它。但是从大一下学期寒假开始，我就开始使用得多起来了，原因是我在一次升级 <code class="highlighter-rouge">Ubuntu</code> 系统的时候，忘记了代码备份，努力的成果全部没有…</p>
 
 <p>个人认为 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375234012342f90be1fc4d81446c967bbdc19e7c03d3000">廖雪峰老师写的git教程</a> ，写的非常的好，每看一次都会有不同的体会。以下的内容摘录于廖雪峰老师的教程。</p>
 
 <p>命令：</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global alias.co checkout</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">    <span class="nv">$ </span>git config --global alias.co checkout</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global alias.unstage <span class="s1">&#39;reset HEAD&#39;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">    <span class="nv">$ </span>git config --global alias.unstage <span class="s1">'reset HEAD'</span></code></pre></figure>
 
 <p>命令解释：</p>
 
-<p>在 <code>alias.</code> 后面加上你想要的别名，之后再打上一个空格，再加上你想要简化命令的原始名称。</p>
+<p>在 <code class="highlighter-rouge">alias.</code> 后面加上你想要的别名，之后再打上一个空格，再加上你想要简化命令的原始名称。</p>
 
-<p>配置 <code>git</code> 的时候加上 <code>global</code> 这个参数，代表的是这个命令对当前用户有效。如果不加的话，仅仅代表对这个仓库有效。</p>
+<p>配置 <code class="highlighter-rouge">git</code> 的时候加上 <code class="highlighter-rouge">global</code> 这个参数，代表的是这个命令对当前用户有效。如果不加的话，仅仅代表对这个仓库有效。</p>
 
 <p>其实对于不喜欢敲命令的朋友来说，还有一种更简单的方法，那就是修改配置文件。</p>
 
-<p>我使用的是 <code>Ubuntu15.04</code>，当前用户的配置文件放在 <code>~/.gitconfig</code>，当前仓库的配置文件放在当前仓库的 <code>.git/config</code> 文件中。</p>
+<p>我使用的是 <code class="highlighter-rouge">Ubuntu15.04</code>，当前用户的配置文件放在 <code class="highlighter-rouge">~/.gitconfig</code>，当前仓库的配置文件放在当前仓库的 <code class="highlighter-rouge">.git/config</code> 文件中。</p>
 
-<p>看看我的 <code>~/.gitconfig</code> 文件吧！</p>
+<p>看看我的 <code class="highlighter-rouge">~/.gitconfig</code> 文件吧！</p>
 
-<pre><code>[user]
+<div class="highlighter-rouge"><pre class="highlight"><code>[user]
     name = gujunmin
 	email = 3013366498@qq.com
 [alias]
@@ -61,6 +61,7 @@
 	ps = push
 	pl = pull
 </code></pre>
+</div>
 
 <p>欢迎指教=^_^=</p>
 

@@ -29,9 +29,9 @@
   <li>
     <p>准备工作</p>
 
-    <p>在使用 git 远程仓库之前，首先需要使用 <code>ssh-keygen -t rsa -C "email@example.com"</code> 生成秘钥，因为本地 git 仓库和远程的 git 仓库是通过 SSH 加密的。</p>
+    <p>在使用 git 远程仓库之前，首先需要使用 <code class="highlighter-rouge">ssh-keygen -t rsa -C "email@example.com"</code> 生成秘钥，因为本地 git 仓库和远程的 git 仓库是通过 SSH 加密的。</p>
 
-    <p>然后就将 <code>~/.ssh</code> 目录下的 <code>id_rsa.pub</code> 这个文件中的秘钥添加到 github 中去。</p>
+    <p>然后就将 <code class="highlighter-rouge">~/.ssh</code> 目录下的 <code class="highlighter-rouge">id_rsa.pub</code> 这个文件中的秘钥添加到 github 中去。</p>
   </li>
   <li>
     <p>总共有两种使用远程仓库的方式</p>
@@ -42,36 +42,41 @@
 
         <p>先和远程仓库进行关联:</p>
 
-        <pre><code> git remote add origin git@github.com:SPxiaomin/learn.git    //origin 是远程仓库的名称。
+        <div class="highlighter-rouge"><pre class="highlight"><code> git remote add origin git@github.com:SPxiaomin/learn.git    //origin 是远程仓库的名称。
 </code></pre>
+        </div>
 
         <p>推送本地分支到远程:</p>
 
-        <pre><code> →  ~/gitreview ✗✗✗ git push -u origin master 
+        <div class="highlighter-rouge"><pre class="highlight"><code> →  ~/gitreview ✗✗✗ git push -u origin master 
  Branch master set up to track remote branch master from origin.
 </code></pre>
+        </div>
 
         <p>从远程仓库拉取内容:</p>
 
-        <pre><code> git pull origin master 
+        <div class="highlighter-rouge"><pre class="highlight"><code> git pull origin master 
         
  或
         
  git pull //加上 -u 参数之后就可以使用此简化命令了，或者可以使用 git branch --set-upstream-to=origin/&lt;branch&gt; master 也可以达到同样的效果
 </code></pre>
+        </div>
       </li>
       <li>
         <p>从 github clone 已有的仓库到本地</p>
 
-        <p>clone 已有仓库到本地，默认情况下远程仓库的名称是 <code>origin</code>，并且只有 <code>master</code> 分支：</p>
+        <p>clone 已有仓库到本地，默认情况下远程仓库的名称是 <code class="highlighter-rouge">origin</code>，并且只有 <code class="highlighter-rouge">master</code> 分支：</p>
 
-        <pre><code> git clone git@github.com:SPxiaomin/learn.git
+        <div class="highlighter-rouge"><pre class="highlight"><code> git clone git@github.com:SPxiaomin/learn.git
 </code></pre>
+        </div>
 
         <p>切换分支并与远程相对应:</p>
 
-        <pre><code> git checkout -b dev origin/dev
+        <div class="highlighter-rouge"><pre class="highlight"><code> git checkout -b dev origin/dev
 </code></pre>
+        </div>
       </li>
     </ol>
   </li>

@@ -27,50 +27,50 @@
             <h2>gulp globs 匹配规则学习</h2>
             <p>以下的内容摘录于 <a href="https://cnodejs.org/topic/5631875ff3fb0e2d445315db">https://cnodejs.org/topic/5631875ff3fb0e2d445315db</a> 并结合了自己的理解。</p>
 
-<p>这个规则是用在 <code>gulp.src(globs[, options])</code> 中匹配文件用的。下面简单的讲一些常用的匹配符及使用样例：</p>
+<p>这个规则是用在 <code class="highlighter-rouge">gulp.src(globs[, options])</code> 中匹配文件用的。下面简单的讲一些常用的匹配符及使用样例：</p>
 
 <ul>
   <li>
-    <p><code>*</code> 匹配文件路劲中的0个或多个字符，但不会匹配路径分隔符，除非路径分隔符出现在末尾</p>
+    <p><code class="highlighter-rouge">*</code> 匹配文件路劲中的0个或多个字符，但不会匹配路径分隔符，除非路径分隔符出现在末尾</p>
 
-    <p><code>*</code> 可以匹配 a.js, a, abc/，但是不能够匹配 <code>a/b.js</code></p>
+    <p><code class="highlighter-rouge">*</code> 可以匹配 a.js, a, abc/，但是不能够匹配 <code class="highlighter-rouge">a/b.js</code></p>
 
-    <p><code>*.*</code> 可以匹配 a.js, style.css, a.b</p>
+    <p><code class="highlighter-rouge">*.*</code> 可以匹配 a.js, style.css, a.b</p>
 
-    <p><code>*/*/*.js</code> 可以匹配 a/b/c.js , 但是不能够匹配 a/b.js, a/b/c/d.js</p>
+    <p><code class="highlighter-rouge">*/*/*.js</code> 可以匹配 a/b/c.js , 但是不能够匹配 a/b.js, a/b/c/d.js</p>
   </li>
   <li>
-    <p><code>**</code> 匹配路径中的0个或多个目录及其子目录，需要单独的出现，即它左右不能有其它东西了。如果出现在末尾，也能匹配文件</p>
+    <p><code class="highlighter-rouge">**</code> 匹配路径中的0个或多个目录及其子目录，需要单独的出现，即它左右不能有其它东西了。如果出现在末尾，也能匹配文件</p>
 
-    <p><code>**</code> 可以匹配 abc, a/b.js, a/b/c.js, 也就是说可以用来匹配所有的目录和文件</p>
+    <p><code class="highlighter-rouge">**</code> 可以匹配 abc, a/b.js, a/b/c.js, 也就是说可以用来匹配所有的目录和文件</p>
 
-    <p><code>**/*.js</code> 可以匹配 foo.js, a/foo.js, a/b/foo.js</p>
+    <p><code class="highlighter-rouge">**/*.js</code> 可以匹配 foo.js, a/foo.js, a/b/foo.js</p>
 
-    <p><code>a/**/z</code> 能够匹配 a/z, a/b/z, a/b/c/z</p>
+    <p><code class="highlighter-rouge">a/**/z</code> 能够匹配 a/z, a/b/z, a/b/c/z</p>
 
-    <p><code>a/**b/z</code> 可以匹配 a/b/z, a/sb/z, 但是不能匹配 a/x/sb/z，因为只有在 <code>**</code> 单独出现的时候才能匹配多级目录</p>
+    <p><code class="highlighter-rouge">a/**b/z</code> 可以匹配 a/b/z, a/sb/z, 但是不能匹配 a/x/sb/z，因为只有在 <code class="highlighter-rouge">**</code> 单独出现的时候才能匹配多级目录</p>
   </li>
   <li>
-    <p><code>?</code> 匹配文件路径中的一个字符(不会匹配路径分隔符)</p>
+    <p><code class="highlighter-rouge">?</code> 匹配文件路径中的一个字符(不会匹配路径分隔符)</p>
 
-    <p><code>？.js</code> 可以匹配 a.js, b.js</p>
+    <p><code class="highlighter-rouge">？.js</code> 可以匹配 a.js, b.js</p>
 
-    <p><code>a??</code> 可以匹配 a.b, abc, 但是不能够匹配ab/，因为它不会匹配路径分隔符</p>
+    <p><code class="highlighter-rouge">a??</code> 可以匹配 a.b, abc, 但是不能够匹配ab/，因为它不会匹配路径分隔符</p>
   </li>
   <li>
-    <p><code>[...]</code> 匹配方括号中出现的字符中的任意一个，当方括号中第一个字符为 ^ 或 ! 时，则表示匹配一个字符，只要这个字符不是方括号中的就可以了</p>
+    <p><code class="highlighter-rouge">[...]</code> 匹配方括号中出现的字符中的任意一个，当方括号中第一个字符为 ^ 或 ! 时，则表示匹配一个字符，只要这个字符不是方括号中的就可以了</p>
   </li>
   <li>
-    <p><code>!(pattern|pattern|pattern)</code> 任何和括号中的任一模式匹配的都不匹配</p>
+    <p><code class="highlighter-rouge">!(pattern|pattern|pattern)</code> 任何和括号中的任一模式匹配的都不匹配</p>
   </li>
   <li>
-    <p><code>?(pattern|pattern|pattern)</code> 匹配括号中给定的任一模式0次或1次，类似于正则表达式中的 <code>(pattern|pattern|pattern)?</code></p>
+    <p><code class="highlighter-rouge">?(pattern|pattern|pattern)</code> 匹配括号中给定的任一模式0次或1次，类似于正则表达式中的 <code class="highlighter-rouge">(pattern|pattern|pattern)?</code></p>
   </li>
   <li>
-    <p><code>+(pattern|pattern|pattern)</code> 匹配括号中给定的任一模式至少1次，类似于正则表达式中的 <code>(pattern|pattern|pattern)+</code></p>
+    <p><code class="highlighter-rouge">+(pattern|pattern|pattern)</code> 匹配括号中给定的任一模式至少1次，类似于正则表达式中的 <code class="highlighter-rouge">(pattern|pattern|pattern)+</code></p>
   </li>
   <li>
-    <p><code>*(pattern|pattern|pattern)</code> 匹配括号中给定的任一模式0次或多次，类似于正则表达式中的 <code>(pattern|pattern|pattern)*</code></p>
+    <p><code class="highlighter-rouge">*(pattern|pattern|pattern)</code> 匹配括号中给定的任一模式0次或多次，类似于正则表达式中的 <code class="highlighter-rouge">(pattern|pattern|pattern)*</code></p>
   </li>
 </ul>
 
