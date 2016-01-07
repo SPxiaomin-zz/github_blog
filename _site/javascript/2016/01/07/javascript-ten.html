@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="ajax 使用模板">
+        <meta name="keywords" content="ajax 使用模板">
+
+        <title>ajax 使用模板</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>ajax 使用模板</h2>
+            <p>摘录于 <a href="http://www.w3.org/wiki/JavaScript_best_practices?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io#Don.E2.80.99t_trust_any_data">http://www.w3.org/wiki/JavaScript_best_practices?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io#Don.E2.80.99t_trust_any_data</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var playercontainer = document.getElementById('easyyoutubeplayer');
+if(playercontainer){
+  ajax('template.html');
+}; 
+
+function ajax(url){
+  var request;
+  try{
+    request = new XMLHttpRequest();
+  }catch(error){
+    try{
+      request = new ActiveXObject("Microsoft.XMLHTTP");
+    }catch(error){
+      return true;
+    }
+  }
+  request.open('get',url,true);
+  request.onreadystatechange = function(){
+    if(request.readyState == 4){
+      if(request.status){ 
+        if(request.status === 200 || request.status === 304){
+          if(url === 'template.html'){
+            setupPlayer(request.responseText);
+          }
+        }
+      }else{
+        alert('Error: Could not find template...');
+      }
+    }
+  };
+  request.setRequestHeader('If-Modified-Since','Wed, 05 Apr 2006 00:00:00  GMT');
+  request.send(null);
+};
+</code></pre>
+</div>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
