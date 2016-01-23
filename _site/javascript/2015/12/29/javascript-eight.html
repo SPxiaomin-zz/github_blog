@@ -208,6 +208,30 @@ for(var i=0,j=inputs.length;i&lt;j;i++){
 
 <ul>
   <li>One of the main points to bear in mind when talking about code and data security is not to trust any data. This is not only about evil people wanting to hack your systems; it starts with plain usability. Users will enter incorrect data, all the time. Not because they are stupid, but because they are busy, distracted or the wording on your instructions is confusing them.</li>
+  <li>In short, make sure that all the data that goes into your systems is clean and exactly what you need. This is most important on the back end when writing out parameters retrieved from the URL. In JavaScript, it is very important to test the type of parameters sent to your functions (using the typeof keyword).Arrays are tricky as they tell you they are objects. To ensure that they are arrays, check one of the methods only arrays have.</li>
+  <li>For DOM access, check that the element you try to reach and alter is really available and what you expect it to be — otherwise your code may fail or cause strange rendering bugs.</li>
+</ul>
+
+<h1 id="add-functionality-with-javascript-dont-create-too-much-content">Add functionality with JavaScript, don’t create too much content</h1>
+
+<ul>
+  <li>As you can see in some of the other examples here, building a lot of HTML in JavaScript can be pretty daunting and flaky. Especially on Internet Explorer you can run into all kinds of trouble by altering the document while it is still loading and manipulating the content (look up “operation aborted error” on Google for a tale of woe and misery) with innerHTML.</li>
+  <li>I found that when I had to build an application that is very much dependent on JavaScript using an HTML template and loading this template via Ajax made much more sense. That way maintainers can alter the HTML structure and most importantly text without having to interfere with your JavaScript code. The only snag is to tell them which IDs are needed and if there are certain HTML constructs that need to be in the order you defined. You can do that with inline HTML comments (and then strip the comments out when you load the template)</li>
+  <li>This way I enable people to translate and change the player any way they want to without having to alter the JavaScript code.</li>
+</ul>
+
+<h1 id="build-on-the-shoulders-of-giants">Build on the shoulders of giants</h1>
+
+<ul>
+  <li>It’s a good idea to learn JavaScript without libraries first, so you really know what’s going on, but you should make use of a JS library when you start developing web sites. You’ll have less issues to deal with and at least the bugs that appear will be ones that can be reproduced — not random browser issues.</li>
+  <li>you should find the one that suits you and your product best.</li>
+  <li>Whilst all libraries do work well together, it is not a good idea to use several libraries in the same project. This brings in another superfluous level of complexity and maintenance.</li>
+</ul>
+
+<h1 id="development-code-is-not-live-code">Development code is not live code</h1>
+
+<ul>
+  <li>If we concentrate more on making the initial code easy to understand and extend by other developers we can create the perfect build script. If we keep optimizing prematurely we’ll never get there. Do not build for yourself or the browser — build for the next developer who takes over from you.</li>
 </ul>
 
 
