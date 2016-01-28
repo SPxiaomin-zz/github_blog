@@ -27,12 +27,88 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
-    <p>16/1/24 Use === instead of ==</p>
+    <p>16/1/27 Short circuit evaluation in JS(16/1/28)</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var test = true;
+  var isTrue = function(){
+    console.log('Test is true.');
+  };
+  var isFalse = function(){
+    console.log('Test is false.');
+  };
+</code></pre>
+    </div>
+
+    <p>Using logical AND - &amp;&amp;.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  // A normal if statement.
+  if(test){
+    isTrue();    // Test is true
+  }
+    
+  // Above can be done using '&amp;&amp;' as -
+    
+  ( test &amp;&amp; isTrue() );  // Test is true
+</code></pre>
+    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Using logical OR -</td>
+          <td> </td>
+          <td>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  test = false;
+  if(!test){
+    isFalse();    // Test is false.
+  }
+    
+  ( test || isFalse());  // Test is false.
+</code></pre>
+    </div>
+
+    <p>The logical OR could also be used to set a default value for function argument.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  function theSameOldFoo(name){
+      name = name || 'Bar' ;
+      console.log("My best friend's name is " + name);
+  }
+</code></pre>
+    </div>
+
+    <p>The logical AND could be used to avoid exceptions when using properties of undefined. Example:-</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var dog = {
+    bark: function(){
+       console.log('Woof Woof');
+     }
+  };
+    
+  // Calling dog.bark();
+  dog.bark(); // Woof Woof.
+    
+  //But if dog is not defined, dog.bark()
+  // will raise an error
+  // "Cannot read property 'bark' of undefined."
+  // To prevent this, we can you &amp;&amp;.
+    
+  dog &amp;&amp; dog.bark();   
+  // This will only call dog.bark(),
+  // if dog is defined.
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>16/1/24 Use === instead of ==(16/1/27)</p>
 
     <p>The == (or !=) operator performs an automatic type conversion if needed. The === (or !==) operator will not perform any conversion. It compares the value and the type, which could be considered faster (jsPref) than ==.</p>
   </li>
   <li>
-    <p>16/1/23 Converting to number fast way</p>
+    <p>16/1/23 Converting to number fast way(16/1/26)</p>
 
     <p>Converting strings to numbers is extremely common. The easiest and fastest (jsPref) way to achieve that would be using the + (plus) operator.</p>
 
@@ -43,7 +119,7 @@
     </div>
   </li>
   <li>
-    <p>16/1/22 Empty an Array</p>
+    <p>16/1/22 Empty an Array(16/1/25)</p>
 
     <div class="highlighter-rouge"><pre class="highlight"><code>  var list = [1, 2, 3, 4];
   function empty() {
