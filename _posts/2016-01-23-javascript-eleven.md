@@ -5,6 +5,34 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/1/28 Currying vs partial application(16/1/29)
+
+    Curry takes a binary function and returns a unary function that returns a unary function.
+    
+    curry: (X × Y → R) → (X → (Y → R))
+    
+    Javascript Code:
+
+        function curry(f) {
+          return function(x) {
+            return function(y) {
+              return f(x, y);
+            }
+          }
+        }
+
+    partApply takes a binary function and a value and produces a unary function.
+    
+    partApply : ((X × Y → R) × X) → (Y → R)
+    
+    Javascript Code:
+
+        function partApply(f, x) {
+          return function(y) {
+            return f(x, y);
+          }
+        }
+
 - 16/1/27 Short circuit evaluation in JS(16/1/28)
 
         var test = true;
