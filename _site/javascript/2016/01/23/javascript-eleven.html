@@ -27,6 +27,59 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/1/29 Speed up recursive functions with memoization(16/1/30)</p>
+
+    <p>define a higher-order function that accepts a function as its argument and returns a memoized version of the function.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var fibonacci = function(n){
+      return n &lt; 2 ? n : fibonacci(n-1) + fibonacci(n-2);
+  }
+
+  var memoize = function(func){
+      var cache = {};
+      return function(){
+          var key = Array.prototype.slice.call(arguments).toString();
+          return key in cache ? cache[key] : (cache[key] = func.apply(this,arguments));
+      }
+  }
+  fibonacci = memoize(fibonacci);
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>16/1/28 Currying vs partial application(16/1/29)</p>
+
+    <p>Curry takes a binary function and returns a unary function that returns a unary function.</p>
+
+    <p>curry: (X × Y → R) → (X → (Y → R))</p>
+
+    <p>Javascript Code:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  function curry(f) {
+    return function(x) {
+      return function(y) {
+        return f(x, y);
+      }
+    }
+  }
+</code></pre>
+    </div>
+
+    <p>partApply takes a binary function and a value and produces a unary function.</p>
+
+    <p>partApply : ((X × Y → R) × X) → (Y → R)</p>
+
+    <p>Javascript Code:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  function partApply(f, x) {
+    return function(y) {
+      return f(x, y);
+    }
+  }
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/1/27 Short circuit evaluation in JS(16/1/28)</p>
 
     <div class="highlighter-rouge"><pre class="highlight"><code>  var test = true;

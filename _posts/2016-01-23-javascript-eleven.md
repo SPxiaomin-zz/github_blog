@@ -5,6 +5,23 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/1/29 Speed up recursive functions with memoization(16/1/30)
+
+    define a higher-order function that accepts a function as its argument and returns a memoized version of the function.
+
+        var fibonacci = function(n){
+            return n < 2 ? n : fibonacci(n-1) + fibonacci(n-2);
+        }
+
+        var memoize = function(func){
+            var cache = {};
+            return function(){
+                var key = Array.prototype.slice.call(arguments).toString();
+                return key in cache ? cache[key] : (cache[key] = func.apply(this,arguments));
+            }
+        }
+        fibonacci = memoize(fibonacci);
+
 - 16/1/28 Currying vs partial application(16/1/29)
 
     Curry takes a binary function and returns a unary function that returns a unary function.
