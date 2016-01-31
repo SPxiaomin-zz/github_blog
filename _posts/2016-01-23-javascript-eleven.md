@@ -5,13 +5,13 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/1/30 Converting truthy/falsy values to boolean(16/1/31)
+
+    You can convert a truthy or falsy value to true boolean with the !! operator.
+
 - 16/1/29 Speed up recursive functions with memoization(16/1/30)
 
     define a higher-order function that accepts a function as its argument and returns a memoized version of the function.
-
-        var fibonacci = function(n){
-            return n < 2 ? n : fibonacci(n-1) + fibonacci(n-2);
-        }
 
         var memoize = function(func){
             var cache = {};

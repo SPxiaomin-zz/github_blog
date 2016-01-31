@@ -27,15 +27,16 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/1/30 Converting truthy/falsy values to boolean(16/1/31)</p>
+
+    <p>You can convert a truthy or falsy value to true boolean with the !! operator.</p>
+  </li>
+  <li>
     <p>16/1/29 Speed up recursive functions with memoization(16/1/30)</p>
 
     <p>define a higher-order function that accepts a function as its argument and returns a memoized version of the function.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  var fibonacci = function(n){
-      return n &lt; 2 ? n : fibonacci(n-1) + fibonacci(n-2);
-  }
-
-  var memoize = function(func){
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var memoize = function(func){
       var cache = {};
       return function(){
           var key = Array.prototype.slice.call(arguments).toString();
