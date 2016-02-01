@@ -5,6 +5,25 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/1/31 Avoid modifying or passing arguments into other functions — it kills optimization(16/2/1)
+
+    it is a fairly common practice to convert arguments into an array using the following:
+    
+        var args = Array.prototype.slice.call(arguments);
+    
+    A common shorthand for this is :
+    
+        var args = [].slice.call(arguments);
+    
+    Unfortunately, passing arguments into any function call will cause the V8 JavaScript engine used in Chrome and Node to skip optimization on the function that does this, which can result in considerably slower performance.
+    
+    Instead, if you want an array of the arguments that lets you use you need to resort to this:
+    
+        var args = new Array(arguments.length);
+        for(var i = 0; i < args.length; ++i) {
+          args[i] = arguments[i];
+        }
+
 - 16/1/30 Converting truthy/falsy values to boolean(16/1/31)
 
     You can convert a truthy or falsy value to true boolean with the !! operator.
