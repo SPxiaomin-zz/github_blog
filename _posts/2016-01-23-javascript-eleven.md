@@ -5,6 +5,38 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/1 Map() to the rescue: adding order to Object properties(16/2/2)
+
+    - Map
+
+        Using a new ES6 feature called Map. A Map object iterates its elements in insertion order — a for...of loop returns an array of [key, value] for each iteration.
+        
+            var myObject = new Map();
+            myObject.set('z', 1);
+            myObject.set('@', 2);
+            myObject.set('b', 3);
+            for (var [key, value] of myObject) {
+              console.log(key, value);
+            ...
+            // z 1
+            // @ 2
+            // b 3
+            
+    - Hack for old browsers
+    
+        Mozilla suggest:
+        
+        So, if you want to simulate an ordered associative array in a cross-browser environment, you are forced to either use two separate arrays (one for the keys and the other for the values), or build an array of single-property objects, etc.
+        
+            // Using two separate arrays
+            var objectKeys = [z, @, b, 1, 5];
+            for (item in myObject) {
+                myObject[item]
+            ...
+            
+            // Build an array of single-property objects
+            var myData = [{z: 1}, {'@': 2}, {b: 3}, {1: 4}, {5: 5}];
+
 - 16/1/31 Avoid modifying or passing arguments into other functions — it kills optimization(16/2/1)
 
     it is a fairly common practice to convert arguments into an array using the following:
