@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="git 合并仅有的两次提交">
+        <meta name="keywords" content="git,git 合并提交">
+
+        <title>git 合并仅有的两次提交</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>git 合并仅有的两次提交</h2>
+            <p>当代码库仅有如下的两次提交时，通过 <code class="highlighter-rouge">rebase -i</code> 是做不到的，</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gujunmin@www:~/projects/EloquentJavaScriptBack/EloquentJavaScript$ git lg
+* 307cf7c - (HEAD -&gt; master) 16/2/1 (9 hours ago) &lt;gujunmin&gt;
+* b5398cd - 16/2/1 (9 hours ago) &lt;gujunmin&gt;
+</code></pre>
+</div>
+
+<p>解决方案:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git reset --soft HEAD^
+
+git commit --amend
+</code></pre>
+</div>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>

@@ -27,6 +27,74 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/2/1 Map() to the rescue: adding order to Object properties(16/2/2)</p>
+
+    <ul>
+      <li>
+        <p>Map</p>
+
+        <p>Using a new ES6 feature called Map. A Map object iterates its elements in insertion order — a for…of loop returns an array of [key, value] for each iteration.</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>  var myObject = new Map();
+  myObject.set('z', 1);
+  myObject.set('@', 2);
+  myObject.set('b', 3);
+  for (var [key, value] of myObject) {
+    console.log(key, value);
+  ...
+  // z 1
+  // @ 2
+  // b 3
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Hack for old browsers</p>
+
+        <p>Mozilla suggest:</p>
+
+        <p>So, if you want to simulate an ordered associative array in a cross-browser environment, you are forced to either use two separate arrays (one for the keys and the other for the values), or build an array of single-property objects, etc.</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>  // Using two separate arrays
+  var objectKeys = [z, @, b, 1, 5];
+  for (item in myObject) {
+      myObject[item]
+  ...
+        
+  // Build an array of single-property objects
+  var myData = [{z: 1}, {'@': 2}, {b: 3}, {1: 4}, {5: 5}];
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>16/1/31 Avoid modifying or passing arguments into other functions — it kills optimization(16/2/1)</p>
+
+    <p>it is a fairly common practice to convert arguments into an array using the following:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var args = Array.prototype.slice.call(arguments);
+</code></pre>
+    </div>
+
+    <p>A common shorthand for this is :</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var args = [].slice.call(arguments);
+</code></pre>
+    </div>
+
+    <p>Unfortunately, passing arguments into any function call will cause the V8 JavaScript engine used in Chrome and Node to skip optimization on the function that does this, which can result in considerably slower performance.</p>
+
+    <p>Instead, if you want an array of the arguments that lets you use you need to resort to this:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var args = new Array(arguments.length);
+  for(var i = 0; i &lt; args.length; ++i) {
+    args[i] = arguments[i];
+  }
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/1/30 Converting truthy/falsy values to boolean(16/1/31)</p>
 
     <p>You can convert a truthy or falsy value to true boolean with the !! operator.</p>
