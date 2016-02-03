@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="mongodb CRUD 学习笔记">
+        <meta name="keywords" content="mongo,mongodb,数据库,CRUD">
+
+        <title>mongodb CRUD 学习笔记</title>
+
+        <link rel="stylesheet" href="/github_blog/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/github_blog/public/stylesheets/dest/style.min.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="container post">
+            <a href="/github_blog/">&lt;- Back to Home</a>
+            <h2>mongodb CRUD 学习笔记</h2>
+            <ul>
+  <li>
+    <p>关系型数据库与非关系型数据库、mongo 特性</p>
+
+    <p>文档就是一条数据意思，集合就是表的意思，默认监听端口是27017，mongodb是使用javascript交互的</p>
+  </li>
+  <li>
+    <p>显示数据库</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  show dbs
+</code></pre>
+    </div>
+
+    <p>这个可以显示当前的实例下所有数据库的列表</p>
+  </li>
+  <li>
+    <p>选择数据库</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  use myFirst
+</code></pre>
+    </div>
+
+    <p>myFirst是我创建的！如果你不创建的话，那么这句就可以隐式的帮你创建myFirst数据库，</p>
+  </li>
+  <li>
+    <p>插入操作</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test1.save({"name":"qlier", age:21, "sex":"male"});
+
+  db.test1.insert({"name":"tom", age:19, "sex":"male"});
+</code></pre>
+    </div>
+
+    <p>insert仅仅是插入文档到集合中，如果记录不存在则插入，如果记录存在则忽略</p>
+
+    <p>save是在文档不存在时插入，存在时则是更新</p>
+  </li>
+  <li>
+    <p>查找操作</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test1.find();
+</code></pre>
+    </div>
+
+    <p>这个可以查询test1集合中所有的数据。所有的文档都有_Id这一列，这个是主键，是系统生成唯一的主键，不过我们也可以自己来操作，怎么操作就自己动动脑子了，不过自己操作的时候可千万不能有重复的值，要不会有异常。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test1.findOne();
+</code></pre>
+    </div>
+
+    <p>这个查询test1集合中最上面一条数据并显示。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test1.find({name:"qlier"});
+</code></pre>
+    </div>
+
+    <p>查询name是qlier的文档。</p>
+  </li>
+  <li>
+    <p>更新操作</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test1.update({name:"tom"}, {$set:{name:"Jim"}});
+</code></pre>
+    </div>
+
+    <p>修改名称tom为Jim，这个是修改的方法。</p>
+  </li>
+  <li>
+    <p>count查询记录条数</p>
+
+    <p>db.test2.find().count();</p>
+
+    <p>返回test2集合中文档记录的数目。</p>
+  </li>
+  <li>
+    <p>limit限制显示的条数</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find().limit(5);
+</code></pre>
+    </div>
+
+    <p>返回test2中上面的5条记录。</p>
+  </li>
+  <li>
+    <p>skip限制返回记录的起点</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find().skip(3);
+</code></pre>
+    </div>
+
+    <p>返回test2中上面数第三条数据一下的所有数据</p>
+  </li>
+  <li>
+    <p>分页的实现</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find().skip(1).limit(5);
+</code></pre>
+    </div>
+
+    <p>返回从第二条数据开始，显示5条数据，这个可以用作分页，很简单就实现了！</p>
+  </li>
+  <li>
+    <p>sort排序</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find().sort({age:1});
+</code></pre>
+    </div>
+
+    <p>所有的数据按年龄大小升序(asc)排列，既然1表示asc排列，那么-1就表示desc排列</p>
+  </li>
+  <li>
+    <p>$in包含</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age : { $in : [20, 21, 22]}});
+</code></pre>
+    </div>
+
+    <p>查询所有年龄等于20、21、22的用户文档。</p>
+  </li>
+  <li>
+    <p>$nin不包含</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age : {$nin : [20, 21, 22]}});
+</code></pre>
+    </div>
+
+    <p>查询所有年龄不等于20、21、22的用户文档。</p>
+  </li>
+  <li>
+    <p>$ne不等于</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age: {$ne : 20}});
+</code></pre>
+    </div>
+
+    <p>查询所有年龄不等于20的用户文档。</p>
+  </li>
+  <li>
+    <p>$all匹配所有</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age:{$all:[8]}});
+</code></pre>
+    </div>
+
+    <p>他会匹配所有age等于8的文档。</p>
+  </li>
+  <li>
+    <p>$exists判断字段是否存在</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age:{$exists:true}});
+</code></pre>
+    </div>
+
+    <p>查询所有存在age字段的文档。false表示不存在。</p>
+  </li>
+  <li>
+    <p>$mod取模运算</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age:{$mod:[10, 1]}});
+</code></pre>
+    </div>
+
+    <p>查询所有age模10等于1的文档。</p>
+  </li>
+  <li>
+    <p>条件操作符&lt;、&lt;=、&gt;、&gt;=</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  db.test2.find({age:{$gt:20}});
+</code></pre>
+    </div>
+
+    <p>查询年龄大于12岁的用户，如此的还有$lt小于、$gte大于等于、$lte小于等于。</p>
+  </li>
+</ul>
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'jimmy-github-blog';
+                
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </body>
+</html>
