@@ -225,6 +225,31 @@
     </div>
   </li>
   <li>
+    <p>16/1/26 Filtering and Sorting a List of Strings(16/2/3)</p>
+
+    <p>You may have a big list of names you need to filter in order to remove duplicates and sort them alphabetically.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var filteredAndSortedKeywords = keywords
+    .filter(function (keyword, index) {
+        return keywords.indexOf(keyword) === index;
+      })
+    .sort(function (a, b) {
+        if (a &lt; b) return -1;
+        else if (a &gt; b) return 1;
+        return 0;
+      });
+    
+  const filteredAndSortedKeywords = keywords
+    .filter((keyword, index) =&gt; keywords.indexOf(keyword) === index)
+    .sort((a, b) =&gt; {
+        if (a &lt; b) return -1;
+        else if (a &gt; b) return 1;
+        return 0;
+      });
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/1/24 Use === instead of ==(16/1/27)</p>
 
     <p>The == (or !=) operator performs an automatic type conversion if needed. The === (or !==) operator will not perform any conversion. It compares the value and the type, which could be considered faster (jsPref) than ==.</p>

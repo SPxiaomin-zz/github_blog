@@ -157,6 +157,28 @@ category: javascript
         dog && dog.bark();   
         // This will only call dog.bark(),
         // if dog is defined.
+        
+- 16/1/26 Filtering and Sorting a List of Strings(16/2/3)
+
+    You may have a big list of names you need to filter in order to remove duplicates and sort them alphabetically.
+    
+        var filteredAndSortedKeywords = keywords
+          .filter(function (keyword, index) {
+              return keywords.indexOf(keyword) === index;
+            })
+          .sort(function (a, b) {
+              if (a < b) return -1;
+              else if (a > b) return 1;
+              return 0;
+            });
+        
+        const filteredAndSortedKeywords = keywords
+          .filter((keyword, index) => keywords.indexOf(keyword) === index)
+          .sort((a, b) => {
+              if (a < b) return -1;
+              else if (a > b) return 1;
+              return 0;
+            });
 
 - 16/1/24 Use === instead of ==(16/1/27)
 
