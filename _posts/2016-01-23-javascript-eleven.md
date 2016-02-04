@@ -5,6 +5,64 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/3 Implementing asynchronous loop(16/2/4)
+
+    Let's try out writing an asynchronous function which prints the value of the loop index every second.
+    
+        for (var i=0; i<5; i++) {
+            setTimeout(function(){
+                console.log(i);
+            }, 1000);
+        }  
+    The output of the above programs turns out to be
+    
+        > 5
+        > 5
+        > 5
+        > 5
+        > 5
+    
+    Reason
+    
+    Each timeout refers to the `original i`, not a copy. So the for loop increments i until it gets to 5, then the timeouts run and use the current value of i (which is 5).
+    
+    An immediate solution that strikes is to cache the loop index in a temporary variable.
+    
+        for (var i=0; i<5; i++) {
+            var temp = i;
+            setTimeout(function(){
+                console.log(temp);
+            }, 1000);
+        }  
+    But again the output of the above programs turns out to be
+    
+        > 5
+        > 5
+        > 5
+        > 5
+        > 5
+    So, that doesn't work either, because blocks don't create a scope and variables initializers are hoisted to the top of the scope. In fact, the previous block is the same as:
+    
+        var temp;
+        for (var i=0; i<5; i++) {
+            temp = i;
+            setTimeout(function(){
+                console.log(i);
+            }, 1000);
+        }  
+    
+    Solution
+    
+        for (var i=0; i<5; i++) {
+            (function(num){
+                setTimeout(function(){
+                    console.log(num);
+                }, 1000);
+            })(i);
+        }  
+    
+    In JavaScript, arguments are passed by value to a function. So primitive types like numbers, dates, and strings are basically copied. If you change them inside the function, it does not affect the outside scope. Objects are special: if the inside function changes a property, the change is reflected in all scopes.
+
 - 16/2/1 Map() to the rescue: adding order to Object properties(16/2/2)
 
     - Map
