@@ -27,6 +27,74 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/2/4 Assignment Operators(16/2/5)</p>
+
+    <p>If-else (Using ternary operator)</p>
+
+    <p>This is what we write on regular basis.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var newValue;
+  if(value &gt; 10) 
+    newValue = 5;
+  else
+    newValue = 2;   We can user ternary operator to make it awesome:
+
+  var newValue = (value &gt; 10) ? 5 : 2;
+</code></pre>
+    </div>
+
+    <p>Null, Undefined, Empty Checks</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  if (variable1 !== null || variable1 !== undefined || variable1 !== '') {
+       var variable2 = variable1;
+  }
+</code></pre>
+    </div>
+
+    <p>Shorthand here:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var variable2 = variable1  || '';
+</code></pre>
+    </div>
+
+    <p>P.S.: If variable1 is a number, then first check if it is 0.</p>
+
+    <p>Object Array Notation</p>
+
+    <p>Instead of using:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var a = new Array();
+  a[0] = "myString1";
+  a[1] = "myString2";
+</code></pre>
+    </div>
+
+    <p>Use this:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var a = ["myString1", "myString2"];
+</code></pre>
+    </div>
+
+    <p>Associative array</p>
+
+    <p>Instead of using:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var skillSet = new Array();
+  skillSet['Document language'] = 'HTML5';
+  skillSet['Styling language'] = 'CSS3';
+</code></pre>
+    </div>
+
+    <p>Use this:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var skillSet = {
+      'Document language' : 'HTML5', 
+      'Styling language' : 'CSS3'
+  };
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/2/3 Implementing asynchronous loop(16/2/4)</p>
 
     <p>Let’s try out writing an asynchronous function which prints the value of the loop index every second.</p>

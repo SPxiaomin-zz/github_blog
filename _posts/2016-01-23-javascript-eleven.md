@@ -5,6 +5,60 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/4 Assignment Operators(16/2/5)
+
+    If-else (Using ternary operator)
+
+    This is what we write on regular basis.
+    
+        var newValue;
+        if(value > 10) 
+          newValue = 5;
+        else
+          newValue = 2;
+    We can user ternary operator to make it awesome:
+    
+        var newValue = (value > 10) ? 5 : 2;
+        
+    Null, Undefined, Empty Checks
+    
+        if (variable1 !== null || variable1 !== undefined || variable1 !== '') {
+             var variable2 = variable1;
+        }
+        
+    Shorthand here:
+    
+        var variable2 = variable1  || '';
+        
+    P.S.: If variable1 is a number, then first check if it is 0.
+    
+    Object Array Notation
+    
+    Instead of using:
+    
+        var a = new Array();
+        a[0] = "myString1";
+        a[1] = "myString2";
+        
+    Use this:
+    
+        var a = ["myString1", "myString2"];
+    
+    Associative array
+    
+    Instead of using:
+    
+        var skillSet = new Array();
+        skillSet['Document language'] = 'HTML5';
+        skillSet['Styling language'] = 'CSS3';
+    
+    Use this:
+    
+        var skillSet = {
+            'Document language' : 'HTML5', 
+            'Styling language' : 'CSS3'
+        };
+
 - 16/2/3 Implementing asynchronous loop(16/2/4)
 
     Let's try out writing an asynchronous function which prints the value of the loop index every second.
