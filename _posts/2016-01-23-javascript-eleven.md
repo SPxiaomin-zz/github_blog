@@ -5,6 +5,55 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/6 Deduplicate an Array(16/2/7)
+
+    Primitives
+    
+        var deduped = [ 1, 1, 'a', 'a' ].filter(function (el, i, arr) {
+            return arr.indexOf(el) === i;
+        });
+        console.log(deduped); // [ 1, 'a' ]
+    
+        var deduped = [ 1, 1, 'a', 'a' ].filter( (el, i, arr) => arr.indexOf(el) === i);
+        console.log(deduped); // [ 1, 'a' ]
+        
+        var deduped = Array.from( new Set([ 1, 1, 'a', 'a' ]) );
+        console.log(deduped); // [ 1, 'a' ]
+    
+    Objects
+    
+    We can't use the same approach when the elements are Objects, because Objects are stored by reference and primitives are stored by value.
+    
+        1 === 1 // true
+    
+        'a' === 'a' // true
+    
+        { a: 1 } === { a: 1 } // false
+    
+        function dedup(arr) {
+            var hashTable = {};
+        
+            return arr.filter(function (el) {
+                var key = JSON.stringify(el);
+                var match = Boolean(hashTable[key]);
+        
+                return (match ? false : hashTable[key] = true);
+            });
+        }
+        
+        var deduped = dedup([
+            { a: 1 },
+            { a: 1 },
+            [ 1, 2 ],
+            [ 1, 2 ],
+            1,
+            1,
+            '1',
+            '1'
+        ]);
+        
+        console.log(deduped); // [ {a: 1}, [1, 2], 1, '1' ]
+
 - 16/2/5 Observe DOM changes in extensions(16/2/6)
 
     MutationObserver is a solution to listen DOM changes and do what you want to do with elements when they changed. In following example there is some emulation of dynamic content loading with help of timers, after first "target" element creation goes "subTarget". In extension code firstly rootObserver works till targetElement appearance then elementObserver starts. This cascading observing helps finally get moment when subTargetElement found. This useful to develop extensions to complex sites with dynamic content loading.
