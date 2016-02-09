@@ -5,6 +5,51 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/8 Advanced Javascript Properties(16/2/9)
+
+        Object.defineProperty(dest, propName, options)
+        
+        Object.defineProperties(dest, {
+          propA: optionsA,
+          propB: optionsB, //...
+        })
+        
+        function Foobar () {
+          var _foo; //  true private property
+        
+          Object.defineProperty(obj, 'foo', {
+            get: function () { return _foo; }
+            set: function (value) { _foo = value }
+          });
+        }
+        var foobar = new Foobar();
+        foobar.foo; // 15
+        foobar.foo = 20; // _foo = 20
+
+- 16/2/7 Flattening multidimensional Arrays in JavaScript(16/2/8)
+    
+    Solution 1: Using concat() and apply()
+    
+        var myNewArray = [].concat.apply([], myArray);
+        // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+    Solution 2: Using reduce()
+    
+        var myNewArray = myArray.reduce(function(prev, curr) {
+          return prev.concat(curr);
+        });
+        // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+    Solution 3:
+    
+        var myNewArray3 = [];
+        for (var i = 0; i < myArray.length; ++i) {
+          for (var j = 0; j < myArray[i].length; ++j)
+            myNewArray3.push(myArray[i][j]);
+        }
+        console.log(myNewArray3);
+        // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 - 16/2/6 Deduplicate an Array(16/2/7)
 
     Primitives
