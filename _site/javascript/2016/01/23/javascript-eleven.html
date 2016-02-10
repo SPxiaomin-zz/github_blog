@@ -27,6 +27,40 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/2/9 Using JSON.Stringify(16/2/10)</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var obj = {
+      'prop1': 'value1',
+      'prop2': 'value2',
+      'prop3': 'value3'
+  };
+  var selectedProperties = ['prop1', 'prop2'];
+  var str = JSON.stringify(obj, selectedProperties);
+  // str
+  // {"prop1":"value1","prop2":"value2"}
+    
+  function selectedProperties(key, val) {
+      // the first val will be the entire object, key is empty string
+      if (!key) {
+          return val;
+      }
+      if (key === 'prop1' || key === 'prop2') {
+          return val;
+      }
+      return;
+  }
+
+  var str = JSON.stringify(obj, selectedProperties, '\t\t');
+  /* str output with double tabs in every line.
+  {
+          "prop1": "value1",
+          "prop2": "value2"
+  }
+  */
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/2/8 Advanced Javascript Properties(16/2/9)</p>
 
     <div class="highlighter-rouge"><pre class="highlight"><code>  Object.defineProperty(dest, propName, options)
@@ -186,10 +220,10 @@
           el.appendChild(del)
       }
   }, 5000);
+
+  })()
 </code></pre>
     </div>
-
-    <p>})()</p>
   </li>
   <li>
     <p>16/2/4 Assignment Operators(16/2/5)</p>
