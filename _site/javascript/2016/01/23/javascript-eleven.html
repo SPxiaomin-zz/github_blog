@@ -27,6 +27,51 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/2/11 Preventing Unapply Attacks(16/2/12)</p>
+
+    <p>By overriding the builtin prototypes, attackers can rewrite code to expose and change bound arguments.</p>
+
+    <p>By using <code class="highlighter-rouge">Object.freeze</code> , making an object immutable, you prevent any overriding of the builtin object prototypes.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  (function freezePrototypes() {
+    if (typeof Object.freeze !== 'function') {
+      throw new Error('Missing Object.freeze');
+    }
+    Object.freeze(Object.prototype);
+    Object.freeze(Array.prototype);
+    Object.freeze(Function.prototype);
+  }());
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>16/2/10 Array Average And Median(16/2/11)</p>
+
+    <p>get the average</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  let values = [2, 56, 3, 41, 0, 4, 100, 23];
+  let sum = values.reduce((previous, current) =&gt; current += previous);
+  let avg = sum / values.length;
+  // avg = 28
+</code></pre>
+    </div>
+
+    <p>get the median</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  let values = [2, 56, 3, 41, 0, 4, 100, 23];
+  values.sort((a, b) =&gt; a - b);
+  let middle = Math.floor(values.length / 2);
+  let median = values[middle];
+  // median = 23
+    
+  let values = [2, 56, 3, 41, 0, 4, 100, 23];
+  values.sort((a, b) =&gt; a - b);
+  let median = values[values.length &gt;&gt; 1];
+  // median = 23
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/2/9 Using JSON.Stringify(16/2/10)</p>
 
     <div class="highlighter-rouge"><pre class="highlight"><code>  var obj = {
@@ -220,10 +265,10 @@
           el.appendChild(del)
       }
   }, 5000);
-
-  })()
 </code></pre>
     </div>
+
+    <p>})()</p>
   </li>
   <li>
     <p>16/2/4 Assignment Operators(16/2/5)</p>

@@ -5,6 +5,43 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/11 Preventing Unapply Attacks(16/2/12)
+
+    By overriding the builtin prototypes, attackers can rewrite code to expose and change bound arguments. 
+    
+    By using `Object.freeze` , making an object immutable, you prevent any overriding of the builtin object prototypes.
+    
+        (function freezePrototypes() {
+          if (typeof Object.freeze !== 'function') {
+            throw new Error('Missing Object.freeze');
+          }
+          Object.freeze(Object.prototype);
+          Object.freeze(Array.prototype);
+          Object.freeze(Function.prototype);
+        }());
+
+- 16/2/10 Array Average And Median(16/2/11)
+
+    get the average
+
+        let values = [2, 56, 3, 41, 0, 4, 100, 23];
+        let sum = values.reduce((previous, current) => current += previous);
+        let avg = sum / values.length;
+        // avg = 28
+
+    get the median
+ 
+        let values = [2, 56, 3, 41, 0, 4, 100, 23];
+        values.sort((a, b) => a - b);
+        let middle = Math.floor(values.length / 2);
+        let median = values[middle];
+        // median = 23
+        
+        let values = [2, 56, 3, 41, 0, 4, 100, 23];
+        values.sort((a, b) => a - b);
+        let median = values[values.length >> 1];
+        // median = 23
+
 - 16/2/9 Using JSON.Stringify(16/2/10)
 
         var obj = {
@@ -181,7 +218,7 @@ category: javascript
             }
         }, 5000);
     
-        })()
+    })()
 
 - 16/2/4 Assignment Operators(16/2/5)
 
