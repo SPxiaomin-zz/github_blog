@@ -27,6 +27,20 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
+    <p>16/2/12 Use destructuring in function parameters(16/2/13)</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var sayHello = function({ name, surname }) {
+    console.log(`Hello ${name} ${surname}! How are you?`);
+  };
+    
+  sayHello({
+    name: 'John',
+    surname: 'Smith'
+  });
+</code></pre>
+    </div>
+  </li>
+  <li>
     <p>16/2/11 Preventing Unapply Attacks(16/2/12)</p>
 
     <p>By overriding the builtin prototypes, attackers can rewrite code to expose and change bound arguments.</p>
@@ -652,6 +666,7 @@
     </div>
   </li>
 </ul>
+
 
 
             <div id="disqus_thread"></div>

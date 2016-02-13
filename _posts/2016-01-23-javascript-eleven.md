@@ -5,6 +5,17 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/12 Use destructuring in function parameters(16/2/13)
+
+        var sayHello = function({ name, surname }) {
+          console.log(`Hello ${name} ${surname}! How are you?`);
+        };
+        
+        sayHello({
+          name: 'John',
+          surname: 'Smith'
+        });
+
 - 16/2/11 Preventing Unapply Attacks(16/2/12)
 
     By overriding the builtin prototypes, attackers can rewrite code to expose and change bound arguments. 
@@ -527,3 +538,4 @@ category: javascript
             list.length = 0;
         }
         empty();
+
