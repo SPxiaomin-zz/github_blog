@@ -5,6 +5,56 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/14 Calculate the Max/Min value from an array(16/2/15)
+
+    There are two methods to find Max and Min numbers from an argument list of numbers but they does not support Arrays natively.
+    
+        Math.max(1, 2, 3, 4); // 4
+        Math.min(1, 2, 3, 4); // 1
+    
+    apply() allows you to use built-ins functions to find Max Min value in an Array.
+    
+        var numbers = [1, 2, 3, 4];
+        Math.max.apply(null, numbers) // 4
+        Math.min.apply(null, numbers) // 1
+    
+    Another way more easier is with the new spread operator.
+    
+        var numbers = [1, 2, 3, 4];
+        Math.max(...numbers) // 4
+        Math.min(...numbers) // 1
+
+- 16/2/13 Know the passing mechanism(16/2/14)
+
+    Example 1
+    
+        var me = {                  // 1
+            'partOf' : 'A Team'
+        }; 
+        
+        function myTeam(me) {       // 2
+        
+            me = {                  // 3
+                'belongsTo' : 'A Group'
+            }; 
+        }   
+        
+        myTeam(me);     
+        console.log(me);            // 4  : {'partOf' : 'A Team'}
+    
+    Example 2
+    
+        var me = {                  // 1
+            'partOf' : 'A Team'
+        }; 
+        
+        function myGroup(me) {      // 2
+            me.partOf = 'A Group';  // 3
+        } 
+        
+        myGroup(me);
+        console.log(me);            // 4  : {'partOf' : 'A Group'}
+
 - 16/2/12 Use destructuring in function parameters(16/2/13)
 
         var sayHello = function({ name, surname }) {
@@ -538,4 +588,3 @@ category: javascript
             list.length = 0;
         }
         empty();
-
