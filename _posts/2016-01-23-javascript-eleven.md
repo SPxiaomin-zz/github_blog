@@ -5,6 +5,25 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/15 Detect document ready in pure JS(16/2/14)
+
+    The cross-browser way to check if the document has loaded in pure JavaScript is using `readyState`.
+    
+        let stateCheck = setInterval(() => {
+            if (document.readyState === 'complete') {
+            clearInterval(stateCheck);
+             // document ready
+          }
+        }, 100);
+        
+        document.onreadystatechange = () => {
+          if (document.readyState === 'complete') {
+           // document ready
+          }
+        };
+    
+    Use `document.readyState === 'interactive'` to detect when the DOM is ready.
+
 - 16/2/14 Calculate the Max/Min value from an array(16/2/15)
 
     There are two methods to find Max and Min numbers from an argument list of numbers but they does not support Arrays natively.
