@@ -5,7 +5,15 @@ keywords: jstips everyday
 category: javascript
 ---
 
-- 16/2/15 Detect document ready in pure JS(16/2/14)
+- 16/2/16 Basics: Declarations(16/2/17)
+
+        var y, x = y = 1 //== var x; var y; x = y = 1
+        
+        var x = y = 2 // == var x; y = 2;
+        
+        var x, y = 3 // == var x; var y = 3;
+
+- 16/2/15 Detect document ready in pure JS(16/2/16)
 
     The cross-browser way to check if the document has loaded in pure JavaScript is using `readyState`.
     
