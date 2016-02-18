@@ -5,6 +5,16 @@ keywords: jstips everyday
 category: javascript
 ---
 
+- 16/2/17 Reduce builtin function usage(16/2/18)
+
+    the reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+
+    reduce() function accepts 2 parameters (M: mandatory, O: optional):
+    
+    (M) a callback reducer function to be applied that deals with a pair of previous (result of previous computation) and next element until end of the list.
+    
+    (O) an initial value to be used as the first argument to the first call of the callback.
+
 - 16/2/16 Basics: Declarations(16/2/17)
 
         var y, x = y = 1 //== var x; var y; x = y = 1
