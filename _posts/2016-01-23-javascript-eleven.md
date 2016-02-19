@@ -625,3 +625,23 @@ category: javascript
             list.length = 0;
         }
         empty();
+        
+- 15/12/29 Insert item inside an Array(16/2/19)
+
+    You can add elements to the end of an array using push, to the beginning using unshift, or to the middle using splice.
+    
+        var arr = [1,2,3,4,5];
+        
+        arr.push(6);
+        arr[arr.length] = 6; // 43% faster in Chrome 47.0.2526.106 on Mac OS X 10.11.1
+        
+    Both methods modify the original array. 
+    
+        var arr = [1,2,3,4,5];
+        
+        arr.unshift(0);
+        [0].concat(arr); // 98% faster in Chrome 47.0.2526.106 on Mac OS X 10.11.1
+    
+    Here is a little more detail: unshift edits the original array; concat returns a new array.
+    
+    Adding items in the middle of an array is easy with splice, and it's the most performant way to do it.
