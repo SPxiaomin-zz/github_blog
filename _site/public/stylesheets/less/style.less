@@ -1,31 +1,38 @@
 .index {
     /* typography */
+    font-size: 18px;
     word-wrap: break-word;
     word-break: break-all;
     
     h2 {
         /* layout */
         margin-bottom: 50px;
-        text-align: center;
+
+        @media (min-width: 992px) {
+          padding-left: 16.66666667%;
+        }
+
+        a {
+          color: #333;
+          text-decoration: underline;
+        }
     }
 
     .row {
-        .col-md-4:nth-child(1) {
-            /* layout */
-            padding-bottom: 50px;
-            border-right: 1px solid rgba(0, 0, 0, 0.08);
+      margin-bottom: 60px;
+
+      a {
+        &:link {
+          color: #3EBFCE;
         }
 
-        .self-intro {
-            /* layout */
-            margin-bottom: 50px;
-
-            h3 {
-                /* layout */
-                padding-bottom: 10px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            }
+        &:visited,
+        &:hover,
+        &:active {
+          color: #18474C;
+          text-decoration: underline;
         }
+      }
     }
 }
 
