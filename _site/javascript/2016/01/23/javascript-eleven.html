@@ -27,7 +27,29 @@
             <h2>jstips everyday</h2>
             <ul>
   <li>
-    <p>16/2/15 Detect document ready in pure JS(16/2/14)</p>
+    <p>16/2/17 Reduce builtin function usage(16/2/18)</p>
+
+    <p>the reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.</p>
+
+    <p>reduce() function accepts 2 parameters (M: mandatory, O: optional):</p>
+
+    <p>(M) a callback reducer function to be applied that deals with a pair of previous (result of previous computation) and next element until end of the list.</p>
+
+    <p>(O) an initial value to be used as the first argument to the first call of the callback.</p>
+  </li>
+  <li>
+    <p>16/2/16 Basics: Declarations(16/2/17)</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var y, x = y = 1 //== var x; var y; x = y = 1
+    
+  var x = y = 2 // == var x; y = 2;
+    
+  var x, y = 3 // == var x; var y = 3;
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>16/2/15 Detect document ready in pure JS(16/2/16)</p>
 
     <p>The cross-browser way to check if the document has loaded in pure JavaScript is using <code class="highlighter-rouge">readyState</code>.</p>
 
@@ -748,6 +770,31 @@
   empty();
 </code></pre>
     </div>
+  </li>
+  <li>
+    <p>15/12/29 Insert item inside an Array(16/2/19)</p>
+
+    <p>You can add elements to the end of an array using push, to the beginning using unshift, or to the middle using splice.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var arr = [1,2,3,4,5];
+    
+  arr.push(6);
+  arr[arr.length] = 6; // 43% faster in Chrome 47.0.2526.106 on Mac OS X 10.11.1
+</code></pre>
+    </div>
+
+    <p>Both methods modify the original array.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  var arr = [1,2,3,4,5];
+    
+  arr.unshift(0);
+  [0].concat(arr); // 98% faster in Chrome 47.0.2526.106 on Mac OS X 10.11.1
+</code></pre>
+    </div>
+
+    <p>Here is a little more detail: unshift edits the original array; concat returns a new array.</p>
+
+    <p>Adding items in the middle of an array is easy with splice, and it’s the most performant way to do it.</p>
   </li>
 </ul>
 
